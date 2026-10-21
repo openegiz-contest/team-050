@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1240" viewBox="0 0 1600 1240">
+<rect width="1600" height="1240" fill="#f3f6fa"/>
+<rect x="25" y="25" width="1550" height="110" rx="14" fill="#ffffff" stroke="#d8e0eb" stroke-width="2"/>
+<text x="50" y="76" font-family="Arial, sans-serif" font-size="34" fill="#182840" font-weight="700">Карьерный транспорт · пример схемы</text>
+<text x="50" y="111" font-family="Arial, sans-serif" font-size="19" fill="#52647b" font-weight="400">Условный участок по мотивам Актогая · 4 места погрузки · 20 рабочих + 5 резервных машин</text>
+<rect x="25" y="150" width="1550" height="735" rx="14" fill="#ffffff" stroke="#d8e0eb" stroke-width="2"/>
+<text x="48" y="177" font-family="Arial, sans-serif" font-size="15" fill="#60758d" font-weight="700">СХЕМА СВЯЗЕЙ</text>
+<polyline points="175.0,235.0 510.0,310.0" fill="none" stroke="#c6d0dc" stroke-width="24" stroke-linejoin="round"/>
+<polyline points="175.0,235.0 510.0,310.0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polyline points="175.0,385.0 510.0,310.0" fill="none" stroke="#c6d0dc" stroke-width="24" stroke-linejoin="round"/>
+<polyline points="175.0,385.0 510.0,310.0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polyline points="175.0,575.0 510.0,650.0" fill="none" stroke="#c6d0dc" stroke-width="24" stroke-linejoin="round"/>
+<polyline points="175.0,575.0 510.0,650.0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polyline points="175.0,725.0 510.0,650.0" fill="none" stroke="#c6d0dc" stroke-width="24" stroke-linejoin="round"/>
+<polyline points="175.0,725.0 510.0,650.0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polyline points="510.0,310.0 1000.0,310.0" fill="none" stroke="#c6d0dc" stroke-width="24" stroke-linejoin="round"/>
+<polyline points="510.0,310.0 1000.0,310.0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polyline points="510.0,650.0 1000.0,650.0" fill="none" stroke="#c6d0dc" stroke-width="24" stroke-linejoin="round"/>
+<polyline points="510.0,650.0 1000.0,650.0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polyline points="510.0,310.0 510.0,650.0" fill="none" stroke="#c6d0dc" stroke-width="24" stroke-linejoin="round"/>
+<polyline points="510.0,310.0 510.0,650.0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polyline points="1000.0,310.0 1000.0,650.0" fill="none" stroke="#c6d0dc" stroke-width="24" stroke-linejoin="round"/>
+<polyline points="1000.0,310.0 1000.0,650.0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polyline points="1000.0,310.0 1320.0,235.0" fill="none" stroke="#c6d0dc" stroke-width="24" stroke-linejoin="round"/>
+<polyline points="1000.0,310.0 1320.0,235.0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polyline points="1000.0,310.0 1320.0,480.0" fill="none" stroke="#c6d0dc" stroke-width="24" stroke-linejoin="round"/>
+<polyline points="1000.0,310.0 1320.0,480.0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polyline points="1000.0,650.0 1320.0,480.0" fill="none" stroke="#c6d0dc" stroke-width="24" stroke-linejoin="round"/>
+<polyline points="1000.0,650.0 1320.0,480.0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polyline points="1000.0,650.0 1320.0,725.0" fill="none" stroke="#c6d0dc" stroke-width="24" stroke-linejoin="round"/>
+<polyline points="1000.0,650.0 1320.0,725.0" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polyline points="785.0,230.0 785.0,200.0 510.0,200.0 510.0,310.0" fill="none" stroke="#9aa9ba" stroke-width="7" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polyline points="730.0,760.0 730.0,705.0 510.0,705.0 510.0,650.0" fill="none" stroke="#9aa9ba" stroke-width="7" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polyline points="1050.0,760.0 1050.0,705.0 1000.0,705.0 1000.0,650.0" fill="none" stroke="#9aa9ba" stroke-width="7" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polyline points="168.0,228.0 503.0,303.0 993.0,303.0 1313.0,228.0" fill="none" stroke="#2563eb" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="172.0,382.0 507.0,307.0 997.0,307.0 1317.0,477.0" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="178.0,578.0 513.0,653.0 1003.0,653.0 1323.0,483.0" fill="none" stroke="#159447" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="182.0,732.0 517.0,657.0 1007.0,657.0 1327.0,732.0" fill="none" stroke="#b95309" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="164.0,224.0 499.0,299.0 499.0,639.0 989.0,639.0 989.0,299.0 1309.0,224.0" fill="none" stroke="#ca3478" stroke-width="3" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<polyline points="186.0,736.0 521.0,661.0 521.0,321.0 1011.0,321.0 1011.0,661.0 1331.0,736.0" fill="none" stroke="#008d97" stroke-width="3" stroke-linejoin="round" stroke-dasharray="10 8"/>
+<rect x="325" y="236" width="86" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+<text x="330" y="255" font-family="Arial, sans-serif" font-size="17" fill="#435770" font-weight="400">0,5 км</text>
+<rect x="325" y="356" width="86" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+<text x="330" y="375" font-family="Arial, sans-serif" font-size="17" fill="#435770" font-weight="400">0,6 км</text>
+<rect x="325" y="571" width="86" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+<text x="330" y="590" font-family="Arial, sans-serif" font-size="17" fill="#435770" font-weight="400">0,7 км</text>
+<rect x="325" y="711" width="86" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+<text x="330" y="730" font-family="Arial, sans-serif" font-size="17" fill="#435770" font-weight="400">0,8 км</text>
+<rect x="725" y="266" width="86" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+<text x="730" y="285" font-family="Arial, sans-serif" font-size="17" fill="#435770" font-weight="400">0,9 км</text>
+<rect x="725" y="606" width="86" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+<text x="730" y="625" font-family="Arial, sans-serif" font-size="17" fill="#435770" font-weight="400">1,0 км</text>
+<rect x="530" y="456" width="86" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+<text x="535" y="475" font-family="Arial, sans-serif" font-size="17" fill="#435770" font-weight="400">0,6 км</text>
+<rect x="1020" y="466" width="86" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+<text x="1025" y="485" font-family="Arial, sans-serif" font-size="17" fill="#435770" font-weight="400">0,6 км</text>
+<rect x="1100" y="236" width="86" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+<text x="1105" y="255" font-family="Arial, sans-serif" font-size="17" fill="#435770" font-weight="400">0,5 км</text>
+<rect x="1105" y="356" width="86" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+<text x="1110" y="375" font-family="Arial, sans-serif" font-size="17" fill="#435770" font-weight="400">0,6 км</text>
+<rect x="1105" y="571" width="86" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+<text x="1110" y="590" font-family="Arial, sans-serif" font-size="17" fill="#435770" font-weight="400">0,6 км</text>
+<rect x="1100" y="711" width="86" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+<text x="1105" y="730" font-family="Arial, sans-serif" font-size="17" fill="#435770" font-weight="400">0,5 км</text>
+<rect x="65" y="191" width="220" height="88" rx="14" fill="#eaf3ff" stroke="#7da6db" stroke-width="2"/>
+<text x="81" y="223" font-family="Arial, sans-serif" font-size="22" fill="#174985" font-weight="700">E1 · погрузка</text>
+<text x="81" y="252" font-family="Arial, sans-serif" font-size="16" fill="#174985" font-weight="400">Экскаватор + очередь</text>
+<rect x="65" y="341" width="220" height="88" rx="14" fill="#eaf3ff" stroke="#7da6db" stroke-width="2"/>
+<text x="81" y="373" font-family="Arial, sans-serif" font-size="22" fill="#174985" font-weight="700">E2 · погрузка</text>
+<text x="81" y="402" font-family="Arial, sans-serif" font-size="16" fill="#174985" font-weight="400">Экскаватор + очередь</text>
+<rect x="65" y="531" width="220" height="88" rx="14" fill="#eaf3ff" stroke="#7da6db" stroke-width="2"/>
+<text x="81" y="563" font-family="Arial, sans-serif" font-size="22" fill="#174985" font-weight="700">E3 · погрузка</text>
+<text x="81" y="592" font-family="Arial, sans-serif" font-size="16" fill="#174985" font-weight="400">Экскаватор + очередь</text>
+<rect x="65" y="681" width="220" height="88" rx="14" fill="#eaf3ff" stroke="#7da6db" stroke-width="2"/>
+<text x="81" y="713" font-family="Arial, sans-serif" font-size="22" fill="#174985" font-weight="700">E4 · погрузка</text>
+<text x="81" y="742" font-family="Arial, sans-serif" font-size="16" fill="#174985" font-weight="400">Экскаватор + очередь</text>
+<rect x="490" y="290" width="40" height="40" rx="10" fill="#e9eef6" stroke="#526b88" stroke-width="2"/>
+<text x="497" y="315" font-family="Arial, sans-serif" font-size="18" fill="#182840" font-weight="700">J1</text>
+<rect x="490" y="630" width="40" height="40" rx="10" fill="#e9eef6" stroke="#526b88" stroke-width="2"/>
+<text x="497" y="655" font-family="Arial, sans-serif" font-size="18" fill="#182840" font-weight="700">J2</text>
+<rect x="980" y="290" width="40" height="40" rx="10" fill="#e9eef6" stroke="#526b88" stroke-width="2"/>
+<text x="987" y="315" font-family="Arial, sans-serif" font-size="18" fill="#182840" font-weight="700">J3</text>
+<rect x="980" y="630" width="40" height="40" rx="10" fill="#e9eef6" stroke="#526b88" stroke-width="2"/>
+<text x="987" y="655" font-family="Arial, sans-serif" font-size="18" fill="#182840" font-weight="700">J4</text>
+<rect x="1200" y="189" width="240" height="92" rx="14" fill="#fff3df" stroke="#d8a548" stroke-width="2"/>
+<text x="1216" y="221" font-family="Arial, sans-serif" font-size="22" fill="#815009" font-weight="700">C1 · дробилка</text>
+<text x="1216" y="250" font-family="Arial, sans-serif" font-size="16" fill="#815009" font-weight="400">Бункер + переработка</text>
+<rect x="1200" y="434" width="240" height="92" rx="14" fill="#fff3df" stroke="#d8a548" stroke-width="2"/>
+<text x="1216" y="466" font-family="Arial, sans-serif" font-size="22" fill="#815009" font-weight="700">C2 · дробилка</text>
+<text x="1216" y="495" font-family="Arial, sans-serif" font-size="16" fill="#815009" font-weight="400">Бункер + переработка</text>
+<rect x="1200" y="679" width="240" height="92" rx="14" fill="#fff3df" stroke="#d8a548" stroke-width="2"/>
+<text x="1216" y="711" font-family="Arial, sans-serif" font-size="22" fill="#815009" font-weight="700">C3 · дробилка</text>
+<text x="1216" y="740" font-family="Arial, sans-serif" font-size="16" fill="#815009" font-weight="400">Бункер + переработка</text>
+<rect x="675" y="145" width="220" height="88" rx="14" fill="#f0eaff" stroke="#a68bd8" stroke-width="2"/>
+<text x="691" y="177" font-family="Arial, sans-serif" font-size="22" fill="#654093" font-weight="700">P · резерв</text>
+<text x="691" y="206" font-family="Arial, sans-serif" font-size="16" fill="#654093" font-weight="400">5 самосвалов</text>
+<text x="565" y="225" font-family="Arial, sans-serif" font-size="16" fill="#60758d" font-weight="400">Подъезд 0,6 км</text>
+<rect x="600" y="750" width="270" height="115" rx="14" fill="#e8f6f1" stroke="#78b6a1" stroke-width="2"/>
+<text x="616" y="782" font-family="Arial, sans-serif" font-size="22" fill="#226650" font-weight="700">R1 · ремонт</text>
+<text x="616" y="811" font-family="Arial, sans-serif" font-size="16" fill="#226650" font-weight="400">1 бригада · очередь ремонта</text>
+<text x="616" y="838" font-family="Arial, sans-serif" font-size="16" fill="#226650" font-weight="400">АЗС · отдельная очередь</text>
+<text x="620" y="732" font-family="Arial, sans-serif" font-size="16" fill="#60758d" font-weight="400">Подъезд 0,4 км</text>
+<rect x="920" y="750" width="270" height="115" rx="14" fill="#e8f6f1" stroke="#78b6a1" stroke-width="2"/>
+<text x="936" y="782" font-family="Arial, sans-serif" font-size="22" fill="#226650" font-weight="700">R2 · ремонт</text>
+<text x="936" y="811" font-family="Arial, sans-serif" font-size="16" fill="#226650" font-weight="400">1 бригада · очередь ремонта</text>
+<text x="936" y="838" font-family="Arial, sans-serif" font-size="16" fill="#226650" font-weight="400">АЗС · отдельная очередь</text>
+<text x="940" y="732" font-family="Arial, sans-serif" font-size="16" fill="#60758d" font-weight="400">Подъезд 0,3 км</text>
+<text x="50" y="930" font-family="Arial, sans-serif" font-size="25" fill="#182840" font-weight="700">Шесть грузовых маршрутов</text>
+<text x="50" y="958" font-family="Arial, sans-serif" font-size="18" fill="#52647b" font-weight="400">Гружёный рейс: E → C. Возврат — по тому же пути. Все дороги двусторонние.</text>
+<rect x="40" y="980" width="500" height="78" rx="14" fill="#ffffff" stroke="#d8e0eb" stroke-width="2"/>
+<rect x="52" y="993" width="56" height="48" rx="8" fill="#2563eb" stroke="#2563eb" stroke-width="2"/>
+<text x="58" y="1026" font-family="Arial, sans-serif" font-size="23" fill="#ffffff" font-weight="700">M1</text>
+<text x="122" y="1008" font-family="Arial, sans-serif" font-size="19" fill="#182840" font-weight="700">Основной · 1,9 км в одну сторону</text>
+<text x="122" y="1034" font-family="Arial, sans-serif" font-size="15" fill="#52647b" font-weight="400">E1 → J1 → J3 → C1</text>
+<rect x="560" y="980" width="500" height="78" rx="14" fill="#ffffff" stroke="#d8e0eb" stroke-width="2"/>
+<rect x="572" y="993" width="56" height="48" rx="8" fill="#7c3aed" stroke="#7c3aed" stroke-width="2"/>
+<text x="578" y="1026" font-family="Arial, sans-serif" font-size="23" fill="#ffffff" font-weight="700">M2</text>
+<text x="642" y="1008" font-family="Arial, sans-serif" font-size="19" fill="#182840" font-weight="700">Основной · 2,1 км в одну сторону</text>
+<text x="642" y="1034" font-family="Arial, sans-serif" font-size="15" fill="#52647b" font-weight="400">E2 → J1 → J3 → C2</text>
+<rect x="1080" y="980" width="500" height="78" rx="14" fill="#ffffff" stroke="#d8e0eb" stroke-width="2"/>
+<rect x="1092" y="993" width="56" height="48" rx="8" fill="#159447" stroke="#159447" stroke-width="2"/>
+<text x="1098" y="1026" font-family="Arial, sans-serif" font-size="23" fill="#ffffff" font-weight="700">M3</text>
+<text x="1162" y="1008" font-family="Arial, sans-serif" font-size="19" fill="#182840" font-weight="700">Основной · 2,3 км в одну сторону</text>
+<text x="1162" y="1034" font-family="Arial, sans-serif" font-size="15" fill="#52647b" font-weight="400">E3 → J2 → J4 → C2</text>
+<rect x="40" y="1070" width="500" height="78" rx="14" fill="#ffffff" stroke="#d8e0eb" stroke-width="2"/>
+<rect x="52" y="1083" width="56" height="48" rx="8" fill="#b95309" stroke="#b95309" stroke-width="2"/>
+<text x="58" y="1116" font-family="Arial, sans-serif" font-size="23" fill="#ffffff" font-weight="700">M4</text>
+<text x="122" y="1098" font-family="Arial, sans-serif" font-size="19" fill="#182840" font-weight="700">Основной · 2,3 км в одну сторону</text>
+<text x="122" y="1124" font-family="Arial, sans-serif" font-size="15" fill="#52647b" font-weight="400">E4 → J2 → J4 → C3</text>
+<rect x="560" y="1070" width="500" height="78" rx="14" fill="#ffffff" stroke="#d8e0eb" stroke-width="2"/>
+<rect x="572" y="1083" width="56" height="48" rx="8" fill="#ca3478" stroke="#ca3478" stroke-width="2"/>
+<text x="578" y="1116" font-family="Arial, sans-serif" font-size="23" fill="#ffffff" font-weight="700">M5</text>
+<text x="642" y="1098" font-family="Arial, sans-serif" font-size="19" fill="#182840" font-weight="700">Объезд M1 · 3,2 км в одну сторону</text>
+<text x="642" y="1124" font-family="Arial, sans-serif" font-size="15" fill="#52647b" font-weight="400">E1 → J1 → J2 → J4 → J3 → C1</text>
+<rect x="1080" y="1070" width="500" height="78" rx="14" fill="#ffffff" stroke="#d8e0eb" stroke-width="2"/>
+<rect x="1092" y="1083" width="56" height="48" rx="8" fill="#008d97" stroke="#008d97" stroke-width="2"/>
+<text x="1098" y="1116" font-family="Arial, sans-serif" font-size="23" fill="#ffffff" font-weight="700">M6</text>
+<text x="1162" y="1098" font-family="Arial, sans-serif" font-size="19" fill="#182840" font-weight="700">Объезд M4 · 3,4 км в одну сторону</text>
+<text x="1162" y="1124" font-family="Arial, sans-serif" font-size="15" fill="#52647b" font-weight="400">E4 → J2 → J1 → J3 → J4 → C3</text>
+<text x="48" y="1192" font-family="Arial, sans-serif" font-size="18" fill="#52647b" font-weight="400">Схема не в масштабе. Все расстояния — предложения для обсуждения, не фактическая карта Актогая.</text>
+<text x="48" y="1219" font-family="Arial, sans-serif" font-size="16" fill="#60758d" font-weight="400">Серый пунктир — служебные подъезды; они не входят в шесть грузовых маршрутов. J1–J4 — перекрёстки.</text>
+</svg>
