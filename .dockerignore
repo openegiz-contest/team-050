@@ -1,0 +1,9 @@
+.git
+**/node_modules
+**/dist
+**/data
+**/.env
+**/*.exe
+**/*.log
+.venv
+venv

@@ -3,13 +3,13 @@
 # ---------------------------------------------------------------------------
 # Docker Compose deployment (laptops, CI, contest judges): deploy/compose/
 # ---------------------------------------------------------------------------
-COMPOSE_BASE := docker compose -f deploy/compose/docker-compose.yml
+COMPOSE_BASE := docker compose --env-file deploy/compose/.env -f deploy/compose/docker-compose.yml
 # Once `make example-mine` has run, every compose command also loads the mine
 # overlay, so `down` stops its simulator and `up` keeps its Grafana dashboard.
 # `make clean` forgets it.
 MINE_MARKER  := deploy/compose/.example-mine
 MINE_COMPOSE := examples/mine/compose.yml
-COMPOSE := $(COMPOSE_BASE)$(if $(wildcard $(MINE_MARKER)), -f $(MINE_COMPOSE))
+COMPOSE := $(COMPOSE_BASE)$(if $(wildcard team/mine/compose.yml), -f team/mine/compose.yml)$(if $(wildcard $(MINE_MARKER)), -f $(MINE_COMPOSE))
 
 ## Start the whole platform with Docker Compose (first run: generates credentials)
 up:

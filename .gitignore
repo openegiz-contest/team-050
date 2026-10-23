@@ -23,6 +23,12 @@ deploy/compose/.example-mine
 __pycache__/
 *.pyc
 
+# Team mine build output and runtime state
+team/mine/ui/node_modules/
+team/mine/ui/dist/
+team/mine/data/
+team/mine/*.exe
+
 # Demo Unity scene, downloaded by `make unity-demo` (88 MB, lives in a release)
 build/WebGL Build.loader.js
 build/WebGL Build.framework.js

@@ -1,0 +1,69 @@
+services:
+  mine-setup:
+    build:
+      context: ../..
+      dockerfile: team/mine/Dockerfile
+    image: openegiz/team050-mine:local
+    restart: "no"
+    command: ["mine-setup"]
+    mem_limit: 128m
+    environment:
+      DITTO_URL: http://ditto-nginx:80
+      DITTO_PASSWORD: ${DITTO_PASSWORD}
+    depends_on:
+      init:
+        condition: service_completed_successfully
+
+  mine-engine:
+    image: openegiz/team050-mine:local
+    pull_policy: never
+    restart: unless-stopped
+    command: ["mine-engine"]
+    mem_limit: 256m
+    stop_grace_period: 35s
+    environment:
+      MQTT_URL: tcp://mosquitto:1883
+      DATA_DIR: /app/data
+    volumes:
+      - team050-engine:/app/data
+    depends_on:
+      mine-setup:
+        condition: service_completed_successfully
+
+  mine-web:
+    image: openegiz/team050-mine:local
+    pull_policy: never
+    restart: unless-stopped
+    command: ["mine-web"]
+    mem_limit: 256m
+    environment:
+      MQTT_URL: tcp://mosquitto:1883
+      DITTO_URL: http://ditto-nginx:80
+      DITTO_PASSWORD: ${DITTO_PASSWORD}
+      DATA_DIR: /app/data
+      HTTP_ADDR: :8088
+    ports:
+      - "${OPENEGIZ_BIND:-127.0.0.1}:${MINE_PORT:-8088}:8088"
+    volumes:
+      - team050-web:/app/data
+    depends_on:
+      mine-setup:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "http://127.0.0.1:8088/readyz"]
+      interval: 10s
+      timeout: 5s
+      retries: 18
+      start_period: 180s
+
+  telegraf:
+    volumes:
+      - ../../team/mine/config/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+
+  grafana:
+    volumes:
+      - ../../team/mine/config/dashboard.json:/var/lib/grafana/example-dashboards/team050.json:ro
+
+volumes:
+  team050-engine:
+  team050-web:

@@ -1,43 +1,82 @@
-# <Team name>: a digital mine on OpenEgiz
+# Карьер · Team 050
 
-> Team Repository of the contest “Digital Mine on OpenEgiz”. **Replace the contents of this file with the instructions for your Submission.** The AI Jury runs the Submission strictly by these instructions, from scratch, in the Judge Environment. Accepted languages: English, Kazakh, Russian.
+Первая версия рабочего места диспетчера на **Go + TypeScript** для OpenEgiz. Условный участок по мотивам Актогая: 20 самосвалов CAT 793D, четыре экскаватора Hitachi EX5600-6 и три независимые дробилки. Карта, расстояния и режимы работы — параметры модели.
 
-> **Start with the Concept**, the first section of [SUBMISSION.md](SUBMISSION.md): the Team writes it before any code. What AI agents build from this Template without a Concept is the Default Solution, published on the [contest site](https://openegiz-contest.github.io/) as the low bar: a Submission that does not go beyond it gets low levels in the Rubric. AI agents read [AGENTS.md](AGENTS.md).
+## Запуск
 
-## Running
+Нужны Docker с Compose v2 и около 6 ГБ памяти для Docker. На Windows запускайте команды в Ubuntu / WSL2 с включённой интеграцией Docker Desktop. Рабочую копию лучше хранить в домашнем каталоге Ubuntu, например `~/Carier/team-050`. Требования платформы: [OPENEGIZ.ru.md](OPENEGIZ.ru.md).
 
-Requirements (Docker, `make`, Windows/WSL2 setup) are in [OPENEGIZ.md](OPENEGIZ.md) / [OPENEGIZ.ru.md](OPENEGIZ.ru.md).
+Из корня репозитория:
 
 ```bash
-sudo apt install -y make   # if make is missing (clean Ubuntu)
-make up            # the OpenEgiz platform
-make example-mine  # the Example Mine: twins, simulator, dashboard
+bash scripts/team-up.sh
 ```
 
-Replace these commands with the commands of your Submission. The Submission must start by following these instructions without manual intervention (Rules, clause 6.4); downloading datasets and models and building are also listed here.
+Скрипт создаёт секреты при первом запуске, собирает интерфейс и Go-сервисы, запускает платформу и создаёт 30 двойников. Установка Go, Node.js и make на хост не требуется. При первом запуске нужен доступ к реестрам образов и зависимостей. Порты по умолчанию доступны только на этом компьютере.
 
-## What to open
+**Открыть: [диспетчерская — localhost:8088](http://localhost:8088).**
 
-- Grafana: the address and login are printed by `make up`.
-- <where to see the mine visualization, which dashboards>
+Grafana: [localhost:3000](http://localhost:3000), дашборд «Карьер — Team 050». Логин `admin`; сгенерированный пароль находится в `deploy/compose/.env`, не в Git. Двойники доступны в приложении OpenEgiz → Twins.
 
-## Repository contents
+## Первая смена
 
-| Path | Contents |
+1. Все 20 рабочих машин находятся в гараже P с пустыми кузовами. Смена подготовлена, время стоит.
+2. Выберите машину, затем шаблон M1–M6 или «Свой маршрут». Для своего пути нажимайте соседние узлы карты: начните с E и закончите C. Посмотрите расстояние, оценку движения и переход к назначению, затем нажмите «Назначить машине».
+3. Для быстрого начала кнопка «Распределить по M1–M4» предлагает по пять машин на каждый основной шаблон. Это начальная раскладка, не оптимальное распределение; C2 получает поток от двух погрузок. Назначения можно менять по отдельности.
+4. Нажмите «Начать смену». Машины выезжают через P–J1, занимают очереди, грузятся, перевозят руду, разгружаются и возвращаются. Изменение пути в движении применяется на безопасной точке.
+5. Используйте паузу и скорости ×1/×10/×30/×60. Смена — 12 модельных часов; при ×30 это примерно 24 минуты без пауз, если компьютер успевает обрабатывать модель.
+6. Следите за бункерами, очередями и переработанным тоннажем. «Журнал событий» показывает производство и статусы команд. Доставленная руда ещё не считается переработанной.
+7. После 12 часов откройте «Отчёты смен» и скачайте JSON. «Повтор» создаёт новую смену с исходными назначениями. Завершённые отчёты сохраняются.
+
+Числовой сменный норматив ещё не принят: его установит команда после просмотра полного прогона. Интерфейс показывает «Первый прогон».
+
+## Остановка и повторный запуск
+
+```bash
+bash scripts/team-down.sh
+```
+
+Volumes, история, команды и отчёты сохраняются. Повторный запуск — `bash scripts/team-up.sh`. Восстановленная незавершённая смена стоит на паузе. Закрытие вкладки не останавливает серверную симуляцию.
+
+Состояние и журналы:
+
+```bash
+docker compose --env-file deploy/compose/.env -f deploy/compose/docker-compose.yml -f team/mine/compose.yml ps
+docker compose --env-file deploy/compose/.env -f deploy/compose/docker-compose.yml -f team/mine/compose.yml logs --tail=80 mine-engine mine-web mine-setup
+```
+
+`make up` / `make down` также учитывают командный overlay. Платформенный `make example-mine` для этой модели не требуется. Удаление volumes уничтожает историю; обычная остановка сохраняет данные.
+
+## Устройство
+
+```text
+Go mine-engine → MQTT → Ditto → MQTT events → Go mine-web → SSE → 2D-карта
+Браузер → Go mine-web → Ditto live message → MQTT → Go mine-engine
+Ditto → MQTT events → Telegraf → InfluxDB → Grafana
+```
+
+Браузер получает производственное состояние из подтверждённых двойников Ditto. Один серверный расчётный цикл обслуживает смену, сеть работает отдельно. Снимки и идемпотентные команды хранятся в SQLite, томах `team050-engine` и `team050-web`.
+
+| Путь | Содержимое |
 |---|---|
-| `team/` | Directory for the Team's code. Using it is optional: any part may be changed, including the platform core |
-| `SUBMISSION.md` | Description of the Submission: **required** |
-| `presentation.pdf` | Presentation: **required**, in the repository root |
-| `AGENTS.md`, `CLAUDE.md` | Instructions for your AI agents (Codex, Claude Code and others read them automatically) |
-| `examples/mine/` | The Example Mine: shows how a digital mine is built on OpenEgiz. It is not a basis for the Submission |
-| `OPENEGIZ.md`, `OPENEGIZ.ru.md` | Documentation of the OpenEgiz platform v1.0.4 |
+| `team/mine/domain/` | Граф, время, техника, очереди, переработка и сериализация двойников |
+| `team/mine/config/site.json` | Карта, техника и производственные параметры |
+| `team/mine/transport/` | MQTT и HTTP Ditto |
+| `team/mine/persistence/` | SQLite, снимки, результаты команд и отчёты |
+| `team/mine/web/` | API, зеркало Ditto, SSE, локальная сессия диспетчера |
+| `team/mine/ui/` | TypeScript + SVG/HTML/CSS |
+| `team/mine/cmd/` | Три исполняемых сервиса |
+| `SUBMISSION.md` | Концепция, состав и текущие ограничения |
+| `ПАРАМЕТРЫ_СИМУЛЯЦИИ.md` | Расчёты, источники и допущения |
+| `ТЕХНИЧЕСКАЯ_СХЕМА.md` | Проект архитектуры и контрактов |
+| `TO_DO.md` | Подготовка и дальнейшая работа |
 
-The Submission is the `main` branch at the moment of the Freeze; other branches are not evaluated.
+## Границы первой версии
 
-## License
+Сценарий диспетчера в 2D. Поломки, ремонт, расход топлива, ввод пяти резервных машин, отдельные роли трёх пользователей и 3D относятся к следующим этапам. Ремонтные площадки показаны как будущие объекты. Дороги двусторонние; столкновения, уклоны и дорожные заторы не моделируются. Очереди рассчитываются у оборудования.
 
-The Submission is distributed under the MIT license, see [LICENSE](LICENSE). Copyright belongs to the Team: add the line `Copyright (c) 2026 <Team members>` to `LICENSE`.
+Версия предназначена для локальной диспетчерской сессии. Норматив не устанавливается автоматически. Полный прогон и окончательная оценка поведения остаются за командой после первого запуска.
 
----
+## Лицензия
 
-Platform: [aleka07/openegiz](https://github.com/aleka07/openegiz). If the platform was useful to you, support the project with a star on GitHub.
+Собственный код — MIT, см. [LICENSE](LICENSE). Компоненты OpenEgiz сохраняют исходные лицензии и атрибуцию. Информация платформы: [OPENEGIZ.md](OPENEGIZ.md).
