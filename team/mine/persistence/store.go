@@ -1,6 +1,7 @@
 package persistence
 
 import (
+	"bytes"
 	"database/sql"
 	"encoding/json"
 	"fmt"
@@ -67,6 +68,9 @@ func (s *Store) Load() (*domain.State, error) {
 	}
 	var v domain.State
 	e = json.Unmarshal(b, &v)
+	if bytes.Equal(bytes.TrimSpace(v.Report), []byte("null")) {
+		v.Report = nil
+	}
 	return &v, e
 }
 func (s *Store) Find(run, id string) ([]byte, *domain.Result, error) {
@@ -113,7 +117,7 @@ func (s *Store) Save(v *domain.State, cmd *domain.Command, results []domain.Resu
 			return e
 		}
 	}
-	if len(v.Report) > 0 {
+	if len(v.Report) > 0 && !bytes.Equal(bytes.TrimSpace(v.Report), []byte("null")) {
 		var report map[string]any
 		if err := json.Unmarshal(v.Report, &report); err != nil {
 			return err
