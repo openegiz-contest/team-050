@@ -6,11 +6,11 @@ COPY team/mine/ui/ ./
 RUN npm run build
 
 FROM golang:1.24-bookworm@sha256:1a6d4452c65dea36aac2e2d606b01b4a029ec90cc1ae53890540ce6173ea77ac AS go
-ENV GOMAXPROCS=2 GOMEMLIMIT=512MiB
 WORKDIR /src
 COPY team/mine/go.mod team/mine/go.sum ./
 RUN go mod download
 COPY team/mine/ ./
+ENV GOMAXPROCS=2 GOMEMLIMIT=512MiB
 RUN --mount=type=cache,target=/root/.cache/go-build \
     CGO_ENABLED=0 go build -p 2 -trimpath -o /out/mine-engine ./cmd/mine-engine \
  && CGO_ENABLED=0 go build -p 2 -trimpath -o /out/mine-web ./cmd/mine-web \
