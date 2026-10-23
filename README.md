@@ -4,7 +4,7 @@
 
 ## Запуск
 
-Нужны Docker с Compose v2 и около 6 ГБ памяти для Docker. На Windows запускайте команды в Ubuntu / WSL2 с включённой интеграцией Docker Desktop. Рабочую копию лучше хранить в домашнем каталоге Ubuntu, например `~/Carier/team-050`. Требования платформы: [OPENEGIZ.ru.md](OPENEGIZ.ru.md).
+Нужны Docker с Compose v2.24.4 или новее и около 6 ГБ памяти для Docker. На Windows запускайте команды в Ubuntu / WSL2 с включённой интеграцией Docker Desktop. Рабочую копию лучше хранить в домашнем каталоге Ubuntu, например `~/Carier/team-050`. Требования платформы: [OPENEGIZ.ru.md](OPENEGIZ.ru.md).
 
 Из корня репозитория:
 

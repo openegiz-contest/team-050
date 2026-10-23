@@ -57,12 +57,12 @@ services:
       start_period: 180s
 
   telegraf:
-    volumes:
-      - ../../team/mine/config/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    volumes: !override
+      - ../../team/mine/config/telegraf:/etc/telegraf:ro
 
   grafana:
     volumes:
-      - ../../team/mine/config/dashboard.json:/var/lib/grafana/example-dashboards/team050.json:ro
+      - ../../team/mine/config/grafana-dashboards:/var/lib/grafana/example-dashboards:ro
 
 volumes:
   team050-engine:
