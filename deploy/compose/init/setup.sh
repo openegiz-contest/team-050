@@ -55,6 +55,10 @@ until ditto_ready; do
 done
 echo "Ditto is ready"
 
+# Avoid writing an INFO record for every telemetry persistence and dispatch.
+# Warnings and errors remain visible; operators can raise levels via DevOps.
+put "$DEVOPS_AUTH" "$DITTO_URL/devops/logging" /init/logging.json
+
 put "$DITTO_AUTH"  "$DITTO_URL/api/2/policies/default:basic_policy"                  /init/basic-policy.json
 put "$DEVOPS_AUTH" "$DITTO_URL/api/2/connections/mosquitto-source-connection"        /init/mosquitto-source-connection.json
 put "$DEVOPS_AUTH" "$DITTO_URL/api/2/connections/mosquitto-target-connection"        /init/mosquitto-target-connection.json
