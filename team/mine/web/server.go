@@ -12,6 +12,7 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 	"sync"
@@ -256,15 +257,22 @@ func (s *Server) retryCommands(ctx context.Context) {
 			return
 		case <-ticker.C:
 			s.mu.Lock()
-			pending := []domain.Command{}
+			pending := []RequestRecord{}
 			for _, r := range s.Requests {
 				if (r.Result.Status == "received" || r.Result.Status == "scheduled") && time.Since(r.Sent) > 4*time.Second && time.Since(r.Created) < 24*time.Hour {
-					pending = append(pending, r.Command)
+					pending = append(pending, *r)
 					r.Sent = time.Now()
 				}
 			}
 			s.mu.Unlock()
-			for _, cmd := range pending {
+			sort.Slice(pending, func(i, j int) bool {
+				if pending[i].Created.Equal(pending[j].Created) {
+					return pending[i].Command.ID < pending[j].Command.ID
+				}
+				return pending[i].Created.Before(pending[j].Created)
+			})
+			for _, record := range pending {
+				cmd := record.Command
 				_, _, e := s.Platform.Request(ctx, "POST", "/api/2/things/"+domain.ThingID("control-01")+"/inbox/messages/dispatch?timeout=0", cmd)
 				if e != nil {
 					log.Printf("dispatch %s: %v", cmd.ID, e)
