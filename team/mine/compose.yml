@@ -23,6 +23,8 @@ services:
     stop_grace_period: 35s
     environment:
       MQTT_URL: tcp://mosquitto:1883
+      DITTO_URL: http://ditto-nginx:80
+      DITTO_PASSWORD: ${DITTO_PASSWORD}
       DATA_DIR: /app/data
     volumes:
       - team050-engine:/app/data

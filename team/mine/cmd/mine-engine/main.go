@@ -8,7 +8,7 @@ import (
 	"os"
 	"os/signal"
 	"strings"
-	"sync/atomic"
+	"sync"
 	"syscall"
 	"time"
 
@@ -44,8 +44,13 @@ func main() {
 		}
 	}
 	commands := make(chan domain.Command, 256)
-	var ack atomic.Int64
-	ack.Store(time.Now().UnixNano())
+	type receipt struct {
+		name string
+		run  string
+		seq  uint64
+	}
+	receipts := make(chan receipt, 512)
+	lastAck := time.Now()
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer cancel()
 	client, e := transport.Connect("team050-engine", func(client mqtt.Client) {
@@ -64,8 +69,17 @@ func main() {
 			}
 		})
 		client.Subscribe("opentwins/twin/events/"+domain.Namespace+"/+", 1, func(_ mqtt.Client, m mqtt.Message) {
-			if strings.HasSuffix(m.Topic(), "/control-01") {
-				ack.Store(time.Now().UnixNano())
+			var env transport.Envelope
+			var features domain.Features
+			if json.Unmarshal(m.Payload(), &env) != nil || env.Path != "/features" || json.Unmarshal(env.Value, &features) != nil {
+				return
+			}
+			run, _ := features["idSimulationRun"].Properties.Value.(string)
+			seq, _ := features["snapshot_seq"].Properties.Value.(float64)
+			r := receipt{m.Topic()[strings.LastIndex(m.Topic(), "/")+1:], run, uint64(seq)}
+			select {
+			case receipts <- r:
+			case <-ctx.Done():
 			}
 		})
 	})
@@ -73,12 +87,78 @@ func main() {
 		log.Fatal(e)
 	}
 	defer client.Disconnect(500)
+	// Keep only one immutable frame in flight. A broker PUBACK does not mean
+	// Ditto persisted it; the matching twin event is the acknowledgement.
+	var flight []domain.Thing
+	pending := map[string]bool{}
+	dirty := false
+	var sentAt, retriedAt time.Time
+	platform := transport.NewPlatform()
+	lookupDone := make(chan struct{}, 1)
+	checking := false
 	publish := func() {
-		s.Seq++
 		if e := store.Save(s, nil, nil); e != nil {
 			log.Fatal(e)
 		}
-		for _, t := range domain.Snapshot(c, s) {
+		dirty = true
+	}
+	flush := func(now time.Time) {
+		retrying := len(pending) > 0
+		if len(pending) == 0 {
+			if !dirty || now.Sub(sentAt) < time.Second {
+				return
+			}
+			s.Seq++
+			if e := store.Save(s, nil, nil); e != nil {
+				log.Fatal(e)
+			}
+			flight = domain.Snapshot(c, s)
+			for _, t := range flight {
+				pending[domain.Name(t.ID)] = true
+			}
+			dirty = false
+			sentAt = now
+		} else if now.Sub(retriedAt) < 10*time.Second {
+			return
+		}
+		retriedAt = now
+		if retrying && !checking {
+			checking = true
+			missing := []string{}
+			for name := range pending {
+				missing = append(missing, name)
+			}
+			// An unchanged rewrite may not emit another event. REST readback
+			// also proves persistence if the original MQTT event was lost.
+			go func() {
+				defer func() { lookupDone <- struct{}{} }()
+				var wg sync.WaitGroup
+				sem := make(chan struct{}, 4)
+				for _, name := range missing {
+					sem <- struct{}{}
+					wg.Add(1)
+					go func(name string) {
+						defer wg.Done()
+						defer func() { <-sem }()
+						t, err := platform.Get(ctx, name)
+						if err != nil {
+							return
+						}
+						run, _ := t.Features["idSimulationRun"].Properties.Value.(string)
+						seq, _ := t.Features["snapshot_seq"].Properties.Value.(float64)
+						select {
+						case receipts <- receipt{name, run, uint64(seq)}:
+						case <-ctx.Done():
+						}
+					}(name)
+				}
+				wg.Wait()
+			}()
+		}
+		for _, t := range flight {
+			if !pending[domain.Name(t.ID)] {
+				continue
+			}
 			if e := transport.PublishFeatures(client, t); e != nil {
 				log.Printf("publish: %v", e)
 				break
@@ -96,6 +176,7 @@ func main() {
 		}
 	}
 	publish()
+	flush(time.Now())
 	tick := time.NewTicker(50 * time.Millisecond)
 	defer tick.Stop()
 	last := time.Now()
@@ -108,7 +189,7 @@ func main() {
 			budget = 0
 			return
 		}
-		if !client.IsConnectionOpen() || time.Since(time.Unix(0, ack.Load())) > 20*time.Second {
+		if !client.IsConnectionOpen() || time.Since(lastAck) > 20*time.Second {
 			s.Mode = "paused"
 			s.Log("Техническая пауза: нет подтверждений от OpenEgiz.")
 			publish()
@@ -126,6 +207,11 @@ func main() {
 			steps++
 		}
 		if len(rs) > 0 || s.Mode == "finished" {
+			for _, r := range rs {
+				if r.ID == s.LastCommand {
+					s.LastStatus = r.Status
+				}
+			}
 			saveResults(nil, rs)
 			publish()
 		}
@@ -138,6 +224,16 @@ func main() {
 			}
 			publish()
 			return
+		case r := <-receipts:
+			if len(flight) > 0 {
+				f := flight[0].Features
+				if r.run == f["idSimulationRun"].Properties.Value && r.seq == f["snapshot_seq"].Properties.Value.(uint64) {
+					delete(pending, r.name)
+					lastAck = time.Now()
+				}
+			}
+		case <-lookupDone:
+			checking = false
 		case cmd := <-commands:
 			advance(time.Now())
 			request, _ := json.Marshal(cmd)
@@ -175,6 +271,7 @@ func main() {
 				publish()
 				lastPublish = time.Now()
 			}
+			flush(time.Now())
 		}
 	}
 }
