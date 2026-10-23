@@ -62,7 +62,7 @@ x-ditto-java-options: &ditto-java-options >-
   -XX:ActiveProcessorCount=2 -XX:+ExitOnOutOfMemoryError -XX:+UseContainerSupport
   -XX:+UseStringDeduplication -Xss512k -XX:+UseG1GC
   -XX:MaxGCPauseMillis=150 -Dakka.coordinated-shutdown.exit-jvm=on
-  -Dakka.cluster.shutdown-after-unsuccessful-join-seed-nodes=180s
+  -Dakka.cluster.shutdown-after-unsuccessful-join-seed-nodes=600s
   -Dakka.cluster.failure-detector.threshold=15.0
   -Dakka.cluster.failure-detector.expected-response-after=10s
   -Dakka.cluster.failure-detector.acceptable-heartbeat-pause=60s
