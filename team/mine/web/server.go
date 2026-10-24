@@ -51,6 +51,7 @@ type Server struct {
 	Listeners map[chan []byte]bool
 	Sessions  map[string]time.Time
 	Expected  int
+	LastEvent time.Time
 }
 
 func New(c domain.Config, store *persistence.Store) *Server {
@@ -89,6 +90,9 @@ func (s *Server) Accept(t domain.Thing, rest bool) {
 	key := run + ":" + strconv.FormatUint(seq, 10)
 	var report json.RawMessage
 	s.mu.Lock()
+	if !rest {
+		s.LastEvent = time.Now()
+	}
 	if rest && s.Current != nil && s.Current.RunID != run {
 		s.mu.Unlock()
 		return
@@ -204,7 +208,10 @@ func (s *Server) Run(ctx context.Context) error {
 				return
 			case <-ticker.C:
 				s.mu.Lock()
-				need := s.Topology == nil || s.Current == nil || time.Since(s.Current.Received) > 5*time.Second
+				// A slow but progressing frame is not a disconnected stream.
+				// Avoid competing with Ditto's event pipeline through repeated
+				// full REST reads while those events are still arriving.
+				need := s.Topology == nil || ((s.Current == nil || time.Since(s.Current.Received) > 5*time.Second) && time.Since(s.LastEvent) > 10*time.Second)
 				s.mu.Unlock()
 				if need {
 					s.Hydrate(ctx)

@@ -101,6 +101,30 @@ func PublishFeatures(client mqtt.Client, t domain.Thing) error {
 	b, _ := json.Marshal(t.Features)
 	return Publish(client, "telemetry/team050/"+domain.Name(t.ID), Envelope{Topic: domain.Namespace + "/" + domain.Name(t.ID) + "/things/twin/commands/modify", Path: "/features", Value: b})
 }
+
+// Queue the entire bounded frame before waiting for PUBACKs. Waiting after
+// each Thing multiplies broker latency by the number of Things in the frame.
+func PublishFrame(client mqtt.Client, things []domain.Thing) error {
+	tokens := make([]mqtt.Token, 0, len(things))
+	for _, t := range things {
+		b, e := json.Marshal(Envelope{Topic: domain.Namespace + "/" + domain.Name(t.ID) + "/things/twin/commands/modify", Path: "/features", Value: json.RawMessage(domain.JSON(t.Features))})
+		if e != nil {
+			return e
+		}
+		tokens = append(tokens, client.Publish("telemetry/team050/"+domain.Name(t.ID), 1, false, b))
+	}
+	deadline := time.Now().Add(10 * time.Second)
+	for _, token := range tokens {
+		remaining := time.Until(deadline)
+		if remaining <= 0 || !token.WaitTimeout(remaining) {
+			return fmt.Errorf("MQTT frame publish timeout")
+		}
+		if e := token.Error(); e != nil {
+			return e
+		}
+	}
+	return nil
+}
 func PublishResult(client mqtt.Client, r domain.Result) error {
 	b, _ := json.Marshal(r)
 	return Publish(client, "telemetry/team050/control-01", Envelope{Topic: domain.Namespace + "/control-01/things/live/messages/command_result", Path: "/outbox/messages/command_result", Headers: map[string]any{"content-type": "application/json", "correlation-id": r.ID}, Value: b})

@@ -155,14 +155,15 @@ func main() {
 				wg.Wait()
 			}()
 		}
+		missingThings := []domain.Thing{}
 		for _, t := range flight {
 			if !pending[domain.Name(t.ID)] {
 				continue
 			}
-			if e := transport.PublishFeatures(client, t); e != nil {
-				log.Printf("publish: %v", e)
-				break
-			}
+			missingThings = append(missingThings, t)
+		}
+		if e := transport.PublishFrame(client, missingThings); e != nil {
+			log.Printf("publish: %v", e)
 		}
 	}
 	saveResults := func(cmd *domain.Command, rs []domain.Result) {
