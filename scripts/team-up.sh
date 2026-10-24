@@ -36,6 +36,6 @@ if [[ "$low_memory" == 1 && "${TEAM_AUXILIARY:-0}" != 1 ]]; then
   printf 'Для полного стенда: TEAM_AUXILIARY=1 bash scripts/team-up.sh\n'
 fi
 "${compose[@]}" up "${up_options[@]}"
-printf '\nДиспетчерская: http://localhost:%s\n' "${MINE_PORT:-8088}"
+printf '\nДиспетчерская: http://127.0.0.1:%s\n' "${MINE_PORT:-8088}"
 printf 'Смена подготовлена. Назначьте маршруты и нажмите «Начать смену».\n'
 printf 'Остановка с сохранением: bash scripts/team-down.sh\n'

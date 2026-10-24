@@ -82,7 +82,7 @@ Confidential data of organizations and personal data are prohibited.
 
 ## Mine visualization
 
-[2D-диспетчерская](http://localhost:8088): карта, движение техники, назначение маршрутов, часы и показатели. [Grafana](http://localhost:3000), дашборд «Карьер — Team 050»: ссылка на карту и история тоннажа. Порядок запуска и работы: [README.md](README.md).
+[2D-диспетчерская](http://127.0.0.1:8088): карта, движение техники, назначение маршрутов, часы и показатели. [Grafana](http://localhost:3000), дашборд «Карьер — Team 050»: ссылка на карту и история тоннажа. Порядок запуска и работы: [README.md](README.md).
 
 ## Limitations
 
