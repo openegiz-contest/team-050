@@ -64,8 +64,16 @@ services:
       - ../../team/mine/config/telegraf:/etc/telegraf:ro
 
   grafana:
+    depends_on:
+      mine-web:
+        condition: service_healthy
     volumes:
       - ../../team/mine/config/grafana-dashboards:/var/lib/grafana/example-dashboards:ro
+
+  extended-api:
+    depends_on:
+      mine-web:
+        condition: service_healthy
 
 volumes:
   team050-engine:
