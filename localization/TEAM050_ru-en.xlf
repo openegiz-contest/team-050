@@ -1,0 +1,3706 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="ru" trgLang="en">
+ <file id="team050" original="team/mine">
+  <notes>
+   <note id="brief-1" category="instructions">ЗАДАНИЕ ПЕРЕВОДЧИКУ: перевод русскоязычного интерфейса учебной симуляции карьера на английский (en). Заполните только target каждого сегмента; source, id, notes и защищённые ph не изменяйте. Сохраните UTF-8 и расширение .xlf. Это переводческий пакет, а не подключённый языковой модуль.</note>
+   <note id="brief-2" category="instructions">Стиль: короткий, понятный язык производственного интерфейса. Роли: диспетчер — dispatcher; механик — mechanic; начальник смены / бригадир — shift supervisor. Предпочтительный вариант: international English; единицы СИ. Согласуйте все вхождения терминов.</note>
+   <note id="brief-3" category="instructions">Глоссарий: карьер — open-pit mine; самосвал — haul truck; экскаватор — excavator; погрузка — loading; руда — ore; дробилка — crusher; бункер — hopper; ремонтная площадка — maintenance yard; бригада — maintenance crew; сервисная машина — service vehicle; эвакуатор — recovery vehicle; буксировка — towing; сцепка/отцепка — coupling/uncoupling; профилактика — preventive maintenance; смена — shift; сменный норматив — shift target; простой — downtime; резерв — reserve fleet; двойник — digital twin; Актогай — Aktogay.</note>
+   <note id="brief-4" category="instructions">Тонны — metric tonnes (t), не short tons. м³ — m³; км — km; км/ч — km/h; т/ч — t/h; мин — min; с — s. План засчитывается по ПЕРЕРАБОТАННОЙ руде (processed), доставлено (delivered) и погружено (loaded) — разные показатели.</note>
+   <note id="brief-5" category="instructions">ph — обязательные защищённые вставки. Перенесите каждую из source в target ровно один раз; можно менять порядок при необходимости. Не переводите выражения JavaScript, printf-спецификаторы, URL, протокольные идентификаторы, марки техники и коды узлов/машин. notes с value_N объясняют значения переменных; эти выражения не являются текстом перевода.</note>
+   <note id="brief-6" category="instructions">Часть строк — фрагменты, соединяемые программой. Сохраняйте необходимые начальные/конечные пробелы, двоеточия, разделители и переносы. Не добавляйте HTML. Для динамического числа используйте форму, пригодную для любого значения (например, Repairs: {value_1}); вопросы о контексте вписывайте отдельной заметкой переводчика, не в target.</note>
+   <note id="brief-7" category="instructions">Область: все найденные русские строковые литералы TypeScript/Go, HTML-тексты и доступные подписи, JSON-конфигурация и собственные панели Grafana в team/mine для перечисленных ревизий. Отдельно включены ошибки, результаты команд, журнал и серверная диагностика. Весь текст извлечён из исходников; одинаковые строки объединены с сохранением мест использования. Документация проекта, код сторонних библиотек/платформы и текст, запечённый в 3D-текстуры, не входят в программные строковые ресурсы.</note>
+   <note id="brief-8" category="instructions">После перевода разработчик должен подключить каталог, переключение языка, en-локаль форматирования чисел/дат, формы множественного числа, переводы сообщений движка и проверку размещения длинных строк. Сам файл не переключает язык программы. Старые сохранённые журналы/архивные отчёты могут содержать ранее записанный русский текст.</note>
+   <note id="brief-9" category="instructions">Исходные ревизии: main@f280c28; HEAD@0b8c852. Сгенерировано 2026-10-24. Не переводите отметки времени и технические поля отчётов; переводятся их подписи в интерфейсе.</note>
+  </notes>
+  <unit id="s_6e75dc1ba2c8cff0">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:239
+HEAD@0b8c852:team/mine/domain/repair.go:239</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"> — 5 минут</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_fe85cba3914c507e">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:64</note>
+    <note category="description">selectMapNode</note>
+    <note category="variables">{value_1} = fmt(n(equipment,'buffer_t'))
+{value_2} = n(equipment,'queue_length')</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"> · Бункер <ph id="1" equiv="{value_1}" disp="{value_1}"/> т · Очередь: <ph id="2" equiv="{value_2}" disp="{value_2}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_b82d809f13f0f457">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:64</note>
+    <note category="description">selectMapNode</note>
+    <note category="variables">{value_1} = topology.edges.filter(e=&gt;e.from===id||e.to===id).length</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"> · Дорог: <ph id="1" equiv="{value_1}" disp="{value_1}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_cc6a8785ea5aca54">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:81
+HEAD@0b8c852:team/mine/ui/src/main.ts:115</note>
+    <note category="description">renderEquipment</note>
+    <note category="variables">{value_1} = fmt(n(f,'capacity_tph'))</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"> · мощность <ph id="1" equiv="{value_1}" disp="{value_1}"/> т/ч</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_1ca3bd8beb4f5f4f">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:191
+HEAD@0b8c852:team/mine/ui/src/main.ts:353</note>
+    <note category="description">renderServiceVehicles</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"> · общая бригада с </source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_446f1b6339bd8982">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:131
+HEAD@0b8c852:team/mine/ui/src/main.ts:280</note>
+    <note category="description">renderMaintenance</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"> · ожидает решения механика</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_182faa34584f517d">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:131
+HEAD@0b8c852:team/mine/ui/src/main.ts:280</note>
+    <note category="description">renderMaintenance</note>
+    <note category="variables">{value_1} = fmt(n(f,'operation_elapsed_s')/60,1)</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"> · осталось на этапе <ph id="1" equiv="{value_1}" disp="{value_1}"/> мин</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_81c44e20a47d0c16">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:64</note>
+    <note category="description">selectMapNode</note>
+    <note category="variables">{value_1} = n(equipment,'queue_length')</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"> · Очередь: <ph id="1" equiv="{value_1}" disp="{value_1}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_bd9ffdbbe8060063">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:191
+HEAD@0b8c852:team/mine/ui/src/main.ts:353</note>
+    <note category="description">renderServiceVehicles</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"> · этап: </source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_84d5d93d12778bd7">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:191
+HEAD@0b8c852:team/mine/ui/src/main.ts:353</note>
+    <note category="description">renderServiceVehicles</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"> мин</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_9f187cec41b1a29a">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:86
+HEAD@0b8c852:team/mine/domain/repair.go:86</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"> неисправность; перевозка остановлена, груз сохранён</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_182c0e9d1b9a7512">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"> Ожидание / операция</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_e5327b4dcb8ba175">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"> Пустой</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_7989848335edceb4">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"> Рабочее место </source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_39b30ca6de60a3d7">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"> С грузом</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_b4c0930fd7473bc9">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:79
+HEAD@0b8c852:team/mine/ui/src/main.ts:113</note>
+    <note category="description">render</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"> т</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_7361baad4f8f047f">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:224
+HEAD@0b8c852:team/mine/domain/repair.go:224</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">, ожидает бригаду</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_4f9d4e752fdac4ad">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/service.go:354
+HEAD@0b8c852:team/mine/domain/service.go:354</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">: вернулся на базу</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_9c2ec30665130386">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/service.go:168
+HEAD@0b8c852:team/mine/domain/service.go:168</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">: выезд к </source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_50beeaaa72acbea3">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/service.go:256
+HEAD@0b8c852:team/mine/domain/service.go:256</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">: выездное обслуживание завершено, работа возобновлена на маршруте</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_624405890f8911c6">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:596
+HEAD@0b8c852:team/mine/domain/model.go:596</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">: диагностика завершена, ремонт — <ph id="1" equiv="%.0f" disp="%.0f"/> минут</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_f8b66484bf6b42f3">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:239
+HEAD@0b8c852:team/mine/domain/repair.go:239</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">: диагностика на </source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_b3fb31a3bb7a974f">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:201
+HEAD@0b8c852:team/mine/domain/repair.go:201</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">: механик направил на </source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_d48d0de2f26c984f">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:211
+HEAD@0b8c852:team/mine/domain/repair.go:211</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">: механик повысил приоритет в очереди </source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_459bf6542ca17760">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:355
+HEAD@0b8c852:team/mine/domain/model.go:355</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">: назначен </source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_667b22268d88dc50">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:456
+HEAD@0b8c852:team/mine/domain/model.go:456</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">: новый маршрут применён</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_1dfeba056d1e578c">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:345
+HEAD@0b8c852:team/mine/domain/model.go:345</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">: новый путь ожидает безопасной точки</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_bd174a698725ab84">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:99
+HEAD@0b8c852:team/mine/domain/repair.go:99</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">: повторный отказ пропущен — машина уже недоступна</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_88208c2e898feddc">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:619
+HEAD@0b8c852:team/mine/domain/model.go:619</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">: погружено </source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_33abf67e0172f9a5">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/service.go:302
+HEAD@0b8c852:team/mine/domain/service.go:302</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">: прибыл к </source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_30821f78a87fc19d">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:224
+HEAD@0b8c852:team/mine/domain/repair.go:224</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">: прибыл на </source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a11f6238712014a6">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:645
+HEAD@0b8c852:team/mine/domain/model.go:645</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">: рейс завершён</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_4e48231f1f1c961b">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:251
+HEAD@0b8c852:team/mine/domain/repair.go:251</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">: ремонт завершён, возвращается к перевозке</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_dd6a54f661bd1884">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:78
+HEAD@0b8c852:team/mine/ui/src/main.ts:112</note>
+    <note category="description">render</note>
+    <note category="variables">{value_1} = fmt(n(f,'payload_t'),1)</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"><ph id="1" equiv="{value_1}" disp="{value_1}"/> / 240 т</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_822b8e674555e1c0">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:81
+HEAD@0b8c852:team/mine/ui/src/main.ts:115</note>
+    <note category="description">renderEquipment</note>
+    <note category="variables">{value_1} = fmt(n(f,'buffer_t'))</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"><ph id="1" equiv="{value_1}" disp="{value_1}"/> / 720 т в бункере</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_3d7fe38f34d338fb">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:77</note>
+    <note category="description">draw3DTopology</note>
+    <note category="variables">{value_1} = String(edge.length_km).replace('.',',')</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"><ph id="1" equiv="{value_1}" disp="{value_1}"/> км</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_6945473e37737e36">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:59
+HEAD@0b8c852:team/mine/ui/src/main.ts:93</note>
+    <note category="description">updatePreview</note>
+    <note category="variables">{value_1} = fmt(p.distance_km,1)
+{value_2} = fmt(p.loaded_minutes,1)
+{value_3} = fmt(p.empty_minutes,1)
+{value_4} = p.transition_path.join(' → ')</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"><ph id="1" equiv="{value_1}" disp="{value_1}"/> км · с грузом <ph id="2" equiv="{value_2}" disp="{value_2}"/> мин · обратно <ph id="3" equiv="{value_3}" disp="{value_3}"/> мин. Переход: <ph id="4" equiv="{value_4}" disp="{value_4}"/>. Время без очередей.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_339e880c6e578bfd">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:78
+HEAD@0b8c852:team/mine/ui/src/main.ts:112</note>
+    <note category="description">render</note>
+    <note category="variables">{value_1} = fmt(n(f,'speed_kmh'),1)</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"><ph id="1" equiv="{value_1}" disp="{value_1}"/> км/ч</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_1586a919d2ffb361">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:78
+HEAD@0b8c852:team/mine/ui/src/main.ts:112</note>
+    <note category="description">render</note>
+    <note category="variables">{value_1} = fmt(n(f,'queue_wait_s')/60,1)</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"><ph id="1" equiv="{value_1}" disp="{value_1}"/> мин</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a1cc8a9f168bde42">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:128
+HEAD@0b8c852:team/mine/ui/src/main.ts:277</note>
+    <note category="description">renderMaintenance</note>
+    <note category="variables">{value_1} = severityNames[failure]??failure
+{value_2} = labels[state]??state</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"><ph id="1" equiv="{value_1}" disp="{value_1}"/> неисправность · <ph id="2" equiv="{value_2}" disp="{value_2}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_730d977f5b567465">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:81
+HEAD@0b8c852:team/mine/ui/src/main.ts:115</note>
+    <note category="description">renderEquipment</note>
+    <note category="variables">{value_1} = fmt(n(f,'loaded_t'))</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"><ph id="1" equiv="{value_1}" disp="{value_1}"/> т погружено</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_9a379d3a991b316c">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:131
+HEAD@0b8c852:team/mine/ui/src/main.ts:280</note>
+    <note category="description">renderMaintenance</note>
+    <note category="variables">{value_1} = site?site+' · ':''
+{value_2} = fmt(n(f,maintenance?'maintenance_downtime_s':'failure_downtime_s')/60,1)
+{value_3} = fmt(n(f,'payload_t'),1)
+{value_4} = ['diagnosing','repairing','field_diagnosis','field_work','hitching','unhitching'].includes(state)?` · осталось на этапе ${fmt(n(f,'operation_elapsed_s')/60,1)} мин`:''
+{value_5} = role==='dispatcher'&amp;&amp;state==='failed'?' · ожидает решения механика':''</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"><ph id="1" equiv="{value_1}" disp="{value_1}"/>Простой <ph id="2" equiv="{value_2}" disp="{value_2}"/> мин · груз <ph id="3" equiv="{value_3}" disp="{value_3}"/> т<ph id="4" equiv="{value_4}" disp="{value_4}"/><ph id="5" equiv="{value_5}" disp="{value_5}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_b014b13f70c76cbe">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/grafana-dashboards/team050.json#/panels/0/options/content
+HEAD@0b8c852:team/mine/config/grafana-dashboards/team050.json#/panels/0/options/content</note>
+    <note category="description">Configuration label / dashboard text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">## Карьерный участок · <ph id="1" equiv="Team 050" disp="Team 050"/>
+
+[Открыть 2D-диспетчерскую](<ph id="2" equiv="http://127.0.0.1:8088" disp="http://127.0.0.1:8088"/>)
+
+20 самосвалов, 4 экскаватора и 3 дробилки. Норматив установим после первого полного прогона. Состояние карты поступает из двойников <ph id="3" equiv="OpenEgiz" disp="OpenEgiz"/>.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_1c899a9fca1db6dd">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:79
+HEAD@0b8c852:team/mine/ui/src/main.ts:113</note>
+    <note category="description">render</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">% выполнено · диапазон 93–95 тыс. т</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_df054e335c5f0cb2">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:619
+HEAD@0b8c852:team/mine/domain/model.go:619</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"><ph id="1" equiv="%.0f" disp="%.0f"/> т</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_b9af9b0277d597cb">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:201
+HEAD@0b8c852:team/mine/domain/repair.go:201</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"><ph id="1" equiv="%.2f" disp="%.2f"/> км</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_d752ff9d05adf8a7">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">← Узел</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_4dc7927ee400c41c">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">↻ Повтор</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_80a424d1293c86f3">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">⌁ Свой маршрут</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_e639618f14009f22">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+main@f280c28:team/mine/ui/src/main.ts:76
+HEAD@0b8c852:team/mine/ui/src/main.ts:36
+HEAD@0b8c852:team/mine/ui/src/main.ts:110</note>
+    <note category="description">UI string; visible HTML text; render</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">▶ Начать смену</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_f55e6de08fa8602d">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:76
+HEAD@0b8c852:team/mine/ui/src/main.ts:110</note>
+    <note category="description">render</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">▶ Продолжить</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_f4f9d05dd21852cc">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:179
+HEAD@0b8c852:team/mine/ui/src/main.ts:341</note>
+    <note category="description">UI string</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">● Восстановление связи</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_cb1c3ebddae2bef7">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:93
+HEAD@0b8c852:team/mine/ui/src/main.ts:224</note>
+    <note category="description">animate</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">● Нет свежих данных</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_46fc0f2af2ae4488">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:93
+HEAD@0b8c852:team/mine/ui/src/main.ts:224</note>
+    <note category="description">animate</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">● Участок на связи</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_2e8b3371c00b2ff5">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">0 / 240 т</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_65abd017e53b7c05">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">0 км/ч</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_1348a8bd15f18ab7">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">0 мин</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_0a7c929e1c8a0217">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:664
+HEAD@0b8c852:team/mine/domain/model.go:664</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">12 часов завершены. Отчёт сохранён.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_f93c2442aac1e360">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:175
+HEAD@0b8c852:team/mine/ui/src/main.ts:337</note>
+    <note category="description">UI string</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">20 назначений отправлены. Результаты — в журнале команд.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_6855d4dd41c20acd">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">20 самосвалов · 4 экскаватора · 3 дробилки</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_cd49bfd23046f504">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:219</note>
+    <note category="description">initializeGLBModels</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">3D-модели не загрузились. Проверьте файлы в /models.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_e633c930ee4b25f4">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:316</note>
+    <note category="description">setMapView</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Аксонометрия · высота условная</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_c8e3f7e9dc7c73c9">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">АКТОГАЙ · УЧЕБНЫЙ УЧАСТОК</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_6d02724977f970c1">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:190
+HEAD@0b8c852:team/mine/ui/src/main.ts:352</note>
+    <note category="description">renderServiceVehicles</note>
+    <note category="variables">{value_1} = str(f,'node_id')</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">База <ph id="1" equiv="{value_1}" disp="{value_1}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_6e7f590b625d7741">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ближайшая</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_9286cd14e3c6080e">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ближайшая свободная</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_25ffcb605c82cd1b">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+main@f280c28:team/mine/ui/src/main.ts:154
+HEAD@0b8c852:team/mine/ui/src/main.ts:12
+HEAD@0b8c852:team/mine/ui/src/main.ts:303</note>
+    <note category="description">crew_away; renderRepairSites</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Бригада на выезде</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a034abf1bf2c29bf">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:154
+HEAD@0b8c852:team/mine/ui/src/main.ts:303</note>
+    <note category="description">renderRepairSites</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Бригада свободна</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_f02d1b2ab8acefef">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">towing</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Буксировка</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_0c5dd1cf7fd92f49">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">В бункерах</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_e0bffa1496535867">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">В начало очереди</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_52ae7c4f06032567">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">В пути / в кузовах</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_57e0d287f65466c2">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; HTML aria-label</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Вид карты</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_438bf1575fadf207">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">returning_base</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Возвращается на базу</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_10871623dff664c0">
+   <notes>
+    <note category="location">main@f280c28:team/mine/cmd/mine-engine/main.go:43
+HEAD@0b8c852:team/mine/cmd/mine-engine/main.go:43</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Восстановлено после остановки. Смена на паузе.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_3ee3bda24a1aa626">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:155
+HEAD@0b8c852:team/mine/domain/repair.go:155</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Выберите лёгкую, среднюю или тяжёлую поломку</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_3d5482ea58a06eb4">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Выберите маршрут</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_f3e06e46dd6bde0b">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:60
+HEAD@0b8c852:team/mine/ui/src/main.ts:94</note>
+    <note category="description">draftChanged</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Выберите погрузку E на карте</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_5db0ff365109d5f5">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:141
+main@f280c28:team/mine/web/server.go:478
+HEAD@0b8c852:team/mine/domain/repair.go:141
+HEAD@0b8c852:team/mine/web/server.go:478</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Выберите самосвал</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a45e7eab821ae0cb">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Выберите самосвал, чтобы увидеть его маршрут</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_e8de74f5c67ac54b">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:57
+HEAD@0b8c852:team/mine/ui/src/main.ts:91</note>
+    <note category="description">pickNode</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Выберите соседний узел по дороге</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_4aceac0112a4d701">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+main@f280c28:team/mine/ui/src/main.ts:61
+HEAD@0b8c852:team/mine/ui/src/main.ts:36
+HEAD@0b8c852:team/mine/ui/src/main.ts:95</note>
+    <note category="description">UI string; visible HTML text; selectTruck</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Выберите шаблон или узлы на карте</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_46b243e423f7127d">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Выбранная машина</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_523a6b983b766317">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Выезд на лёгкую поломку</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_6f0abef4261701b1">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/service.go:104
+HEAD@0b8c852:team/mine/domain/service.go:104</note>
+    <note category="description">Server text; may be a concatenated fragment</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Выездной ремонт доступен при лёгкой поломке</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_f64fe6c22387d477">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:161
+HEAD@0b8c852:team/mine/ui/src/main.ts:310</note>
+    <note category="description">UI string</note>
+    <note category="variables">{value_1} = selected.slice(-2)</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Вызвать выбранную поломку HT-<ph id="1" equiv="{value_1}" disp="{value_1}"/>? Машина остановится, груз сохранится.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_cd8d2c0e88ffb839">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Вызвать поломку</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_1fcc629e6e99157b">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Вызвать эвакуатор</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_c045c25ac4882e59">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">applied</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Выполнено</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_8f87f0499de928d5">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:316</note>
+    <note category="description">setMapView</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Высота объектов условная</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a88c6329bce0c036">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/site.json#/nodes/0/name
+HEAD@0b8c852:team/mine/config/site.json#/nodes/0/name</note>
+    <note category="description">Configuration label / dashboard text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Гараж</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_07b2128557c95e93">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:64</note>
+    <note category="description">garage</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Гараж / стоянка</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_12b6fb6efa98a308">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+main@f280c28:team/mine/ui/src/main.ts:78
+HEAD@0b8c852:team/mine/ui/src/main.ts:36
+HEAD@0b8c852:team/mine/ui/src/main.ts:112</note>
+    <note category="description">UI string; visible HTML text; render</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Гараж P</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_43bddac76c1b4e02">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Готовый шаблон</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_53250af2006dd3a0">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Груз, т</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_da4da4e3527ca8af">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">diagnosing</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Диагностика</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_93f232bfff675757">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Диагностика 5 мин. Лёгкая / профилактика 15 мин на месте; средняя 50 мин; тяжёлая 150 мин на площадке. На выезде бригада недоступна для стационарного ремонта. Самосвал ждёт бригаду на маршруте, груз сохраняется.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_08d89fab8b00b97a">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">field_diagnosis</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Диагностика на месте</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_d75c3554910d474e">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Диспетчер</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a1623eb37765fb41">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Доставлено</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_7580ba5467f8ea68">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/grafana-dashboards/team050.json#/panels/2/title
+HEAD@0b8c852:team/mine/config/grafana-dashboards/team050.json#/panels/2/title</note>
+    <note category="description">Configuration label / dashboard text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Доставлено, т · серии разделены по прогону</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_7d0161cf73ad6e8b">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:293
+HEAD@0b8c852:team/mine/domain/model.go:293</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Доступны ×1, ×10, ×30 и ×60</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_0975728a0ad74b3b">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/site.json#/nodes/9/name
+HEAD@0b8c852:team/mine/config/site.json#/nodes/9/name</note>
+    <note category="description">Configuration label / dashboard text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Дробилка 1</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_86a4a8aa73b03a46">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/site.json#/nodes/10/name
+HEAD@0b8c852:team/mine/config/site.json#/nodes/10/name</note>
+    <note category="description">Configuration label / dashboard text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Дробилка 2</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_65e8ff996b10bc6d">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/site.json#/nodes/11/name
+HEAD@0b8c852:team/mine/config/site.json#/nodes/11/name</note>
+    <note category="description">Configuration label / dashboard text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Дробилка 3</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_8c287be095893d86">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:64</note>
+    <note category="description">crusher</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Дробилка и приёмный бункер</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_e117f34fbf441e28">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:81
+HEAD@0b8c852:team/mine/ui/src/main.ts:115</note>
+    <note category="description">renderEquipment</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Дробилка C</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_e01a4e4b53f95671">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">outbound</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Едет к самосвалу</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_1754aa88db015f43">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">to_repair</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Едет на ремонт</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_3a02f78c70d2ced5">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ещё не доставлено</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_499be4638601008a">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">waiting_service</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ждёт сервисную машину</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_002807e0c12efc2f">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">waiting_tow</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ждёт эвакуатор</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_f5b284f9340f18e2">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Журнал событий</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_270a03527364d9b0">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:84
+HEAD@0b8c852:team/mine/ui/src/main.ts:118</note>
+    <note category="description">reports</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Завершённых смен пока нет.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_ce91a50271ed8831">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Завершено рейсов</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_8ce783fcb224d130">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:155
+HEAD@0b8c852:team/mine/ui/src/main.ts:304</note>
+    <note category="description">renderRepairSites</note>
+    <note category="variables">{value_1} = n(f,'repairs_completed')</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Завершено ремонтов: <ph id="1" equiv="{value_1}" disp="{value_1}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_1991e6e9bd52747d">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Загрузка кузова</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_7dbfef4ce79b21c9">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:191
+HEAD@0b8c852:team/mine/ui/src/main.ts:353</note>
+    <note category="description">renderServiceVehicles</note>
+    <note category="variables">{value_1} = n(f,'jobs_completed')
+{value_2} = n(f,'operation_remaining_s')&gt;0?' · этап: '+fmt(n(f,'operation_remaining_s')/60,1)+' мин':''
+{value_3} = id.startsWith('service-')?' · общая бригада с '+(id.endsWith('01')?'R1':'R2'):''</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Заданий: <ph id="1" equiv="{value_1}" disp="{value_1}"/><ph id="2" equiv="{value_2}" disp="{value_2}"/><ph id="3" equiv="{value_3}" disp="{value_3}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a064a1e3e15165b7">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; HTML aria-label</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Закрыть сведения</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_c7ad699b74581c6e">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">superseded</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Заменено</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_9f2e101e12b7dc74">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/grafana-dashboards/team050.json#/panels/3/title
+HEAD@0b8c852:team/mine/config/grafana-dashboards/team050.json#/panels/3/title</note>
+    <note category="description">Configuration label / dashboard text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Запас в бункерах, т</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_e1580bb76c81f20a">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Зачёт сменного плана</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_8be86cde3c19e29f">
+   <notes>
+    <note category="location">main@f280c28:team/mine/cmd/mine-engine/main.go:298
+HEAD@0b8c852:team/mine/cmd/mine-engine/main.go:298</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Идентификатор использован для другой команды</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_9a4b8a9ac61754e0">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Изменение в движении применяется на ближайшем допустимом узле.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a704ca3760e2ecee">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Исправен</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_69d588796071c9ab">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:128
+HEAD@0b8c852:team/mine/ui/src/main.ts:277</note>
+    <note category="description">renderMaintenance</note>
+    <note category="variables">{value_1} = n(f,'repairs_completed')
+{value_2} = n(f,'preventive_completed')</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Исправен · ремонтов: <ph id="1" equiv="{value_1}" disp="{value_1}"/> · профилактик: <ph id="2" equiv="{value_2}" disp="{value_2}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a7383294dd433fa9">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Итог появится после 12 модельных часов. План учитывает переработанную руду.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_130b874a5c043180">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">К</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_04177f9e02f57287">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">returning</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">К погрузке</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_749d8ff4caba58c6">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:325
+HEAD@0b8c852:team/mine/domain/model.go:325</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Карта изменилась</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_2136fafc6ae44b78">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; HTML aria-label</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Карта карьера с дорогами и движущимися самосвалами</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_38cae274c106f0fe">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">КАРЬЕР</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_144e16f1163aa71f">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; HTML aria-label</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Карьер — главная</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_51840eb359154e4c">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/index.html
+HEAD@0b8c852:team/mine/ui/index.html</note>
+    <note category="description">Document title / accessible label; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Карьер — диспетчерская</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_d727737abf00d85c">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/grafana-dashboards/team050.json#/title
+HEAD@0b8c852:team/mine/config/grafana-dashboards/team050.json#/title</note>
+    <note category="description">Configuration label / dashboard text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Карьер — <ph id="1" equiv="Team 050" disp="Team 050"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_face7e76c6053859">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Карьерный участок</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a00fad69225131c2">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:316</note>
+    <note category="description">setMapView</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Колесо мыши — масштаб · перетаскивайте карту</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_876e8b07fa3f8cb4">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Колесо мыши — масштаб · перетаскивайте карту для перемещения карты</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_1adcea9997cd0b9f">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:361
+main@f280c28:team/mine/domain/repair.go:213
+HEAD@0b8c852:team/mine/domain/model.go:361
+HEAD@0b8c852:team/mine/domain/repair.go:213</note>
+    <note category="description">Command result / validation / error; Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Команда выполнена</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_2d94ea06e80c7ec4">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:260
+HEAD@0b8c852:team/mine/domain/model.go:260</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Команда доступна роли: </source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_d6a22ff661deb493">
+   <notes>
+    <note category="location">main@f280c28:team/mine/web/server.go:440
+HEAD@0b8c852:team/mine/web/server.go:440</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Команда не найдена</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_2869838da2fd9b20">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:357
+HEAD@0b8c852:team/mine/domain/model.go:357</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Команда не поддерживается</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_64658f2f0dbea119">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Команды диспетчера</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_07cde2ab92d12b18">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:85
+HEAD@0b8c852:team/mine/domain/repair.go:85</note>
+    <note category="description">Server text; may be a concatenated fragment</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">лёгкая</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_bec0df8892301db2">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:127
+HEAD@0b8c852:team/mine/ui/src/main.ts:276</note>
+    <note category="description">light</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Лёгкая</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_cfb57269511f8f4b">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Лёгкая · на месте</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_2c24fcf787ae0e5d">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:451
+HEAD@0b8c852:team/mine/domain/model.go:451</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Маршрут применён</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_6e956019ec5655d3">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:346
+HEAD@0b8c852:team/mine/domain/model.go:346</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Маршрут применится в ближайшей допустимой точке</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_7f8704a5921bcce1">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Машина / состояние</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_887103927790502c">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:322
+HEAD@0b8c852:team/mine/domain/model.go:322</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Машина неисправна. Измените маршрут после ремонта.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_4e4b8fc211c37a5b">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/service.go:108
+HEAD@0b8c852:team/mine/domain/service.go:108</note>
+    <note category="description">Server text; may be a concatenated fragment</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Машина уже на обслуживании или неисправна</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_0c4cdc5ad7d38f44">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:148
+HEAD@0b8c852:team/mine/domain/repair.go:148</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Машина уже неисправна</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_e8c76f9a975e19ff">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:64</note>
+    <note category="description">loading</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Место погрузки</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_261aae3693e6b848">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Местоположение</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_9abcba300b4c238b">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Механик</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_10698b0f14d7e290">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/grafana-dashboards/team050.json#/panels/4/title
+HEAD@0b8c852:team/mine/config/grafana-dashboards/team050.json#/panels/4/title</note>
+    <note category="description">Configuration label / dashboard text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Модельное время, секунды</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_b5d02b6332717584">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">being_towed</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">На буксире</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_796561e0b1f3de9a">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:335
+HEAD@0b8c852:team/mine/domain/model.go:335</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Назначен более новый путь</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_8b33fdf6297c2454">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:80
+HEAD@0b8c852:team/mine/ui/src/main.ts:114</note>
+    <note category="description">render</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Назначение изменилось. Выберите путь повторно.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_48ee089276afc80c">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:174
+HEAD@0b8c852:team/mine/ui/src/main.ts:336</note>
+    <note category="description">UI string</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Назначение отправлено диспетчером</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_725e53e16e96b0fd">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:328
+HEAD@0b8c852:team/mine/domain/model.go:328</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Назначение уже изменилось. Повторите выбор.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_ea156f6a6d376e84">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Назначить маршрут</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_66fd8c87850dbe7a">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Назначить машине</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_934921a967c78947">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:175
+HEAD@0b8c852:team/mine/ui/src/main.ts:337</note>
+    <note category="description">UI string</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Назначить <ph id="1" equiv="HT-01" disp="HT-01"/>–05 → <ph id="2" equiv="M1" disp="M1"/>, <ph id="3" equiv="HT-06" disp="HT-06"/>–10 → <ph id="4" equiv="M2" disp="M2"/>, <ph id="5" equiv="HT-11" disp="HT-11"/>–15 → <ph id="6" equiv="M3" disp="M3"/>, <ph id="7" equiv="HT-16" disp="HT-16"/>–20 → <ph id="8" equiv="M4" disp="M4"/>? Машины выедут после начала смены.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_c1633072dc3debd6">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:170
+HEAD@0b8c852:team/mine/domain/repair.go:170</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Направить можно машину, ожидающую решения механика</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_6839f41ca4e2faf5">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Направить на ремонт</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_8adad416f1b5fdff">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:57
+HEAD@0b8c852:team/mine/ui/src/main.ts:91</note>
+    <note category="description">pickNode</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Начните с погрузки <ph id="1" equiv="E1" disp="E1"/>–<ph id="2" equiv="E4" disp="E4"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a517cfaefef490e7">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+main@f280c28:team/mine/ui/src/main.ts:78
+HEAD@0b8c852:team/mine/ui/src/main.ts:36
+HEAD@0b8c852:team/mine/ui/src/main.ts:112</note>
+    <note category="description">UI string; visible HTML text; render</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Не назначен</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_07a1e08f596a4c32">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:219</note>
+    <note category="description">initializeGLBModels</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Не удалось загрузить GLB-модели карьера</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_6d6da3d6ad71e821">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:180
+HEAD@0b8c852:team/mine/ui/src/main.ts:342</note>
+    <note category="description">UI string</note>
+    <note category="variables">{value_1} = e.message</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Не удалось подключиться: <ph id="1" equiv="{value_1}" disp="{value_1}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a6059e599fcfc0fc">
+   <notes>
+    <note category="location">main@f280c28:team/mine/web/server.go:501
+HEAD@0b8c852:team/mine/web/server.go:501</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Не удалось прочитать отчёты</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_0ad4c697c0eeb81b">
+   <notes>
+    <note category="location">main@f280c28:team/mine/web/server.go:424
+HEAD@0b8c852:team/mine/web/server.go:424</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Не удалось сохранить команду</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_0e720d7f7b850775">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:230
+HEAD@0b8c852:team/mine/domain/model.go:230</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Неизвестный шаблон</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_2e2332b5c947ebd8">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">failed</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Неисправен</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_cddaa2cac21b03e2">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:145
+HEAD@0b8c852:team/mine/ui/src/main.ts:294</note>
+    <note category="description">renderMaintenance</note>
+    <note category="variables">{value_1} = failed</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Неисправных машин: <ph id="1" equiv="{value_1}" disp="{value_1}"/>. Диспетчер перераспределяет исправную технику; механик направляет машины на ремонт.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_86a204261db40a99">
+   <notes>
+    <note category="location">main@f280c28:team/mine/web/server.go:468
+HEAD@0b8c852:team/mine/web/server.go:468</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Некорректная карта</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_fbcd2052097e63e6">
+   <notes>
+    <note category="location">main@f280c28:team/mine/web/server.go:405
+HEAD@0b8c852:team/mine/web/server.go:405</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Некорректная команда</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_210a09f0f390c652">
+   <notes>
+    <note category="location">main@f280c28:team/mine/web/server.go:454
+HEAD@0b8c852:team/mine/web/server.go:454</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Некорректный запрос</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_9a56bc0b97e9dca1">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:246
+HEAD@0b8c852:team/mine/domain/model.go:246</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Некорректный идентификатор команды</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_2a2acbf09a2f6cb1">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/config.go:128
+HEAD@0b8c852:team/mine/domain/config.go:128</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Нет дороги <ph id="1" equiv="%s" disp="%s"/> → <ph id="2" equiv="%s" disp="%s"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_910157adb9883d75">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">starved</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Нет подачи</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_5edc0ee32c25c520">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:187
+HEAD@0b8c852:team/mine/domain/repair.go:187</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Нет пути к выбранной ремонтной площадке</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_c68eceff13a9e072">
+   <notes>
+    <note category="location">main@f280c28:team/mine/web/server.go:492
+HEAD@0b8c852:team/mine/web/server.go:492</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Нет пути к назначению</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_c9c1f6b733a786c7">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/service.go:150
+HEAD@0b8c852:team/mine/domain/service.go:150</note>
+    <note category="description">Server text; may be a concatenated fragment</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Нет пути к ремонтной площадке</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_fad4f41d74c9e39c">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/service.go:134
+HEAD@0b8c852:team/mine/domain/service.go:134</note>
+    <note category="description">Server text; may be a concatenated fragment</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Нет свободной машины с бригадой. Дождитесь завершения работы или выберите другую</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_5025c5e3b9e239db">
+   <notes>
+    <note category="location">main@f280c28:team/mine/web/server.go:449
+HEAD@0b8c852:team/mine/web/server.go:449</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Нет сессии</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_cc4bc6a8d13b6798">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; HTML title</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Новый прогон с теми же исходными назначениями</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_ae349acef181e1a5">
+   <notes>
+    <note category="location">main@f280c28:team/mine/web/server.go:400
+HEAD@0b8c852:team/mine/web/server.go:400</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Обновите сессию страницы</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_603e460bf59cac0f">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Обновить</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_7f1b1af5392e2694">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Оборудование</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a187742c860f0c4f">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">field_work</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Обслуживание на месте</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_5f7d43e6b66e7c53">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:12
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">idle; UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ожидает назначения</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_d149d8ee927e5ae6">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ожидает переработки</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_1cc2996a21b185d2">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">scheduled</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ожидает применения</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_d0128e84ab15248d">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:78
+HEAD@0b8c852:team/mine/ui/src/main.ts:112</note>
+    <note category="description">render</note>
+    <note category="variables">{value_1} = pending.nodes.join(' → ')</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ожидает применения: <ph id="1" equiv="{value_1}" disp="{value_1}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_8765de71e096b035">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ожидание в очередях</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_8eca62ac43b38959">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ожидание данных из <ph id="1" equiv="Ditto" disp="Ditto"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_ee3f6fc6061ab41f">
+   <notes>
+    <note category="location">main@f280c28:team/mine/web/server.go:352
+HEAD@0b8c852:team/mine/web/server.go:352</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ожидание карты из <ph id="1" equiv="Ditto" disp="Ditto"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_c6599af872412075">
+   <notes>
+    <note category="location">main@f280c28:team/mine/web/server.go:462
+HEAD@0b8c852:team/mine/web/server.go:462</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ожидание <ph id="1" equiv="OpenEgiz" disp="OpenEgiz"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_591110bece45b073">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">ОПЕРАТИВНАЯ КАРТА</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a997f5000828777c">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">rejected</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Отклонено</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_307b27d5263040e3">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/grafana-dashboards/team050.json#/links/0/title
+HEAD@0b8c852:team/mine/config/grafana-dashboards/team050.json#/links/0/title</note>
+    <note category="description">Configuration label / dashboard text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Открыть диспетчерскую</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_23a2a9bfcf74c4a1">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">cancelled</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Отменено</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_9ef21e535bb90542">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">received</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Отправка</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_17f13bb0d59446df">
+   <notes>
+    <note category="location">main@f280c28:team/mine/web/server.go:422
+HEAD@0b8c852:team/mine/web/server.go:422</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Отправка через <ph id="1" equiv="Ditto" disp="Ditto"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_15cfd66ad72d014f">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">unhitching</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Отцепка</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_4ecbbcc497ece98e">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Отчёты смен</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_32b263d75ce1095e">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:156
+HEAD@0b8c852:team/mine/ui/src/main.ts:305</note>
+    <note category="description">renderRepairSites</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Очереди нет</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_92d449073415aa41">
+   <notes>
+    <note category="location">main@f280c28:team/mine/web/server.go:419
+HEAD@0b8c852:team/mine/web/server.go:419</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Очередь команд заполнена</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_f7abc55ee00e603a">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">queued_loading</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Очередь на погрузку</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_22a83da070baf9fd">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">queued_unloading</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Очередь на разгрузку</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_09b44f2cd67edb1f">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">queued_repair</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Очередь ремонта</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_e6d062794f125829">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:156
+HEAD@0b8c852:team/mine/ui/src/main.ts:305</note>
+    <note category="description">renderRepairSites</note>
+    <note category="variables">{value_1} = queue.map(t=&gt;'HT-'+t.slice(-2)).join(' → ')</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Очередь: <ph id="1" equiv="{value_1}" disp="{value_1}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_3a7fb3a11a481c05">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:81
+HEAD@0b8c852:team/mine/ui/src/main.ts:115</note>
+    <note category="description">renderEquipment</note>
+    <note category="variables">{value_1} = n(f,'queue_length')
+{value_2} = crusher?` · мощность ${fmt(n(f,'capacity_tph'))} т/ч`:''</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Очередь: <ph id="1" equiv="{value_1}" disp="{value_1}"/><ph id="2" equiv="{value_2}" disp="{value_2}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_c94f39d34ad73b82">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:45
+HEAD@0b8c852:team/mine/ui/src/main.ts:46</note>
+    <note category="description">api</note>
+    <note category="variables">{value_1} = r.status</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ошибка <ph id="1" equiv="{value_1}" disp="{value_1}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_65530fd463eac0be">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">paused</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Пауза</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a543f013e630ba6c">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:64</note>
+    <note category="description">junction</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Перекрёсток</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_f596e0ef67d91d26">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Переработано</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_18329f5b8d90efff">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:84
+HEAD@0b8c852:team/mine/ui/src/main.ts:118</note>
+    <note category="description">reports</note>
+    <note category="variables">{value_1} = fmt(Number(run.processed_t))
+{value_2} = fmt(Number(run.delivered_t))</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Переработано <ph id="1" equiv="{value_1}" disp="{value_1}"/> т · доставлено <ph id="2" equiv="{value_2}" disp="{value_2}"/> т</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_aab5b011c34f8378">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/grafana-dashboards/team050.json#/panels/1/title
+HEAD@0b8c852:team/mine/config/grafana-dashboards/team050.json#/panels/1/title</note>
+    <note category="description">Configuration label / dashboard text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Переработано, т · серии разделены по прогону</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_6ee1f5e280abecb9">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">crushing</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Переработка</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_96b5205cf976a588">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:36
+HEAD@0b8c852:team/mine/ui/src/main.ts:316</note>
+    <note category="description">UI string; visible HTML text; setMapView</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">План · расстояния в км</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_15296d1b85ed5c00">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:79
+HEAD@0b8c852:team/mine/ui/src/main.ts:113</note>
+    <note category="description">render</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">План для архивного прогона не задан</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_9c2d5f2940a96b97">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">По 5 машин на каждый шаблон</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_52ef3621d6c44288">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/config.go:122
+HEAD@0b8c852:team/mine/domain/config.go:122</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Повтор узла <ph id="1" equiv="%s" disp="%s"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_1c0253efe7c2c812">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:289
+HEAD@0b8c852:team/mine/domain/model.go:289</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Повтор: исходные назначения восстановлены, машины в гараже.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_1423cde469b29877">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:170
+HEAD@0b8c852:team/mine/ui/src/main.ts:332</note>
+    <note category="description">UI string</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Повторить смену с исходными маршрутами, планом и поломками в те же моменты? Завершённые отчёты сохранятся.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_8ca71221a09da931">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">loading</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Погрузка</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a3abf9af54ed55e0">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/site.json#/nodes/1/name
+HEAD@0b8c852:team/mine/config/site.json#/nodes/1/name</note>
+    <note category="description">Configuration label / dashboard text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Погрузка 1</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_2b60db6817d839f2">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/site.json#/nodes/2/name
+HEAD@0b8c852:team/mine/config/site.json#/nodes/2/name</note>
+    <note category="description">Configuration label / dashboard text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Погрузка 2</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_2f26d781856ac46b">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/site.json#/nodes/3/name
+HEAD@0b8c852:team/mine/config/site.json#/nodes/3/name</note>
+    <note category="description">Configuration label / dashboard text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Погрузка 3</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a44bf8ec43b44dbb">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/site.json#/nodes/4/name
+HEAD@0b8c852:team/mine/config/site.json#/nodes/4/name</note>
+    <note category="description">Configuration label / dashboard text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Погрузка 4</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_5ea5c68f20d4860a">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:12
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">ready; UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Подготовка</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_e2449ea8e46ec3c3">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Подключение…</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_b98b157bd4f2c961">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:60
+HEAD@0b8c852:team/mine/ui/src/main.ts:94</note>
+    <note category="description">draftChanged</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Подсвечен выбранный маршрут</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a91e9ddb09266863">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">positioning_unloading</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Подъезд к дробилке</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_c624c1b44aa49ae9">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">positioning_loading</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Подъезд к экскаватору</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_63c81b94f7eb14e4">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; HTML aria-label</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Показатели смены</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_f0ecf1c86be8735b">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:131
+HEAD@0b8c852:team/mine/ui/src/main.ts:280</note>
+    <note category="description">renderMaintenance</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Поломки вызываются вручную. Профилактика учитывается отдельно; случайные отказы пока выключены.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_88c0bda07195aed3">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:60
+HEAD@0b8c852:team/mine/ui/src/main.ts:94</note>
+    <note category="description">draftChanged</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Постройте путь: погрузка E → соседние узлы → дробилка C</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_f74a6dcbbca3b252">
+   <notes>
+    <note category="location">main@f280c28:team/mine/cmd/mine-engine/main.go:48
+HEAD@0b8c852:team/mine/cmd/mine-engine/main.go:48</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Принят сменный план: 94 000 т переработанной руды.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_9b038dd2f2632394">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:204
+HEAD@0b8c852:team/mine/domain/repair.go:204</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Приоритет меняется только в очереди ремонта</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_fb6e848950d8010f">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Производственные события</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_983a91a2b4deb077">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:128
+HEAD@0b8c852:team/mine/ui/src/main.ts:277</note>
+    <note category="description">renderMaintenance</note>
+    <note category="variables">{value_1} = labels[state]??state</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Профилактика · <ph id="1" equiv="{value_1}" disp="{value_1}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_2c3b109aeb84b356">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Профилактика на месте</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_8c1ae5cf1076bcdc">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/config.go:116
+HEAD@0b8c852:team/mine/domain/config.go:116</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Путь должен начинаться на погрузке E и завершаться на дробилке C</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_1438c6ba137d2cfe">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:57
+HEAD@0b8c852:team/mine/ui/src/main.ts:91</note>
+    <note category="description">pickNode</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Путь уже заканчивается на дробилке</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_2b2f9fc20a4342c4">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/grafana-dashboards/team050.json#/panels/0/title
+HEAD@0b8c852:team/mine/config/grafana-dashboards/team050.json#/panels/0/title</note>
+    <note category="description">Configuration label / dashboard text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Рабочее место диспетчера</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_5a24191433348d88">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:36
+HEAD@0b8c852:team/mine/ui/src/main.ts:324</note>
+    <note category="description">UI string; visible HTML text; UI string</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Развернуть</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_55d0bc61e4c4cac9">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; HTML title</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Развернуть карту</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_87a3f7b962ec0060">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Разгружено в бункеры</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_421aae557bcb0e95">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">unloading</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Разгрузка</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_8521e73f0f0a2216">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Распределить по <ph id="1" equiv="M1" disp="M1"/>–<ph id="2" equiv="M4" disp="M4"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_286092d1996ee629">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+main@f280c28:team/mine/ui/src/main.ts:61
+HEAD@0b8c852:team/mine/ui/src/main.ts:36
+HEAD@0b8c852:team/mine/ui/src/main.ts:95</note>
+    <note category="description">UI string; visible HTML text; selectTruck</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Расстояние и время появятся после выбора пути.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_0194a8b82f368938">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">repairing</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ремонт</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_d3a04492b6cfa5f0">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:55
+HEAD@0b8c852:team/mine/ui/src/main.ts:89</note>
+    <note category="description">drawTopology</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">РЕМОНТ · 1 БРИГАДА</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_8b93d4dbc3c7dcf3">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:153
+HEAD@0b8c852:team/mine/ui/src/main.ts:302</note>
+    <note category="description">renderRepairSites</note>
+    <note category="variables">{value_1} = site</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ремонт <ph id="1" equiv="{value_1}" disp="{value_1}"/> · 1 бригада</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_fc91b8bc1e305a73">
+   <notes>
+    <note category="location">main@f280c28:team/mine/config/site.json#/nodes/12/name
+main@f280c28:team/mine/config/site.json#/nodes/13/name
+HEAD@0b8c852:team/mine/config/site.json#/nodes/12/name
+HEAD@0b8c852:team/mine/config/site.json#/nodes/13/name
+HEAD@0b8c852:team/mine/ui/src/main.ts:64</note>
+    <note category="description">Configuration label / dashboard text; service</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ремонт / заправка</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_db3bd6fb5f9141c9">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ремонтная площадка</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_2c2576c4b352dcac">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:208
+HEAD@0b8c852:team/mine/domain/repair.go:208</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ремонтная площадка не найдена</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_ebd4563f5ac7349d">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; HTML aria-label</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Роль</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_6822ac176e7e5440">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:160
+HEAD@0b8c852:team/mine/ui/src/main.ts:309</note>
+    <note category="description">UI string</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Роль диспетчера: маршруты, время и вызов неисправности</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a4c2dab8297288c5">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:160
+HEAD@0b8c852:team/mine/ui/src/main.ts:309</note>
+    <note category="description">UI string</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Роль механика: выберите неисправную машину и ремонтную площадку</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_07b8c0e68d5c16c2">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:108
+HEAD@0b8c852:team/mine/ui/src/main.ts:239</note>
+    <note category="description">animate</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">С</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_c0e16631258923bf">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">hauling</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">С грузом</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_b5d1586aa1d00ba9">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36
+HEAD@0b8c852:team/mine/ui/src/main.ts:316</note>
+    <note category="description">UI string; visible HTML text; setMapView</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">С1/С2 — сервис · Э — эвакуатор</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_ad255ab0da19475e">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:106
+HEAD@0b8c852:team/mine/ui/src/main.ts:237</note>
+    <note category="description">'aria-label'</note>
+    <note category="variables">{value_1} = index</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Самосвал <ph id="1" equiv="{value_1}" disp="{value_1}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_6723abef7f685b27">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:319
+HEAD@0b8c852:team/mine/domain/model.go:319</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Самосвал не найден</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_bd5ea44d9e8c35e2">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:152</note>
+    <note category="description">'aria-label'; makeTruck3D</note>
+    <note category="variables">{value_1} = number</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Самосвал HT-<ph id="1" equiv="{value_1}" disp="{value_1}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_4d9804a2d9935c7d">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:263</note>
+    <note category="description">animate</note>
+    <note category="variables">{value_1} = id.slice(-2)
+{value_2} = labels[state]??state
+{value_3} = fmt(n(f,'payload_t'))</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Самосвал HT-<ph id="1" equiv="{value_1}" disp="{value_1}"/> · <ph id="2" equiv="{value_2}" disp="{value_2}"/> · <ph id="3" equiv="{value_3}" disp="{value_3}"/> т</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_21ad05da3cf93d0c">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Самосвалы </source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_b40f0749a6635a64">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; HTML title</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Сбросить масштаб</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_36c25d9ffcfd800a">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:324</note>
+    <note category="description">UI string</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Свернуть</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_b8ef99bef7a55dbd">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:189
+HEAD@0b8c852:team/mine/ui/src/main.ts:351</note>
+    <note category="description">renderServiceVehicles</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Свободна</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_631a7c2a8768c0c6">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Сервисная машина</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_d14ab656763bec59">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:182
+HEAD@0b8c852:team/mine/ui/src/main.ts:344</note>
+    <note category="description">vehicleName</note>
+    <note category="variables">{value_1} = id.slice(-2)</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Сервисная СМ-<ph id="1" equiv="{value_1}" disp="{value_1}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_ed743e68c48cd117">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:84
+HEAD@0b8c852:team/mine/ui/src/main.ts:118</note>
+    <note category="description">reports</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Скачать JSON</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_70e98e32147cf4ec">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Скорость</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_2f7bb3f1ad5b3a7b">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Скорость </source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_9e543e72c57ddbea">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; HTML aria-label</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Скорость времени</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_403e45dc06482947">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">СМ-01 · бригада <ph id="1" equiv="R1" disp="R1"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_e2a99a59bb3cf6f0">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">СМ-02 · бригада <ph id="1" equiv="R2" disp="R2"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_9a4b87d123e2c634">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:84
+HEAD@0b8c852:team/mine/ui/src/main.ts:118</note>
+    <note category="description">reports</note>
+    <note category="variables">{value_1} = String(run.run_id).slice(0,8)
+{value_2} = clock(Number(run.sim_time_s))</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Смена <ph id="1" equiv="{value_1}" disp="{value_1}"/> · <ph id="2" equiv="{value_2}" disp="{value_2}"/></source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_1dac6a3a804f88b3">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:309
+main@f280c28:team/mine/domain/model.go:315
+main@f280c28:team/mine/domain/model.go:659
+main@f280c28:team/mine/domain/repair.go:134
+main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/domain/model.go:309
+HEAD@0b8c852:team/mine/domain/model.go:315
+HEAD@0b8c852:team/mine/domain/model.go:659
+HEAD@0b8c852:team/mine/domain/repair.go:134
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">Event log / diagnostic; Command result / validation / error; finished</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Смена завершена</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_9bcc1b4406398518">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:298
+HEAD@0b8c852:team/mine/domain/model.go:298</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Смена завершена. Создайте повтор.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_5dff270c43fb606c">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:306
+HEAD@0b8c852:team/mine/domain/model.go:306</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Смена запущена.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_356989bded7953b4">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">running</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Смена идёт</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a1e0d2f437d097aa">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:312
+HEAD@0b8c852:team/mine/domain/model.go:312</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Смена на паузе.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_adfb7d4c043e0f99">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:163
+HEAD@0b8c852:team/mine/domain/model.go:163</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Смена подготовлена. Назначьте маршруты машинам в гараже.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_30cc2e0a6a309f6d">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:249
+HEAD@0b8c852:team/mine/domain/model.go:249</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Смена уже изменилась. Обновите страницу.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_2279d69f257b3dd4">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Сменный норматив</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_15be79128a76bc79">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:137
+HEAD@0b8c852:team/mine/domain/repair.go:137</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Сначала начните смену</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_d697af54e3c2a763">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:268
+HEAD@0b8c852:team/mine/domain/model.go:268</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Сначала поставьте смену на паузу</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_e71afed622b89e4b">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/model.go:272
+HEAD@0b8c852:team/mine/domain/model.go:272</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Создан повтор смены</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_07bf222249bb3b45">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:46
+HEAD@0b8c852:team/mine/ui/src/main.ts:47</note>
+    <note category="description">command</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Состояние участка ещё загружается</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_c503912001e8e5e2">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:85
+HEAD@0b8c852:team/mine/domain/repair.go:85</note>
+    <note category="description">Server text; may be a concatenated fragment</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">средняя</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_e2bc5f6768e1fa3c">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:127
+HEAD@0b8c852:team/mine/ui/src/main.ts:276</note>
+    <note category="description">medium</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Средняя</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_36d59ed7cabeb432">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Средняя · своим ходом</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_f8a59376ea877bbb">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:55
+HEAD@0b8c852:team/mine/ui/src/main.ts:89</note>
+    <note category="description">drawTopology</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">СТАРТ СМЕНЫ</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_3a481c581591aa4f">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Схема · расстояния в км</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_4c99fceac8ae4c79">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:11
+HEAD@0b8c852:team/mine/ui/src/main.ts:12</note>
+    <note category="description">hitching</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Сцепка с эвакуатором</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_0940401102b8a3fe">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+main@f280c28:team/mine/ui/src/main.ts:77
+HEAD@0b8c852:team/mine/ui/src/main.ts:36
+HEAD@0b8c852:team/mine/ui/src/main.ts:111</note>
+    <note category="description">UI string; visible HTML text; render</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">т</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_8d3b1e79487a99b6">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">ТЕКУЩАЯ СМЕНА</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_db6f1ec08d6fc563">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Текущий маршрут</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a7c8e031dd8c4764">
+   <notes>
+    <note category="location">main@f280c28:team/mine/cmd/mine-engine/main.go:241
+HEAD@0b8c852:team/mine/cmd/mine-engine/main.go:241</note>
+    <note category="description">Event log / diagnostic</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Техническая пауза: нет подтверждений от <ph id="1" equiv="OpenEgiz" disp="OpenEgiz"/>.</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_9f9a05357bc60e25">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Техническое состояние</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_d05e107d3baa0a0b">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/repair.go:85
+HEAD@0b8c852:team/mine/domain/repair.go:85</note>
+    <note category="description">Server text; may be a concatenated fragment</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">тяжёлая</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_5b36461a9d8b9428">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:127
+HEAD@0b8c852:team/mine/ui/src/main.ts:276</note>
+    <note category="description">heavy</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Тяжёлая</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_7f17b26eaa8f6ca9">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Тяжёлая · эвакуатор</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_87e63f5d479ab9b8">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:175</note>
+    <note category="description">truckModelOrientation</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">У модели самосвала нет геометрии для определения направления</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_d180cef3c84a3582">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; HTML title</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Убрать последний узел</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_3acc44d6a1b1941c">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; HTML title</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Увеличить</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_10d6e23ed8abadf6">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; HTML aria-label</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Увеличить карту</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_e0498aec80cbfef9">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/config.go:113
+HEAD@0b8c852:team/mine/domain/config.go:113</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Укажите связный путь от E до C</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_0b9ff60343ea45e1">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; HTML title</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Уменьшить</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_38bfe52e5e71ec0c">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; HTML aria-label</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Уменьшить карту</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_85f485b0e3f45dce">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; HTML aria-label</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Условная трёхмерная аксонометрическая карта карьера</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_07666b02988f5c04">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Условный участок по мотивам Актогая </source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_9c867dda7d8fce79">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:316</note>
+    <note category="description">setMapView</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Уступы условные · высоты и масштаб не заданы</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_cf6bd87c79d08169">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Учебная поломка</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_a45c71f0e86138da">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:108
+HEAD@0b8c852:team/mine/ui/src/main.ts:239</note>
+    <note category="description">animate</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Э</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_57dd6a9e70871af8">
+   <notes>
+    <note category="location">main@f280c28:team/mine/domain/service.go:100
+HEAD@0b8c852:team/mine/domain/service.go:100</note>
+    <note category="description">Server text; may be a concatenated fragment</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Эвакуатор нужен для тяжёлой поломки</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_1fe324ace8f8477a">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:182
+HEAD@0b8c852:team/mine/ui/src/main.ts:344</note>
+    <note category="description">vehicleName</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Эвакуатор Э-01</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_2ca2d0c897f0c043">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:81
+HEAD@0b8c852:team/mine/ui/src/main.ts:115</note>
+    <note category="description">renderEquipment</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Экскаватор E</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_89491924d48cb43e">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:57
+HEAD@0b8c852:team/mine/ui/src/main.ts:91</note>
+    <note category="description">pickNode</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Этот узел уже есть в пути</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_2770256bd4e11f82">
+   <notes>
+    <note category="location">HEAD@0b8c852:team/mine/ui/src/main.ts:264</note>
+    <note category="description">animate</note>
+    <note category="variables">{value_1} = id.slice(-2)
+{value_2} = labels[state]??state
+{value_3} = fmt(n(f,'payload_t'))</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">HT-<ph id="1" equiv="{value_1}" disp="{value_1}"/> · <ph id="2" equiv="{value_2}" disp="{value_2}"/> · <ph id="3" equiv="{value_3}" disp="{value_3}"/> т</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_29dea847188f70e6">
+   <notes>
+    <note category="location">main@f280c28:team/mine/web/server.go:412
+HEAD@0b8c852:team/mine/web/server.go:412</note>
+    <note category="description">Command result / validation / error</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">ID команды уже используется</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_8a52f3ea51f7bba0">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve">Ⅱ Пауза</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_f54bb83fb0b8e727">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"><ph id="1" equiv="R1" disp="R1"/> · одна бригада</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+  <unit id="s_ac3aee0422b34778">
+   <notes>
+    <note category="location">main@f280c28:team/mine/ui/src/main.ts:35
+HEAD@0b8c852:team/mine/ui/src/main.ts:36</note>
+    <note category="description">UI string; visible HTML text</note>
+   </notes>
+   <segment state="initial">
+    <source xml:space="preserve"><ph id="1" equiv="R2" disp="R2"/> · одна бригада</source>
+    <target xml:space="preserve"></target>
+   </segment>
+  </unit>
+ </file>
+</xliff>
