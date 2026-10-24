@@ -51,12 +51,18 @@ func Snapshot(c Config, s *State) []Thing {
 	unavailable := 0
 	downtime := 0.0
 	for _, t := range s.Trucks {
-		if t.Failure != "" {
+		if t.Failure != "" || t.Maintenance {
 			unavailable++
 		}
 		downtime += t.Downtime
 	}
-	f.Set("failed_trucks", unavailable, "")
+	failed := 0
+	for _, t := range s.Trucks {
+		if t.Failure != "" {
+			failed++
+		}
+	}
+	f.Set("failed_trucks", failed, "")
 	f.Set("available_trucks", len(s.Trucks)-unavailable, "")
 	f.Set("failure_downtime_s", downtime, "s")
 	f.Set("failure_scenario_json", JSON(s.FailureScenario), "")
@@ -79,6 +85,9 @@ func Snapshot(c Config, s *State) []Thing {
 	for _, r := range s.Repairs {
 		ids = append(ids, ThingID(r.ID))
 	}
+	for _, v := range s.Vehicles {
+		ids = append(ids, ThingID(v.ID))
+	}
 	add("mine-01", "mine", map[string]any{"manifest": ids, "config_hash": c.Hash}, f)
 	f = Features{}
 	f.Set("state", s.Mode, "")
@@ -88,7 +97,7 @@ func Snapshot(c Config, s *State) []Thing {
 	f.Set("last_command_id", s.LastCommand, "")
 	f.Set("last_command_status", s.LastStatus, "")
 	f.Set("roles_json", JSON([]string{"dispatcher", "mechanic"}), "")
-	f.Set("model_version", "2-medium-failure", "")
+	f.Set("model_version", "3-field-service-heavy-failure", "")
 	add("control-01", "control", nil, f)
 	f = Features{}
 	f.Set("topology_version", c.TopologyVersion, "")
@@ -104,6 +113,9 @@ func Snapshot(c Config, s *State) []Thing {
 		speed := 0.0
 		if onEdge(t) {
 			edge = t.Path[t.Index] + ">" + t.Path[t.Index+1]
+		}
+		if t.State == "being_towed" {
+			speed = RepairTravelSpeed
 		}
 		if moving(t) {
 			speed = truckSpeed(c, t)
@@ -124,7 +136,13 @@ func Snapshot(c Config, s *State) []Thing {
 		f.Set("route_revision", t.Revision, "")
 		f.Set("trips_total", t.Trips, "")
 		f.Set("queue_wait_s", t.QueueWait, "s")
-		f.Set("operation_elapsed_s", t.Timer, "s")
+		remaining := t.Timer
+		for _, v := range s.Vehicles {
+			if v.Target == t.ID && v.Timer > 0 {
+				remaining = v.Timer
+			}
+		}
+		f.Set("operation_elapsed_s", remaining, "s")
 		f.Set("failure_severity", t.Failure, "")
 		f.Set("failure_at_s", t.FailureAt, "s")
 		f.Set("repair_node", t.RepairNode, "")
@@ -132,6 +150,9 @@ func Snapshot(c Config, s *State) []Thing {
 		f.Set("repairs_completed", t.RepairsCompleted, "")
 		f.Set("failure_downtime_s", t.Downtime, "s")
 		f.Set("repair_wait_s", t.RepairWait, "s")
+		f.Set("maintenance", t.Maintenance, "")
+		f.Set("preventive_completed", t.PreventiveCompleted, "")
+		f.Set("maintenance_downtime_s", t.MaintenanceDowntime, "s")
 		f.Set("metrics_json", JSON(map[string]any{"loading": t.Loading, "unloading": t.Unloading, "cycles": t.Cycles}), "")
 		add(t.ID, "haul-truck", map[string]any{"model": "CAT 793D", "capacity_t": c.Capacity, "body_m3": c.Body}, f)
 	}
@@ -181,6 +202,9 @@ func Snapshot(c Config, s *State) []Thing {
 		if t := s.Truck(r.Current); t != nil {
 			state = t.State
 		}
+		if s.crewAway(r.Node) {
+			state = "crew_away"
+		}
 		f.Set("state", state, "")
 		f.Set("current_truck_id", r.Current, "")
 		f.Set("queue_json", JSON(r.Queue), "")
@@ -189,6 +213,28 @@ func Snapshot(c Config, s *State) []Thing {
 		f.Set("idle_s", r.Idle, "s")
 		f.Set("repairs_completed", r.Completed, "")
 		add(r.ID, "repair-site", map[string]any{"node_id": r.Node, "crews": 1, "diagnosis_s": RepairDiagnosisSeconds, "repair_s": RepairWorkSeconds, "travel_speed_kmh": RepairTravelSpeed}, f)
+	}
+	for _, v := range s.Vehicles {
+		f = Features{}
+		f.Set("state", v.State, "")
+		f.Set("node_id", v.Node, "")
+		f.Set("target_truck_id", v.Target, "")
+		edge := ""
+		if len(v.Path) > 1 && v.Index < len(v.Path)-1 {
+			edge = v.Path[v.Index] + ">" + v.Path[v.Index+1]
+		}
+		f.Set("edge_id", edge, "")
+		f.Set("edge_progress", v.Progress, "")
+		speed := 0.0
+		if vehicleMoving(v) && s.Mode == "running" {
+			speed = vehicleSpeed(v)
+		}
+		f.Set("speed_kmh", speed, "km/h")
+		f.Set("operation_remaining_s", v.Timer, "s")
+		f.Set("jobs_completed", v.Completed, "")
+		f.Set("busy_s", v.Busy, "s")
+		f.Set("repair_node", v.Destination, "")
+		add(v.ID, v.Kind+"-vehicle", map[string]any{"home_node": v.Home, "crew_shared_with_site": v.Kind == "service"}, f)
 	}
 	return out
 }

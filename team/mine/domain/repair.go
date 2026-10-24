@@ -7,14 +7,15 @@ import (
 )
 
 // Initial modelling assumptions, in model seconds and km/h. No random failures
-// are enabled: the dispatcher explicitly injects a medium failure.
+// are enabled: failures are injected explicitly and recorded for repeat.
 const RepairDiagnosisSeconds = 300.0
 const RepairWorkSeconds = 3000.0
 const RepairTravelSpeed = 10.0
 
 type FailureEvent struct {
-	Time    float64 `json:"sim_time_s"`
-	TruckID string  `json:"truck_id"`
+	Time     float64 `json:"sim_time_s"`
+	TruckID  string  `json:"truck_id"`
+	Severity string  `json:"severity,omitempty"`
 }
 
 type RepairSite struct {
@@ -34,6 +35,7 @@ func (s *State) EnsureRepairs() {
 			{ID: "repair-02", Node: "R2", Queue: []string{}},
 		}
 	}
+	s.ensureVehicles()
 }
 
 func onEdge(t *Truck) bool { return len(t.Path) > 1 && t.Index < len(t.Path)-1 }
@@ -70,13 +72,18 @@ func (s *State) releaseProduction(t *Truck) {
 	t.Timer = 0
 }
 
-func (s *State) failTruck(t *Truck) {
+func (s *State) failTruck(t *Truck, severity string) {
+	if severity == "" {
+		severity = "medium"
+	}
+	t.ResumeState = t.State
 	s.releaseProduction(t)
-	t.Failure = "medium"
+	t.Failure = severity
 	t.FailureAt = s.Time
 	t.Failures++
 	t.State = "failed"
-	s.Log(t.ID + ": средняя неисправность; перевозка остановлена, груз сохранён")
+	name := map[string]string{"light": "лёгкая", "medium": "средняя", "heavy": "тяжёлая"}[severity]
+	s.Log(t.ID + ": " + name + " неисправность; перевозка остановлена, груз сохранён")
 }
 func (s *State) replayFailures() {
 	if !s.ReplayFailures {
@@ -86,8 +93,8 @@ func (s *State) replayFailures() {
 		event := s.FailureScenario[s.FailureCursor]
 		s.FailureCursor++
 		t := s.Truck(event.TruckID)
-		if t != nil && t.Failure == "" {
-			s.failTruck(t)
+		if t != nil && t.Failure == "" && !t.Maintenance {
+			s.failTruck(t, event.Severity)
 		} else {
 			s.Log(event.TruckID + ": повторный отказ пропущен — машина уже недоступна")
 		}
@@ -117,7 +124,7 @@ func repairPath(c Config, t *Truck, destination string) ([]string, float64) {
 }
 
 func (s *State) handleRepairCommand(c Config, cmd Command) ([]Result, bool) {
-	if cmd.Type != "inject_failure" && cmd.Type != "send_to_repair" && cmd.Type != "prioritize_repair" {
+	if cmd.Type != "inject_failure" && cmd.Type != "send_to_repair" && cmd.Type != "prioritize_repair" && cmd.Type != "dispatch_service" && cmd.Type != "preventive_service" && cmd.Type != "dispatch_tow" {
 		return nil, false
 	}
 	reply := func(status, reason, message string) ([]Result, bool) {
@@ -137,14 +144,26 @@ func (s *State) handleRepairCommand(c Config, cmd Command) ([]Result, bool) {
 	s.replayFailures()
 	switch cmd.Type {
 	case "inject_failure":
-		if t.Failure != "" {
+		if t.Failure != "" || t.Maintenance {
 			return reply("rejected", "ALREADY_FAILED", "Машина уже неисправна")
 		}
-		s.failTruck(t)
-		s.FailureScenario = append(s.FailureScenario, FailureEvent{s.Time, t.ID})
+		severity := cmd.Parameters.Severity
+		if severity == "" {
+			severity = "medium"
+		}
+		if severity != "light" && severity != "medium" && severity != "heavy" {
+			return reply("rejected", "INVALID_SEVERITY", "Выберите лёгкую, среднюю или тяжёлую поломку")
+		}
+		s.failTruck(t, severity)
+		s.FailureScenario = append(s.FailureScenario, FailureEvent{Time: s.Time, TruckID: t.ID, Severity: severity})
 		sort.SliceStable(s.FailureScenario, func(i, j int) bool { return s.FailureScenario[i].Time < s.FailureScenario[j].Time })
 		if s.ReplayFailures {
 			s.FailureCursor++
+		}
+	case "dispatch_service", "preventive_service", "dispatch_tow":
+		reason, message := s.dispatchVehicle(c, cmd, t)
+		if reason != "" {
+			return reply("rejected", reason, message)
 		}
 	case "send_to_repair":
 		if t.State != "failed" || t.Failure != "medium" {
@@ -206,7 +225,7 @@ func (s *State) arriveRepair(t *Truck) {
 }
 func (s *State) startRepairs() {
 	for _, r := range s.Repairs {
-		if r.Current != "" || len(r.Queue) == 0 {
+		if r.Current != "" || s.crewAway(r.Node) || len(r.Queue) == 0 {
 			continue
 		}
 		t := s.Truck(r.Queue[0])
