@@ -23,13 +23,14 @@ func Env(k, d string) string {
 }
 
 type Platform struct {
+	User     string
 	Base     string
 	Password string
 	Client   *http.Client
 }
 
 func NewPlatform() *Platform {
-	return &Platform{Env("DITTO_URL", "http://localhost:8080"), os.Getenv("DITTO_PASSWORD"), &http.Client{Timeout: 20 * time.Second}}
+	return &Platform{User: "ditto", Base: Env("DITTO_URL", "http://localhost:8080"), Password: os.Getenv("DITTO_PASSWORD"), Client: &http.Client{Timeout: 20 * time.Second}}
 }
 func (p *Platform) Request(ctx context.Context, method, path string, value any) ([]byte, int, error) {
 	var body io.Reader
@@ -44,7 +45,7 @@ func (p *Platform) Request(ctx context.Context, method, path string, value any) 
 	if e != nil {
 		return nil, 0, e
 	}
-	req.SetBasicAuth("ditto", p.Password)
+	req.SetBasicAuth(p.User, p.Password)
 	req.Header.Set("Content-Type", "application/json")
 	if command, ok := value.(domain.Command); ok {
 		req.Header.Set("correlation-id", command.ID)

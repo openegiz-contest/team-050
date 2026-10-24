@@ -1,0 +1,18 @@
+{
+  "name": "team050-target",
+  "connectionType": "mqtt-5",
+  "connectionStatus": "open",
+  "failoverEnabled": true,
+  "uri": "tcp://mosquitto:1883",
+  "sources": [],
+  "targets": [{
+    "address": "team050/ditto/{{ topic:channel }}/{{ topic:criterion }}/{{ thing:namespace }}/{{ thing:name }}",
+    "qos": 1,
+    "topics": [
+      "_/_/things/twin/events?namespaces=org.openegiz.team050",
+      "_/_/things/live/messages?namespaces=org.openegiz.team050",
+      "_/_/things/live/commands?namespaces=org.openegiz.team050"
+    ],
+    "authorizationContext": ["nginx:ditto"]
+  }]
+}

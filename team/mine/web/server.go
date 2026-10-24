@@ -129,7 +129,7 @@ func (s *Server) Accept(t domain.Thing, rest bool) {
 	}
 }
 func (s *Server) Subscribe(client mqtt.Client) {
-	client.Subscribe("opentwins/twin/events/"+domain.Namespace+"/+", 1, func(_ mqtt.Client, m mqtt.Message) {
+	client.Subscribe("team050/ditto/twin/events/"+domain.Namespace+"/+", 1, func(_ mqtt.Client, m mqtt.Message) {
 		var env transport.Envelope
 		if json.Unmarshal(m.Payload(), &env) != nil {
 			return
@@ -149,7 +149,7 @@ func (s *Server) Subscribe(client mqtt.Client) {
 		}
 		s.Accept(t, false)
 	})
-	client.Subscribe("opentwins/live/messages/"+domain.Namespace+"/control-01", 1, func(_ mqtt.Client, m mqtt.Message) {
+	client.Subscribe("team050/ditto/live/messages/"+domain.Namespace+"/control-01", 1, func(_ mqtt.Client, m mqtt.Message) {
 		var env transport.Envelope
 		if json.Unmarshal(m.Payload(), &env) != nil || env.Path != "/outbox/messages/command_result" {
 			return

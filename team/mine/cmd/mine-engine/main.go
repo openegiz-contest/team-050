@@ -54,7 +54,7 @@ func main() {
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer cancel()
 	client, e := transport.Connect("team050-engine", func(client mqtt.Client) {
-		client.Subscribe("opentwins/live/messages/"+domain.Namespace+"/control-01", 1, func(_ mqtt.Client, m mqtt.Message) {
+		client.Subscribe("team050/ditto/live/messages/"+domain.Namespace+"/control-01", 1, func(_ mqtt.Client, m mqtt.Message) {
 			var env transport.Envelope
 			if json.Unmarshal(m.Payload(), &env) != nil || env.Path != "/inbox/messages/dispatch" || !strings.HasSuffix(env.Topic, "/things/live/messages/dispatch") {
 				return
@@ -68,7 +68,7 @@ func main() {
 			case <-ctx.Done():
 			}
 		})
-		client.Subscribe("opentwins/twin/events/"+domain.Namespace+"/+", 1, func(_ mqtt.Client, m mqtt.Message) {
+		client.Subscribe("team050/ditto/twin/events/"+domain.Namespace+"/+", 1, func(_ mqtt.Client, m mqtt.Message) {
 			var env transport.Envelope
 			var features domain.Features
 			if json.Unmarshal(m.Payload(), &env) != nil || env.Path != "/features" || json.Unmarshal(env.Value, &features) != nil {
