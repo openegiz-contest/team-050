@@ -8,7 +8,9 @@ compose=(docker compose --env-file deploy/compose/.env -f deploy/compose/docker-
 example_id=$(docker ps -q --filter label=com.docker.compose.project=openegiz --filter label=com.docker.compose.service=mine-simulator)
 if [[ -n "$example_id" ]]; then docker stop "$example_id"; fi
 docker_memory=$(docker info --format '{{.MemTotal}}')
+low_memory=0
 if [[ "${TEAM_LOW_MEMORY:-0}" == 1 || "$docker_memory" -lt 6442450944 ]]; then
+  low_memory=1
   printf 'Последовательный запуск платформы для ограниченной памяти.\n'
   # Keep the two initial JVMs responsive enough to discover each other. Start
   # the remaining members after their predecessors have opened management HTTP.
@@ -25,7 +27,15 @@ if [[ "${TEAM_LOW_MEMORY:-0}" == 1 || "$docker_memory" -lt 6442450944 ]]; then
 else
   "${compose[@]}" build
 fi
-"${compose[@]}" up -d --wait --wait-timeout 1200
+up_options=(-d --wait --wait-timeout 1200)
+if [[ "$low_memory" == 1 && "${TEAM_AUXILIARY:-0}" != 1 ]]; then
+  # Keep the complete simulation, twin store and history. The optional
+  # management panels can exhaust the remaining host memory while starting.
+  up_options+=(--scale grafana=0 --scale extended-api=0)
+  printf 'Режим экономии памяти: панели Grafana и OpenEgiz API выключены.\n'
+  printf 'Для полного стенда: TEAM_AUXILIARY=1 bash scripts/team-up.sh\n'
+fi
+"${compose[@]}" up "${up_options[@]}"
 printf '\nДиспетчерская: http://localhost:%s\n' "${MINE_PORT:-8088}"
 printf 'Смена подготовлена. Назначьте маршруты и нажмите «Начать смену».\n'
 printf 'Остановка с сохранением: bash scripts/team-down.sh\n'
