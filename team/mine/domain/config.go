@@ -75,7 +75,7 @@ func LoadConfig(path string) (Config, error) {
 		}
 		seen[n.ID] = true
 	}
-	for _, id := range []string{"P", "E1", "E2", "E3", "E4", "C1", "C2", "C3"} {
+	for _, id := range []string{"P", "E1", "E2", "E3", "E4", "C1", "C2", "C3", "R1", "R2"} {
 		if !seen[id] {
 			return c, fmt.Errorf("missing node %s", id)
 		}

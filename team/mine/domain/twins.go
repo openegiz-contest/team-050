@@ -48,6 +48,18 @@ func Snapshot(c Config, s *State) []Thing {
 	}
 	f.Set("plan_completion_pct", completion, "%")
 	f.Set("active_trucks", len(s.Trucks), "")
+	unavailable := 0
+	downtime := 0.0
+	for _, t := range s.Trucks {
+		if t.Failure != "" {
+			unavailable++
+		}
+		downtime += t.Downtime
+	}
+	f.Set("failed_trucks", unavailable, "")
+	f.Set("available_trucks", len(s.Trucks)-unavailable, "")
+	f.Set("failure_downtime_s", downtime, "s")
+	f.Set("failure_scenario_json", JSON(s.FailureScenario), "")
 	f.Set("events_json", JSON(s.Events), "")
 	report := ""
 	if len(s.Report) > 0 {
@@ -64,6 +76,9 @@ func Snapshot(c Config, s *State) []Thing {
 	for _, e := range s.Crushers {
 		ids = append(ids, ThingID(e.ID))
 	}
+	for _, r := range s.Repairs {
+		ids = append(ids, ThingID(r.ID))
+	}
 	add("mine-01", "mine", map[string]any{"manifest": ids, "config_hash": c.Hash}, f)
 	f = Features{}
 	f.Set("state", s.Mode, "")
@@ -72,6 +87,8 @@ func Snapshot(c Config, s *State) []Thing {
 	f.Set("config_hash", c.Hash, "")
 	f.Set("last_command_id", s.LastCommand, "")
 	f.Set("last_command_status", s.LastStatus, "")
+	f.Set("roles_json", JSON([]string{"dispatcher", "mechanic"}), "")
+	f.Set("model_version", "2-medium-failure", "")
 	add("control-01", "control", nil, f)
 	f = Features{}
 	f.Set("topology_version", c.TopologyVersion, "")
@@ -85,12 +102,11 @@ func Snapshot(c Config, s *State) []Thing {
 		f.Set("volume_m3", t.Volume, "m3")
 		edge := ""
 		speed := 0.0
-		if moving(t) {
+		if onEdge(t) {
 			edge = t.Path[t.Index] + ">" + t.Path[t.Index+1]
-			speed = c.SpeedEmpty
-			if t.Payload > 0 {
-				speed = c.SpeedLoaded
-			}
+		}
+		if moving(t) {
+			speed = truckSpeed(c, t)
 		}
 		if s.Mode != "running" {
 			speed = 0
@@ -109,6 +125,13 @@ func Snapshot(c Config, s *State) []Thing {
 		f.Set("trips_total", t.Trips, "")
 		f.Set("queue_wait_s", t.QueueWait, "s")
 		f.Set("operation_elapsed_s", t.Timer, "s")
+		f.Set("failure_severity", t.Failure, "")
+		f.Set("failure_at_s", t.FailureAt, "s")
+		f.Set("repair_node", t.RepairNode, "")
+		f.Set("failures_total", t.Failures, "")
+		f.Set("repairs_completed", t.RepairsCompleted, "")
+		f.Set("failure_downtime_s", t.Downtime, "s")
+		f.Set("repair_wait_s", t.RepairWait, "s")
 		f.Set("metrics_json", JSON(map[string]any{"loading": t.Loading, "unloading": t.Unloading, "cycles": t.Cycles}), "")
 		add(t.ID, "haul-truck", map[string]any{"model": "CAT 793D", "capacity_t": c.Capacity, "body_m3": c.Body}, f)
 	}
@@ -151,6 +174,21 @@ func Snapshot(c Config, s *State) []Thing {
 		f.Set("busy_s", e.Busy, "s")
 		f.Set("starved_s", e.Starved, "s")
 		add(e.ID, "crusher", map[string]any{"node_id": e.Node, "buffer_capacity_t": c.BufferCapacity}, f)
+	}
+	for _, r := range s.Repairs {
+		f = Features{}
+		state := "idle"
+		if t := s.Truck(r.Current); t != nil {
+			state = t.State
+		}
+		f.Set("state", state, "")
+		f.Set("current_truck_id", r.Current, "")
+		f.Set("queue_json", JSON(r.Queue), "")
+		f.Set("queue_length", len(r.Queue), "")
+		f.Set("busy_s", r.Busy, "s")
+		f.Set("idle_s", r.Idle, "s")
+		f.Set("repairs_completed", r.Completed, "")
+		add(r.ID, "repair-site", map[string]any{"node_id": r.Node, "crews": 1, "diagnosis_s": RepairDiagnosisSeconds, "repair_s": RepairWorkSeconds, "travel_speed_kmh": RepairTravelSpeed}, f)
 	}
 	return out
 }

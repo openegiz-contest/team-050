@@ -47,6 +47,7 @@ func main() {
 		s.PlanTonnes = 94000
 		s.Log("Принят сменный план: 94 000 т переработанной руды.")
 	}
+	s.EnsureRepairs()
 	commands := make(chan domain.Command, 256)
 	type receipt struct {
 		name string

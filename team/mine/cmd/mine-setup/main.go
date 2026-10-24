@@ -49,6 +49,12 @@ func main() {
 		for attempt := 0; ; attempt++ {
 			_, status, e := p.Request(ctx, "GET", "/api/2/things/"+t.ID, nil)
 			if status == 200 && e == nil {
+				if domain.Name(t.ID) == "mine-01" {
+					_, _, e = p.Request(ctx, "PUT", "/api/2/things/"+t.ID+"/attributes/manifest", t.Attributes["manifest"])
+					if e != nil {
+						log.Fatal(e)
+					}
+				}
 				log.Printf("exists %s", t.ID)
 				break
 			}
