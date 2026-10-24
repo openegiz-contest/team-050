@@ -2,6 +2,7 @@ package domain
 
 import (
 	"crypto/rand"
+	"encoding/binary"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
@@ -89,6 +90,7 @@ type State struct {
 	Seq          uint64           `json:"snapshot_seq"`
 	Mode         string           `json:"state"`
 	Speed        int              `json:"speedup"`
+	PlanTonnes   float64          `json:"plan_t"`
 	Trucks       []*Truck         `json:"trucks"`
 	Loaders      []*Loader        `json:"loaders"`
 	Crushers     []*Crusher       `json:"crushers"`
@@ -128,7 +130,7 @@ func NewState(c Config) *State {
 	if _, e := rand.Read(b); e != nil {
 		panic(e)
 	}
-	s := &State{RunID: hex.EncodeToString(b), ConfigHash: c.Hash, Mode: "ready", Speed: 30, InitialPlans: map[string]*Plan{}}
+	s := &State{RunID: hex.EncodeToString(b), ConfigHash: c.Hash, Mode: "ready", Speed: 30, PlanTonnes: float64(93000 + binary.BigEndian.Uint32(b[:4])%2001), InitialPlans: map[string]*Plan{}}
 	for i := 1; i <= c.TruckCount; i++ {
 		s.Trucks = append(s.Trucks, &Truck{ID: fmt.Sprintf("truck-%02d", i), State: "idle", Node: "P"})
 	}
@@ -185,7 +187,12 @@ func (s *State) Totals() (loaded, delivered, processed, payload, buffer float64)
 }
 func (s *State) ReportBytes(c Config) []byte {
 	l, d, p, t, b := s.Totals()
-	out := map[string]any{"schema_version": 1, "run_id": s.RunID, "config_hash": c.Hash, "config": c, "sim_time_s": s.Time, "state": s.Mode, "plan_defined": false, "loaded_t": l, "delivered_t": d, "processed_t": p, "payload_remaining_t": t, "buffer_remaining_t": b, "initial_plans": s.InitialPlans, "trucks": s.Trucks, "loaders": s.Loaders, "crushers": s.Crushers}
+	out := map[string]any{"schema_version": 1, "run_id": s.RunID, "config_hash": c.Hash, "config": c, "sim_time_s": s.Time, "state": s.Mode, "plan_defined": s.PlanTonnes > 0, "plan_t": s.PlanTonnes, "plan_completion_pct": func() float64 {
+		if s.PlanTonnes > 0 {
+			return p / s.PlanTonnes * 100
+		}
+		return 0
+	}(), "loaded_t": l, "delivered_t": d, "processed_t": p, "payload_remaining_t": t, "buffer_remaining_t": b, "initial_plans": s.InitialPlans, "trucks": s.Trucks, "loaders": s.Loaders, "crushers": s.Crushers}
 	data, _ := json.Marshal(out)
 	return data
 }
@@ -231,6 +238,10 @@ func (s *State) Handle(c Config, cmd Command) ([]Result, error) {
 			}
 		}
 		n := NewState(c)
+		// A repeat compares dispatching decisions under the same shift target.
+		if s.PlanTonnes > 0 {
+			n.PlanTonnes = s.PlanTonnes
+		}
 		for _, t := range n.Trucks {
 			if p := s.InitialPlans[t.ID]; p != nil {
 				t.Plan = &Plan{ID: p.ID, Nodes: append([]string{}, p.Nodes...)}

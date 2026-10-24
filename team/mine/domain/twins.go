@@ -38,11 +38,15 @@ func Snapshot(c Config, s *State) []Thing {
 	}
 	loaded, delivered, processed, payload, buffer := s.Totals()
 	f := Features{}
-	for k, v := range map[string]float64{"loaded_t": loaded, "delivered_t": delivered, "processed_t": processed, "truck_payload_total_t": payload, "buffer_total_t": buffer, "plan_t": 0} {
+	for k, v := range map[string]float64{"loaded_t": loaded, "delivered_t": delivered, "processed_t": processed, "truck_payload_total_t": payload, "buffer_total_t": buffer, "plan_t": s.PlanTonnes} {
 		f.Set(k, v, "t")
 	}
-	f.Set("plan_defined", false, "")
-	f.Set("plan_completion_pct", 0, "%")
+	f.Set("plan_defined", s.PlanTonnes > 0, "")
+	completion := 0.0
+	if s.PlanTonnes > 0 {
+		completion = processed / s.PlanTonnes * 100
+	}
+	f.Set("plan_completion_pct", completion, "%")
 	f.Set("active_trucks", len(s.Trucks), "")
 	f.Set("events_json", JSON(s.Events), "")
 	report := ""

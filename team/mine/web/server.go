@@ -32,30 +32,32 @@ type Frame struct {
 	Received time.Time                  `json:"received_at"`
 }
 type RequestRecord struct {
-	Command domain.Command `json:"command"`
-	Result  domain.Result  `json:"result"`
-	Created time.Time      `json:"created_at"`
-	Sent    time.Time      `json:"sent_at"`
+	Command  domain.Command `json:"command"`
+	Result   domain.Result  `json:"result"`
+	Created  time.Time      `json:"created_at"`
+	Sent     time.Time      `json:"sent_at"`
+	Attempts int            `json:"attempts"`
 }
 type Server struct {
-	mu        sync.Mutex
-	Config    domain.Config
-	Platform  *transport.Platform
-	Store     *persistence.Store
-	MQTT      mqtt.Client
-	Current   *Frame
-	Frames    map[string]*Frame
-	Order     []string
-	Topology  map[string]any
-	Requests  map[string]*RequestRecord
-	Listeners map[chan []byte]bool
-	Sessions  map[string]time.Time
-	Expected  int
-	LastEvent time.Time
+	mu           sync.Mutex
+	Config       domain.Config
+	Platform     *transport.Platform
+	Store        *persistence.Store
+	MQTT         mqtt.Client
+	Current      *Frame
+	Frames       map[string]*Frame
+	Order        []string
+	Topology     map[string]any
+	Requests     map[string]*RequestRecord
+	Listeners    map[chan []byte]bool
+	Sessions     map[string]time.Time
+	Expected     int
+	LastEvent    time.Time
+	WakeCommands chan struct{}
 }
 
 func New(c domain.Config, store *persistence.Store) *Server {
-	return &Server{Config: c, Platform: transport.NewPlatform(), Store: store, Frames: map[string]*Frame{}, Requests: map[string]*RequestRecord{}, Listeners: map[chan []byte]bool{}, Sessions: map[string]time.Time{}, Expected: len(domain.Snapshot(c, domain.NewState(c)))}
+	return &Server{Config: c, Platform: transport.NewPlatform(), Store: store, Frames: map[string]*Frame{}, Requests: map[string]*RequestRecord{}, Listeners: map[chan []byte]bool{}, Sessions: map[string]time.Time{}, Expected: len(domain.Snapshot(c, domain.NewState(c))), WakeCommands: make(chan struct{}, 1)}
 }
 func value(f domain.Features, k string) any { return f[k].Properties.Value }
 func number(v any) float64 {
@@ -263,27 +265,38 @@ func (s *Server) retryCommands(ctx context.Context) {
 		case <-ctx.Done():
 			return
 		case <-ticker.C:
-			s.mu.Lock()
-			pending := []RequestRecord{}
-			for _, r := range s.Requests {
-				if (r.Result.Status == "received" || r.Result.Status == "scheduled") && time.Since(r.Sent) > 4*time.Second && time.Since(r.Created) < 24*time.Hour {
-					pending = append(pending, *r)
-					r.Sent = time.Now()
-				}
+		case <-s.WakeCommands:
+		}
+		s.mu.Lock()
+		pending := []RequestRecord{}
+		for _, r := range s.Requests {
+			delay := time.Duration(2<<min(r.Attempts, 4)) * time.Second
+			if r.Result.Status == "scheduled" {
+				delay = 30 * time.Second
 			}
-			s.mu.Unlock()
-			sort.Slice(pending, func(i, j int) bool {
-				if pending[i].Created.Equal(pending[j].Created) {
-					return pending[i].Command.ID < pending[j].Command.ID
-				}
-				return pending[i].Created.Before(pending[j].Created)
-			})
-			for _, record := range pending {
-				cmd := record.Command
-				_, _, e := s.Platform.Request(ctx, "POST", "/api/2/things/"+domain.ThingID("control-01")+"/inbox/messages/dispatch?timeout=0", cmd)
-				if e != nil {
-					log.Printf("dispatch %s: %v", cmd.ID, e)
-				}
+			if (r.Result.Status == "received" || r.Result.Status == "scheduled") && (r.Sent.IsZero() || time.Since(r.Sent) > delay) && time.Since(r.Created) < 24*time.Hour {
+				pending = append(pending, *r)
+				r.Sent = time.Now()
+				r.Attempts++
+			}
+		}
+		s.mu.Unlock()
+		sort.Slice(pending, func(i, j int) bool {
+			if pending[i].Sent.IsZero() != pending[j].Sent.IsZero() {
+				return pending[i].Sent.IsZero()
+			}
+			if pending[i].Created.Equal(pending[j].Created) {
+				return pending[i].Command.ID < pending[j].Command.ID
+			}
+			return pending[i].Created.Before(pending[j].Created)
+		})
+		for _, record := range pending {
+			cmd := record.Command
+			requestContext, cancel := context.WithTimeout(ctx, 5*time.Second)
+			_, _, e := s.Platform.Request(requestContext, "POST", "/api/2/things/"+domain.ThingID("control-01")+"/inbox/messages/dispatch?timeout=0", cmd)
+			cancel()
+			if e != nil {
+				log.Printf("dispatch %s: %v", cmd.ID, e)
 			}
 		}
 	}
@@ -412,6 +425,10 @@ func (s *Server) Handler(uiPath string) http.Handler {
 			return
 		}
 		s.Requests[cmd.ID] = record
+		select {
+		case s.WakeCommands <- struct{}{}:
+		default:
+		}
 		s.BroadcastLocked("command", record)
 		jsonResponse(w, 202, record)
 	})

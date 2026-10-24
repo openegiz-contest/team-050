@@ -43,6 +43,10 @@ func main() {
 			s.Log("Восстановлено после остановки. Смена на паузе.")
 		}
 	}
+	if s.PlanTonnes == 0 && s.Mode != "finished" {
+		s.PlanTonnes = 94000
+		s.Log("Принят сменный план: 94 000 т переработанной руды.")
+	}
 	commands := make(chan domain.Command, 256)
 	type receipt struct {
 		name string
@@ -87,6 +91,47 @@ func main() {
 		log.Fatal(e)
 	}
 	defer client.Disconnect(500)
+	// Network waits must not hold the simulation owner or delay commands.
+	frameQueue := make(chan []domain.Thing, 1)
+	frameDone := make(chan error, 1)
+	resultQueue := make(chan domain.Result, 256)
+	go func() {
+		for {
+			select {
+			case <-ctx.Done():
+				return
+			case things := <-frameQueue:
+				err := transport.PublishFrame(client, things)
+				select {
+				case frameDone <- err:
+				case <-ctx.Done():
+					return
+				}
+			}
+		}
+	}()
+	go func() {
+		for {
+			select {
+			case <-ctx.Done():
+				return
+			case r := <-resultQueue:
+				if client.IsConnectionOpen() {
+					if err := transport.PublishResult(client, r); err != nil {
+						log.Printf("result: %v", err)
+					}
+				}
+			}
+		}
+	}()
+	sendResult := func(r domain.Result) {
+		select {
+		case resultQueue <- r:
+		default:
+			log.Printf("result %s remains in durable journal; retry will resend", r.ID)
+		}
+	}
+	publishing := false
 	// Keep only one immutable frame in flight. A broker PUBACK does not mean
 	// Ditto persisted it; the matching twin event is the acknowledgement.
 	var flight []domain.Thing
@@ -103,6 +148,9 @@ func main() {
 		dirty = true
 	}
 	flush := func(now time.Time) {
+		if publishing {
+			return
+		}
 		retrying := len(pending) > 0
 		if len(pending) == 0 {
 			if !dirty || now.Sub(sentAt) < time.Second {
@@ -162,18 +210,15 @@ func main() {
 			}
 			missingThings = append(missingThings, t)
 		}
-		if e := transport.PublishFrame(client, missingThings); e != nil {
-			log.Printf("publish: %v", e)
-		}
+		frameQueue <- missingThings
+		publishing = true
 	}
 	saveResults := func(cmd *domain.Command, rs []domain.Result) {
 		if e := store.Save(s, cmd, rs); e != nil {
 			log.Fatal(e)
 		}
 		for _, r := range rs {
-			if e := transport.PublishResult(client, r); e != nil {
-				log.Printf("result: %v", e)
-			}
+			sendResult(r)
 		}
 	}
 	publish()
@@ -235,6 +280,11 @@ func main() {
 			}
 		case <-lookupDone:
 			checking = false
+		case err := <-frameDone:
+			publishing = false
+			if err != nil {
+				log.Printf("publish: %v", err)
+			}
 		case cmd := <-commands:
 			advance(time.Now())
 			request, _ := json.Marshal(cmd)
@@ -245,9 +295,9 @@ func main() {
 			if prior != nil {
 				if !bytes.Equal(request, old) {
 					r := domain.Result{ID: cmd.ID, RunID: cmd.RunID, Status: "rejected", Reason: "ID_CONFLICT", Message: "Идентификатор использован для другой команды", Time: s.Time, Seq: s.Seq}
-					transport.PublishResult(client, r)
+					sendResult(r)
 				} else {
-					transport.PublishResult(client, *prior)
+					sendResult(*prior)
 				}
 				continue
 			}
