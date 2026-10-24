@@ -1,0 +1,4301 @@
+{
+  "buffer_remaining_t": 718.6488888888737,
+  "commands": [
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "a06aedd7-eb43-4be2-8948-815a8c9e6a8e",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-20",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": [
+            "E1",
+            "J1",
+            "J3",
+            "C2"
+          ],
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "a06aedd7-eb43-4be2-8948-815a8c9e6a8e",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "85ec266c-b5f2-4064-bed7-32d35c26b335",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-02",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": [
+            "E2",
+            "J1",
+            "J2",
+            "J4",
+            "C2"
+          ],
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "85ec266c-b5f2-4064-bed7-32d35c26b335",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "b86c4585-8f7c-450e-ae0e-61cc25b702ef",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "start_shift",
+        "target_id": "",
+        "expected_route_revision": 0,
+        "topology_version": "",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "b86c4585-8f7c-450e-ae0e-61cc25b702ef",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "98b05dc9-2c07-40bc-96a9-69f683809271",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-01",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "98b05dc9-2c07-40bc-96a9-69f683809271",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "8712b87d-0426-40af-be3b-8d9ef95929ee",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-03",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "8712b87d-0426-40af-be3b-8d9ef95929ee",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "5d1feb7b-4832-423f-8b08-a8a00d5eca82",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-02",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "5d1feb7b-4832-423f-8b08-a8a00d5eca82",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "6d483df7-e46c-409e-90ef-e29ae9bbf2e4",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-06",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "6d483df7-e46c-409e-90ef-e29ae9bbf2e4",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "6399d42f-4436-4eba-9d3a-0395abf238e0",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-07",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "6399d42f-4436-4eba-9d3a-0395abf238e0",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "1dc53eda-de9f-440a-beae-7d4224592950",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-04",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "1dc53eda-de9f-440a-beae-7d4224592950",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "d8a0dd1b-b6b3-485b-8259-7e5360900b64",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-05",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "d8a0dd1b-b6b3-485b-8259-7e5360900b64",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "87a494c5-0c8c-486b-bc57-c50f9e55d83c",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-08",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "87a494c5-0c8c-486b-bc57-c50f9e55d83c",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "e0d1ee08-a29e-43c6-b557-40d244dd1d50",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-09",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "e0d1ee08-a29e-43c6-b557-40d244dd1d50",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "668198a9-6c6b-44d2-82af-ac0ddbc8b8af",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-11",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "668198a9-6c6b-44d2-82af-ac0ddbc8b8af",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "6e1eaf2b-381d-467e-b014-63be142b6013",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-10",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "6e1eaf2b-381d-467e-b014-63be142b6013",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "90d6b339-88c3-4d89-8a1b-a67366981d4e",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-13",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "90d6b339-88c3-4d89-8a1b-a67366981d4e",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "2b4ff65d-e63b-4627-ace8-5d6710e92292",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-12",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "2b4ff65d-e63b-4627-ace8-5d6710e92292",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "14f6fcd0-0e61-44b0-8ca2-06f332cf027f",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-14",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "14f6fcd0-0e61-44b0-8ca2-06f332cf027f",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "811b6da6-bbc6-42e3-ba30-daaad69cda00",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-15",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "811b6da6-bbc6-42e3-ba30-daaad69cda00",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "0a7acda8-a0cd-4895-8736-935316881949",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-16",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "0a7acda8-a0cd-4895-8736-935316881949",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "f8679507-2560-4ffe-822d-6591375c3e66",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-17",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "f8679507-2560-4ffe-822d-6591375c3e66",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "a0033ba2-8103-4edc-8c13-c51d4c5d7801",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-18",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "a0033ba2-8103-4edc-8c13-c51d4c5d7801",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "8f582e1f-f220-4b21-8603-56879e28a739",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-19",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "8f582e1f-f220-4b21-8603-56879e28a739",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "e5f711a1-c0a5-4b62-8ee3-85de4eb00989",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-01",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "e5f711a1-c0a5-4b62-8ee3-85de4eb00989",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "3ee0bbf5-623a-4388-a8ec-928e684942db",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-02",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "3ee0bbf5-623a-4388-a8ec-928e684942db",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "3b954d99-e2a8-442b-9d9e-68b8ccfb3048",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-03",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "3b954d99-e2a8-442b-9d9e-68b8ccfb3048",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "c9b59bff-fac8-466d-b849-5f9232675bcf",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-04",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "c9b59bff-fac8-466d-b849-5f9232675bcf",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "e1e486d4-33ae-42d3-8e48-f4c87d80652b",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-20",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "e1e486d4-33ae-42d3-8e48-f4c87d80652b",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "9584f22e-7100-409a-938d-09fe44319474",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-05",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "9584f22e-7100-409a-938d-09fe44319474",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "91efcbef-5803-41a6-9575-29d953874b4a",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-07",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "91efcbef-5803-41a6-9575-29d953874b4a",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "b3aa856e-4b86-4f46-a594-e06d61c51dc3",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-06",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "b3aa856e-4b86-4f46-a594-e06d61c51dc3",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "a7c6c9bb-a7f6-4276-a02a-38fc66f9433d",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-08",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "a7c6c9bb-a7f6-4276-a02a-38fc66f9433d",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "b639f9e0-1eb9-4091-a619-f7b207bf88cf",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-09",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "b639f9e0-1eb9-4091-a619-f7b207bf88cf",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "8eab2d58-0971-4658-a548-b0ddef8bded2",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-10",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "8eab2d58-0971-4658-a548-b0ddef8bded2",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "4dede799-33fc-4580-8547-c97f1857abf6",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-11",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "4dede799-33fc-4580-8547-c97f1857abf6",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "ae4f98a4-ee8a-41a8-906e-6534f071dc7b",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-12",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "ae4f98a4-ee8a-41a8-906e-6534f071dc7b",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 137
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "cd0d4890-de21-4caf-8cd4-9b7fd456cacb",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-10",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "cd0d4890-de21-4caf-8cd4-9b7fd456cacb",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 138
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "4281f5fe-fb55-468c-9b87-2310954fea54",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-13",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "4281f5fe-fb55-468c-9b87-2310954fea54",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 138
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "dfd8fab8-aab5-4d41-a2f7-0ba978672c88",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-16",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "dfd8fab8-aab5-4d41-a2f7-0ba978672c88",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 138
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "c174e9c6-7c39-4efc-93e2-7d491cdfbc4e",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-15",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "c174e9c6-7c39-4efc-93e2-7d491cdfbc4e",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 138
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "33c15154-9603-42a2-96c8-5a715bc107b7",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-08",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "33c15154-9603-42a2-96c8-5a715bc107b7",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 0,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "bfa6cee0-e6d9-4da2-aa8f-9eca46c3e793",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "start_shift",
+        "target_id": "",
+        "expected_route_revision": 0,
+        "topology_version": "",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "bfa6cee0-e6d9-4da2-aa8f-9eca46c3e793",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 0,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "81869839-b262-4ff8-bfc9-14fa2a0d5a79",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-03",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "81869839-b262-4ff8-bfc9-14fa2a0d5a79",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 2,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "f7723423-8f58-4287-8559-535bd5ce5de2",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-13",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "f7723423-8f58-4287-8559-535bd5ce5de2",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 89,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "93a86fd0-b081-409b-b47e-ae746d5713c3",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-14",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "93a86fd0-b081-409b-b47e-ae746d5713c3",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 91,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "a9a474a3-2f11-4d07-9b22-299954c988ba",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-15",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "a9a474a3-2f11-4d07-9b22-299954c988ba",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 94,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "702ed847-f1e8-4183-b787-ef9fbde6f089",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-16",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "702ed847-f1e8-4183-b787-ef9fbde6f089",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 139.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "846c4694-8bdc-4572-80d2-2b196429be36",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-18",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "846c4694-8bdc-4572-80d2-2b196429be36",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 141.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "81309206-2e6d-43aa-b45a-799c605ba4e3",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-17",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "81309206-2e6d-43aa-b45a-799c605ba4e3",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 143.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "076d8006-45fe-4295-ae68-674843eaacdd",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-19",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "076d8006-45fe-4295-ae68-674843eaacdd",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 145.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "e4eff22a-5975-4777-9add-bf75ec874d7e",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-20",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "e4eff22a-5975-4777-9add-bf75ec874d7e",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 147.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "739bf16f-1c7e-40b7-8ac7-741ee3ebe871",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "start_shift",
+        "target_id": "",
+        "expected_route_revision": 0,
+        "topology_version": "",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "739bf16f-1c7e-40b7-8ac7-741ee3ebe871",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 149.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "b0e34868-bdf4-4c52-b174-4a6aa1acd32c",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "start_shift",
+        "target_id": "",
+        "expected_route_revision": 0,
+        "topology_version": "",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "b0e34868-bdf4-4c52-b174-4a6aa1acd32c",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 152.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "444c32e9-33ba-4a01-92ed-323e8c58344b",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "start_shift",
+        "target_id": "",
+        "expected_route_revision": 0,
+        "topology_version": "",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "444c32e9-33ba-4a01-92ed-323e8c58344b",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 154.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "4b126bc9-c67a-4fe9-a8ff-95bd5e171757",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "start_shift",
+        "target_id": "",
+        "expected_route_revision": 0,
+        "topology_version": "",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "4b126bc9-c67a-4fe9-a8ff-95bd5e171757",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 156.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "4fdd76e7-c57a-4c88-84d3-c1ea5ffdc1bc",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "start_shift",
+        "target_id": "",
+        "expected_route_revision": 0,
+        "topology_version": "",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "4fdd76e7-c57a-4c88-84d3-c1ea5ffdc1bc",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 159.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "161dc859-fb2e-42a3-bb82-6c47d2123207",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-02",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "161dc859-fb2e-42a3-bb82-6c47d2123207",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 163.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "3b865bb4-0410-4cbf-9cce-8b2a6bb25bbf",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-01",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "3b865bb4-0410-4cbf-9cce-8b2a6bb25bbf",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 166.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "25e7aeea-5486-4b86-96d9-eb977c7772a4",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-02",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "25e7aeea-5486-4b86-96d9-eb977c7772a4",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 169.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "3d3aa9cb-ff10-46e5-b614-1d4f530409bf",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-04",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "3d3aa9cb-ff10-46e5-b614-1d4f530409bf",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 171.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "4fc63f13-9bbc-4e54-9d8a-7433dc91fd58",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-03",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "4fc63f13-9bbc-4e54-9d8a-7433dc91fd58",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 174.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "1c89a15a-3760-4327-acbd-e8f8658465b1",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-06",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "1c89a15a-3760-4327-acbd-e8f8658465b1",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 176.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "b6074b9e-63de-4ce6-95cd-c40d29ea35f5",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-05",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "b6074b9e-63de-4ce6-95cd-c40d29ea35f5",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 178.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "c86d0f6b-0b8b-45f7-b066-979989c5cc74",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-07",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "c86d0f6b-0b8b-45f7-b066-979989c5cc74",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 180.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "ddf6c978-dcc7-40f3-8a0b-004669475eea",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-08",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "ddf6c978-dcc7-40f3-8a0b-004669475eea",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 181.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "a4c5e65b-16e9-405e-8d35-90c767a9d674",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-09",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "a4c5e65b-16e9-405e-8d35-90c767a9d674",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 182.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "e3803351-c481-41c9-b5ac-9adaa027ab40",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-10",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "e3803351-c481-41c9-b5ac-9adaa027ab40",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 184.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "1b3ec94e-8818-4a0d-b18f-58a7b0846480",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-11",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "1b3ec94e-8818-4a0d-b18f-58a7b0846480",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 185.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "6f97280e-af78-4ec6-964e-aa0eaa583fe9",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-12",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "6f97280e-af78-4ec6-964e-aa0eaa583fe9",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 185.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "38c148eb-bac4-4879-acc4-16dd0a9ddbd6",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-14",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "38c148eb-bac4-4879-acc4-16dd0a9ddbd6",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 186.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "ff27ca03-de77-4b81-a7a2-c22cc1adc9c0",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-13",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "ff27ca03-de77-4b81-a7a2-c22cc1adc9c0",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 188.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "c6f551dd-7e6a-4786-9df4-e23928fa6c29",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-15",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "c6f551dd-7e6a-4786-9df4-e23928fa6c29",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 189.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "52751c0a-adb0-4fa0-9ae6-53313ed57060",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-16",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "52751c0a-adb0-4fa0-9ae6-53313ed57060",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 190.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "17c5947e-9fb0-4504-8c9e-4bfa2e0c8987",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-17",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "17c5947e-9fb0-4504-8c9e-4bfa2e0c8987",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 192.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "0b32ebc3-0d6f-4e4e-80a6-f8fda9cb3634",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-18",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "0b32ebc3-0d6f-4e4e-80a6-f8fda9cb3634",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 193.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "b19236e5-7a73-431a-87e7-5aa453fb27ba",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-19",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "b19236e5-7a73-431a-87e7-5aa453fb27ba",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 195.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "1069a7ac-9ceb-47a8-8dee-d146f9fdc4ee",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-20",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "1069a7ac-9ceb-47a8-8dee-d146f9fdc4ee",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 197.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "e585ba0d-ae7f-4a24-837e-b4bcd85de278",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "repeat_shift",
+        "target_id": "",
+        "expected_route_revision": 0,
+        "topology_version": "",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "e585ba0d-ae7f-4a24-837e-b4bcd85de278",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "SHIFT_RUNNING",
+        "message": "Сначала поставьте смену на паузу",
+        "sim_time_s": 199.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "e7391921-dc37-4e42-83c8-aaee7b0a0ef3",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-01",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "e7391921-dc37-4e42-83c8-aaee7b0a0ef3",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 201.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "b61914a6-126d-4975-8a0c-da0da3156c57",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-02",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "b61914a6-126d-4975-8a0c-da0da3156c57",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 202.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "d5494b1d-599b-460c-83ad-f3588af92fca",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-04",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "d5494b1d-599b-460c-83ad-f3588af92fca",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 203.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "cae91f5e-a5b8-466f-8e57-5e946f1fc4ee",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-03",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "cae91f5e-a5b8-466f-8e57-5e946f1fc4ee",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 204.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "733935f8-c954-47dc-9351-6361d109b6aa",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-05",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "733935f8-c954-47dc-9351-6361d109b6aa",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 206.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "cfb37bdd-46f7-4cfe-988c-0765ee19d4f7",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-06",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "cfb37bdd-46f7-4cfe-988c-0765ee19d4f7",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 208.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "25098a17-5b46-4636-9aa1-e66e715e86ba",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-07",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "25098a17-5b46-4636-9aa1-e66e715e86ba",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 209.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "75128248-333b-4d4a-84e6-58e99a755032",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-09",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "75128248-333b-4d4a-84e6-58e99a755032",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 210.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "40e6cf81-1db9-4047-b52c-f4d07a65ca14",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-10",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "40e6cf81-1db9-4047-b52c-f4d07a65ca14",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 212.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "bc41738a-d4e5-4135-bfab-d8d0f66637ea",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-12",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "bc41738a-d4e5-4135-bfab-d8d0f66637ea",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 214.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "41cbcd75-d160-473b-abc8-0d3283b29da4",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-11",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "41cbcd75-d160-473b-abc8-0d3283b29da4",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 215.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "11b5c943-5a05-4906-91d6-9d00ec1238cf",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-13",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "11b5c943-5a05-4906-91d6-9d00ec1238cf",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 216.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "661ed442-16d6-411e-855b-e477ed32be07",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-14",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "661ed442-16d6-411e-855b-e477ed32be07",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 220.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "3efc086e-5a82-49eb-b1a8-3dcd25b91d45",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-17",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "3efc086e-5a82-49eb-b1a8-3dcd25b91d45",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 221.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "19853ce5-37db-4c98-8b63-12e59b18e1df",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-15",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "19853ce5-37db-4c98-8b63-12e59b18e1df",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 223.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "b1b93d61-1e10-49ec-a6e8-28ba733602a9",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-18",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "b1b93d61-1e10-49ec-a6e8-28ba733602a9",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 224.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "956754df-2392-4b16-b726-cd5e800e7447",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-20",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "956754df-2392-4b16-b726-cd5e800e7447",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 226.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "fc57fa9a-6a12-47b0-9e2a-7b92b10bd79a",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-19",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "fc57fa9a-6a12-47b0-9e2a-7b92b10bd79a",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 227.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "5265fad0-b24a-404f-8e62-b0e46658d7ab",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "start_shift",
+        "target_id": "",
+        "expected_route_revision": 0,
+        "topology_version": "",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "5265fad0-b24a-404f-8e62-b0e46658d7ab",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 228.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "91e6ee10-849e-4629-9356-2ea3e30c724a",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "start_shift",
+        "target_id": "",
+        "expected_route_revision": 0,
+        "topology_version": "",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "91e6ee10-849e-4629-9356-2ea3e30c724a",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 245.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "13873839-d511-4bb6-8c99-5a3d09c3a7ee",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-02",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "13873839-d511-4bb6-8c99-5a3d09c3a7ee",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 247.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "3749741b-4ff7-4111-a708-42363be62b35",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-01",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "3749741b-4ff7-4111-a708-42363be62b35",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 250.99999999999991,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "6e0cbbe1-baaf-40e9-9552-d49786b326cf",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-16",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M4",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "6e0cbbe1-baaf-40e9-9552-d49786b326cf",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 313.9999999999999,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "79fa17f2-31db-44f9-8a7d-da1382f55f66",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-04",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "79fa17f2-31db-44f9-8a7d-da1382f55f66",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 323.9999999999999,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "f8720e06-d8c0-4e39-a1ae-b127dd1030fe",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-05",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M1",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "f8720e06-d8c0-4e39-a1ae-b127dd1030fe",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 324.9999999999999,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "9b1e738b-c617-4123-b1d3-e89b5c7ed48c",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-06",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "9b1e738b-c617-4123-b1d3-e89b5c7ed48c",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 326.9999999999999,
+        "snapshot_seq": 140
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "f05aa8db-2544-4b9e-b95c-f58ef0ab9e9f",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-07",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M2",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "f05aa8db-2544-4b9e-b95c-f58ef0ab9e9f",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 369.9999999999999,
+        "snapshot_seq": 141
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "5510957e-f6d2-4c3d-b91a-452861b191dd",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "assign_route",
+        "target_id": "org.openegiz.team050:truck-11",
+        "expected_route_revision": 0,
+        "topology_version": "map-v1",
+        "parameters": {
+          "route_id": "M3",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "5510957e-f6d2-4c3d-b91a-452861b191dd",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "rejected",
+        "reason_code": "STALE_ROUTE",
+        "message": "Назначение уже изменилось. Повторите выбор.",
+        "sim_time_s": 371.9999999999999,
+        "snapshot_seq": 141
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "1807cf52-4068-4b80-81cf-40a185218554",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "resume_shift",
+        "target_id": "",
+        "expected_route_revision": 0,
+        "topology_version": "",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "1807cf52-4068-4b80-81cf-40a185218554",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 890.9999999999993,
+        "snapshot_seq": 156
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "10bbb93f-be21-4bbe-b855-6fe94a2ecd76",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "resume_shift",
+        "target_id": "",
+        "expected_route_revision": 0,
+        "topology_version": "",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "10bbb93f-be21-4bbe-b855-6fe94a2ecd76",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 909.9999999999993,
+        "snapshot_seq": 156
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "e4162e26-f6b5-4590-94b8-3ecd9f8e1de0",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "resume_shift",
+        "target_id": "",
+        "expected_route_revision": 0,
+        "topology_version": "",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "e4162e26-f6b5-4590-94b8-3ecd9f8e1de0",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 924.9999999999993,
+        "snapshot_seq": 156
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "c7a8f4f0-b268-4dd4-9be6-fa175249cf5e",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "resume_shift",
+        "target_id": "",
+        "expected_route_revision": 0,
+        "topology_version": "",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "c7a8f4f0-b268-4dd4-9be6-fa175249cf5e",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 930.9999999999993,
+        "snapshot_seq": 156
+      }
+    },
+    {
+      "command": {
+        "schema_version": 1,
+        "command_id": "026652b6-5f02-44ca-8d47-072a16031671",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "type": "resume_shift",
+        "target_id": "",
+        "expected_route_revision": 0,
+        "topology_version": "",
+        "parameters": {
+          "route_id": "",
+          "loaded_path": null,
+          "speedup": 0
+        }
+      },
+      "result": {
+        "command_id": "026652b6-5f02-44ca-8d47-072a16031671",
+        "run_id": "afef5e282fd0ab8b08e7b495",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 932.9999999999993,
+        "snapshot_seq": 156
+      }
+    }
+  ],
+  "config": {
+    "body_m3": 160,
+    "bucket_fill": 0.9,
+    "bucket_m3": 29,
+    "buffer_capacity_t": 720,
+    "capacity_t": 240,
+    "crusher_base_tph": 3200,
+    "crusher_switch_seconds": 4050,
+    "density_t_m3": 1.7,
+    "edges": [
+      {
+        "from": "P",
+        "length_km": 0.6,
+        "to": "J1"
+      },
+      {
+        "from": "E1",
+        "length_km": 0.5,
+        "to": "J1"
+      },
+      {
+        "from": "E2",
+        "length_km": 0.6,
+        "to": "J1"
+      },
+      {
+        "from": "E3",
+        "length_km": 0.7,
+        "to": "J2"
+      },
+      {
+        "from": "E4",
+        "length_km": 0.8,
+        "to": "J2"
+      },
+      {
+        "from": "J1",
+        "length_km": 0.9,
+        "to": "J3"
+      },
+      {
+        "from": "J2",
+        "length_km": 1,
+        "to": "J4"
+      },
+      {
+        "from": "J1",
+        "length_km": 0.6,
+        "to": "J2"
+      },
+      {
+        "from": "J3",
+        "length_km": 0.6,
+        "to": "J4"
+      },
+      {
+        "from": "J3",
+        "length_km": 0.5,
+        "to": "C1"
+      },
+      {
+        "from": "J4",
+        "length_km": 0.5,
+        "to": "C3"
+      },
+      {
+        "from": "J3",
+        "length_km": 0.6,
+        "to": "C2"
+      },
+      {
+        "from": "J4",
+        "length_km": 0.6,
+        "to": "C2"
+      },
+      {
+        "from": "R1",
+        "length_km": 0.4,
+        "to": "J2"
+      },
+      {
+        "from": "R2",
+        "length_km": 0.3,
+        "to": "J4"
+      }
+    ],
+    "layout_version": "layout-v1",
+    "nodes": [
+      {
+        "id": "P",
+        "kind": "garage",
+        "name": "Гараж",
+        "x": 175,
+        "y": 95
+      },
+      {
+        "id": "E1",
+        "kind": "loading",
+        "name": "Погрузка 1",
+        "x": 130,
+        "y": 240
+      },
+      {
+        "id": "E2",
+        "kind": "loading",
+        "name": "Погрузка 2",
+        "x": 130,
+        "y": 370
+      },
+      {
+        "id": "E3",
+        "kind": "loading",
+        "name": "Погрузка 3",
+        "x": 130,
+        "y": 555
+      },
+      {
+        "id": "E4",
+        "kind": "loading",
+        "name": "Погрузка 4",
+        "x": 130,
+        "y": 685
+      },
+      {
+        "id": "J1",
+        "kind": "junction",
+        "name": "J1",
+        "x": 355,
+        "y": 320
+      },
+      {
+        "id": "J2",
+        "kind": "junction",
+        "name": "J2",
+        "x": 355,
+        "y": 620
+      },
+      {
+        "id": "J3",
+        "kind": "junction",
+        "name": "J3",
+        "x": 735,
+        "y": 320
+      },
+      {
+        "id": "J4",
+        "kind": "junction",
+        "name": "J4",
+        "x": 735,
+        "y": 620
+      },
+      {
+        "id": "C1",
+        "kind": "crusher",
+        "name": "Дробилка 1",
+        "x": 1000,
+        "y": 235
+      },
+      {
+        "id": "C2",
+        "kind": "crusher",
+        "name": "Дробилка 2",
+        "x": 1000,
+        "y": 465
+      },
+      {
+        "id": "C3",
+        "kind": "crusher",
+        "name": "Дробилка 3",
+        "x": 1000,
+        "y": 695
+      },
+      {
+        "id": "R1",
+        "kind": "service",
+        "name": "Ремонт / заправка",
+        "x": 410,
+        "y": 805
+      },
+      {
+        "id": "R2",
+        "kind": "service",
+        "name": "Ремонт / заправка",
+        "x": 785,
+        "y": 805
+      }
+    ],
+    "pass_seconds": 50,
+    "position_loading_seconds": 60,
+    "position_unloading_seconds": 60,
+    "routes": [
+      {
+        "id": "M1",
+        "nodes": [
+          "E1",
+          "J1",
+          "J3",
+          "C1"
+        ]
+      },
+      {
+        "id": "M2",
+        "nodes": [
+          "E2",
+          "J1",
+          "J3",
+          "C2"
+        ]
+      },
+      {
+        "id": "M3",
+        "nodes": [
+          "E3",
+          "J2",
+          "J4",
+          "C2"
+        ]
+      },
+      {
+        "id": "M4",
+        "nodes": [
+          "E4",
+          "J2",
+          "J4",
+          "C3"
+        ]
+      },
+      {
+        "id": "M5",
+        "nodes": [
+          "E1",
+          "J1",
+          "J2",
+          "J4",
+          "J3",
+          "C1"
+        ]
+      },
+      {
+        "id": "M6",
+        "nodes": [
+          "E4",
+          "J2",
+          "J1",
+          "J3",
+          "J4",
+          "C3"
+        ]
+      }
+    ],
+    "shift_seconds": 43200,
+    "speed_empty_kmh": 30,
+    "speed_loaded_kmh": 20,
+    "topology_version": "map-v1",
+    "truck_count": 20,
+    "unloading_seconds": 120,
+    "version": "site-v1"
+  },
+  "config_hash": "e9b00a818d3eaf159dd065d73ede9c3d159496033d52ad416397e90fd59b94ed",
+  "crushers": [
+    {
+      "buffer_t": 185.2444444444441,
+      "busy_s": 30151.714285714243,
+      "current_truck_id": "",
+      "delivered_t": 25200,
+      "id": "crusher-01",
+      "node_id": "C1",
+      "processed_t": 25014.755555549345,
+      "queue": [],
+      "reserved_buffer_t": 0,
+      "starved_s": 13048.285714285326
+    },
+    {
+      "buffer_t": 507.6977777777616,
+      "busy_s": 42017.999999999505,
+      "current_truck_id": "",
+      "delivered_t": 39600,
+      "id": "crusher-02",
+      "node_id": "C2",
+      "processed_t": 39092.30222220618,
+      "queue": [
+        "truck-10",
+        "truck-11",
+        "truck-20",
+        "truck-12",
+        "truck-02",
+        "truck-06",
+        "truck-13",
+        "truck-07"
+      ],
+      "reserved_buffer_t": 0,
+      "starved_s": 1181.9999999999986
+    },
+    {
+      "buffer_t": 25.706666666667907,
+      "busy_s": 31594.936374549947,
+      "current_truck_id": "truck-17",
+      "delivered_t": 28080,
+      "id": "crusher-03",
+      "node_id": "C3",
+      "processed_t": 28054.29333333074,
+      "queue": [],
+      "reserved_buffer_t": 240,
+      "starved_s": 11605.063625449588
+    }
+  ],
+  "delivered_t": 92880,
+  "initial_plans": {
+    "truck-01": {
+      "id": "M1",
+      "nodes": [
+        "E1",
+        "J1",
+        "J3",
+        "C1"
+      ]
+    },
+    "truck-02": {
+      "id": "custom",
+      "nodes": [
+        "E2",
+        "J1",
+        "J2",
+        "J4",
+        "C2"
+      ]
+    },
+    "truck-03": {
+      "id": "M1",
+      "nodes": [
+        "E1",
+        "J1",
+        "J3",
+        "C1"
+      ]
+    },
+    "truck-04": {
+      "id": "M1",
+      "nodes": [
+        "E1",
+        "J1",
+        "J3",
+        "C1"
+      ]
+    },
+    "truck-05": {
+      "id": "M1",
+      "nodes": [
+        "E1",
+        "J1",
+        "J3",
+        "C1"
+      ]
+    },
+    "truck-06": {
+      "id": "M2",
+      "nodes": [
+        "E2",
+        "J1",
+        "J3",
+        "C2"
+      ]
+    },
+    "truck-07": {
+      "id": "M2",
+      "nodes": [
+        "E2",
+        "J1",
+        "J3",
+        "C2"
+      ]
+    },
+    "truck-08": {
+      "id": "M2",
+      "nodes": [
+        "E2",
+        "J1",
+        "J3",
+        "C2"
+      ]
+    },
+    "truck-09": {
+      "id": "M2",
+      "nodes": [
+        "E2",
+        "J1",
+        "J3",
+        "C2"
+      ]
+    },
+    "truck-10": {
+      "id": "M2",
+      "nodes": [
+        "E2",
+        "J1",
+        "J3",
+        "C2"
+      ]
+    },
+    "truck-11": {
+      "id": "M3",
+      "nodes": [
+        "E3",
+        "J2",
+        "J4",
+        "C2"
+      ]
+    },
+    "truck-12": {
+      "id": "M3",
+      "nodes": [
+        "E3",
+        "J2",
+        "J4",
+        "C2"
+      ]
+    },
+    "truck-13": {
+      "id": "M3",
+      "nodes": [
+        "E3",
+        "J2",
+        "J4",
+        "C2"
+      ]
+    },
+    "truck-14": {
+      "id": "M3",
+      "nodes": [
+        "E3",
+        "J2",
+        "J4",
+        "C2"
+      ]
+    },
+    "truck-15": {
+      "id": "M3",
+      "nodes": [
+        "E3",
+        "J2",
+        "J4",
+        "C2"
+      ]
+    },
+    "truck-16": {
+      "id": "M4",
+      "nodes": [
+        "E4",
+        "J2",
+        "J4",
+        "C3"
+      ]
+    },
+    "truck-17": {
+      "id": "M4",
+      "nodes": [
+        "E4",
+        "J2",
+        "J4",
+        "C3"
+      ]
+    },
+    "truck-18": {
+      "id": "M4",
+      "nodes": [
+        "E4",
+        "J2",
+        "J4",
+        "C3"
+      ]
+    },
+    "truck-19": {
+      "id": "M4",
+      "nodes": [
+        "E4",
+        "J2",
+        "J4",
+        "C3"
+      ]
+    },
+    "truck-20": {
+      "id": "custom",
+      "nodes": [
+        "E1",
+        "J1",
+        "J3",
+        "C2"
+      ]
+    }
+  },
+  "loaded_t": 96159.32999999996,
+  "loaders": [
+    {
+      "busy_s": 43067.99999999951,
+      "current_truck_id": "truck-04",
+      "id": "excavator-01",
+      "idle_s": 131.99999999999991,
+      "loaded_t": 28693.109999999917,
+      "node_id": "E1",
+      "passes_total": 717,
+      "queue": [
+        "truck-05"
+      ]
+    },
+    {
+      "busy_s": 31632.1146496816,
+      "current_truck_id": "truck-08",
+      "id": "excavator-02",
+      "idle_s": 11567.88535031795,
+      "loaded_t": 21101.85000000003,
+      "node_id": "E2",
+      "passes_total": 527,
+      "queue": []
+    },
+    {
+      "busy_s": 26670.152866242097,
+      "current_truck_id": "truck-15",
+      "id": "excavator-03",
+      "idle_s": 16529.847133757452,
+      "loaded_t": 17760.000000000084,
+      "node_id": "E3",
+      "passes_total": 444,
+      "queue": []
+    },
+    {
+      "busy_s": 42959.99999999951,
+      "current_truck_id": "truck-19",
+      "id": "excavator-04",
+      "idle_s": 239.99999999999991,
+      "loaded_t": 28604.36999999992,
+      "node_id": "E4",
+      "passes_total": 715,
+      "queue": []
+    }
+  ],
+  "payload_remaining_t": 3279.33,
+  "plan_defined": false,
+  "processed_t": 92161.35111108626,
+  "run_id": "afef5e282fd0ab8b08e7b495",
+  "schema_version": 1,
+  "sim_time_s": 43200,
+  "state": "finished",
+  "trucks": [
+    {
+      "cycle_start": 41561.999999999956,
+      "cycles": {
+        "count": 26,
+        "max_s": 1800.0000000000073,
+        "min_s": 1109.9999999999984,
+        "total_s": 41429.999999999956
+      },
+      "edge_progress": 0.05555555555555555,
+      "has_cycle": true,
+      "id": "truck-01",
+      "load_started": 42311.99999999952,
+      "loading": {
+        "count": 27,
+        "max_s": 300.0000000000073,
+        "min_s": 299.9999999999927,
+        "total_s": 8099.999999999993
+      },
+      "node_id": "J3",
+      "payload_t": 0,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M1",
+        "nodes": [
+          "E1",
+          "J1",
+          "J3",
+          "C1"
+        ]
+      },
+      "queue_wait_s": 13259.99999999955,
+      "route_revision": 1,
+      "state": "returning",
+      "timer_s": 0,
+      "travel_index": 1,
+      "travel_path": [
+        "C1",
+        "J3",
+        "J1",
+        "E1"
+      ],
+      "trips_total": 27,
+      "unload_started": 43013.99999999951,
+      "unloading": {
+        "count": 27,
+        "max_s": 120.00000000000364,
+        "min_s": 119.99999999999909,
+        "total_s": 3240.0000000000027
+      },
+      "volume_m3": 0
+    },
+    {
+      "cycle_start": 41682.07643312054,
+      "cycles": {
+        "count": 14,
+        "max_s": 3095.5414012738547,
+        "min_s": 1553.9999999999977,
+        "total_s": 41538.07643312054
+      },
+      "edge_progress": 0,
+      "has_cycle": true,
+      "id": "truck-02",
+      "load_started": 41742.07643312054,
+      "loading": {
+        "count": 15,
+        "max_s": 300.0000000000073,
+        "min_s": 299.9999999999991,
+        "total_s": 4500.0000000000155
+      },
+      "node_id": "C2",
+      "payload_t": 240,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "custom",
+        "nodes": [
+          "E2",
+          "J1",
+          "J2",
+          "J4",
+          "C2"
+        ]
+      },
+      "queue_wait_s": 22871.999999999513,
+      "route_revision": 1,
+      "state": "queued_unloading",
+      "timer_s": 0,
+      "travel_index": 0,
+      "travel_path": null,
+      "trips_total": 14,
+      "unload_started": 41226.07643312054,
+      "unloading": {
+        "count": 14,
+        "max_s": 120.00000000000182,
+        "min_s": 119.99999999999977,
+        "total_s": 1680.0000000000025
+      },
+      "volume_m3": 141.17647058823528
+    },
+    {
+      "cycle_start": 41921.99999999952,
+      "cycles": {
+        "count": 26,
+        "max_s": 1800.0000000000073,
+        "min_s": 1439.9999999995634,
+        "total_s": 41789.99999999952
+      },
+      "edge_progress": 0.8518518518518539,
+      "has_cycle": true,
+      "id": "truck-03",
+      "load_started": 42671.99999999952,
+      "loading": {
+        "count": 27,
+        "max_s": 300.0000000000073,
+        "min_s": 299.9999999999927,
+        "total_s": 8099.999999999984
+      },
+      "node_id": "J1",
+      "payload_t": 240,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M1",
+        "nodes": [
+          "E1",
+          "J1",
+          "J3",
+          "C1"
+        ]
+      },
+      "queue_wait_s": 13619.999999999996,
+      "route_revision": 1,
+      "state": "hauling",
+      "timer_s": 0,
+      "travel_index": 1,
+      "travel_path": [
+        "E1",
+        "J1",
+        "J3",
+        "C1"
+      ],
+      "trips_total": 26,
+      "unload_started": 41573.999999999956,
+      "unloading": {
+        "count": 26,
+        "max_s": 120.00000000000728,
+        "min_s": 119.99999999956344,
+        "total_s": 3119.9999999995634
+      },
+      "volume_m3": 141.17647058823528
+    },
+    {
+      "cycle_start": 42641.99999999952,
+      "cycles": {
+        "count": 26,
+        "max_s": 1829.999999999997,
+        "min_s": 1439.9999999999854,
+        "total_s": 42509.99999999952
+      },
+      "edge_progress": 0,
+      "has_cycle": true,
+      "id": "truck-04",
+      "load_started": 43031.99999999951,
+      "loading": {
+        "count": 26,
+        "max_s": 300.00000000000364,
+        "min_s": 299.99999999956344,
+        "total_s": 7799.999999999546
+      },
+      "node_id": "E1",
+      "payload_t": 133.11,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M1",
+        "nodes": [
+          "E1",
+          "J1",
+          "J3",
+          "C1"
+        ]
+      },
+      "queue_wait_s": 13979.999999999978,
+      "route_revision": 1,
+      "state": "loading",
+      "timer_s": 32.000000000000085,
+      "travel_index": 0,
+      "travel_path": null,
+      "trips_total": 26,
+      "unload_started": 42293.99999999952,
+      "unloading": {
+        "count": 26,
+        "max_s": 120.00000000000364,
+        "min_s": 119.99999999999636,
+        "total_s": 3120
+      },
+      "volume_m3": 78.30000000000001
+    },
+    {
+      "cycle_start": 43001.99999999951,
+      "cycles": {
+        "count": 26,
+        "max_s": 2189.9999999999973,
+        "min_s": 1439.9999999999854,
+        "total_s": 42869.99999999951
+      },
+      "edge_progress": 0,
+      "has_cycle": true,
+      "id": "truck-05",
+      "load_started": 41951.99999999952,
+      "loading": {
+        "count": 26,
+        "max_s": 300.0000000000073,
+        "min_s": 299.9999999999982,
+        "total_s": 7800.0000000000055
+      },
+      "node_id": "E1",
+      "payload_t": 0,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M1",
+        "nodes": [
+          "E1",
+          "J1",
+          "J3",
+          "C1"
+        ]
+      },
+      "queue_wait_s": 14207.999999999549,
+      "route_revision": 1,
+      "state": "queued_loading",
+      "timer_s": 0,
+      "travel_index": 0,
+      "travel_path": null,
+      "trips_total": 26,
+      "unload_started": 42653.99999999952,
+      "unloading": {
+        "count": 26,
+        "max_s": 120.00000000000364,
+        "min_s": 119.99999999999272,
+        "total_s": 3119.9999999999854
+      },
+      "volume_m3": 0
+    },
+    {
+      "cycle_start": 41856.03821656003,
+      "cycles": {
+        "count": 14,
+        "max_s": 3173.5031847133414,
+        "min_s": 1649.9999999999975,
+        "total_s": 41712.03821656003
+      },
+      "edge_progress": 0,
+      "has_cycle": true,
+      "id": "truck-06",
+      "load_started": 42102.07643312055,
+      "loading": {
+        "count": 15,
+        "max_s": 300.00000000000364,
+        "min_s": 299.9999999999927,
+        "total_s": 4500
+      },
+      "node_id": "C2",
+      "payload_t": 240,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M2",
+        "nodes": [
+          "E2",
+          "J1",
+          "J3",
+          "C2"
+        ]
+      },
+      "queue_wait_s": 25937.999999999538,
+      "route_revision": 1,
+      "state": "queued_unloading",
+      "timer_s": 0,
+      "travel_index": 0,
+      "travel_path": null,
+      "trips_total": 14,
+      "unload_started": 41484.03821656003,
+      "unloading": {
+        "count": 14,
+        "max_s": 120,
+        "min_s": 119.99999999999977,
+        "total_s": 1679.9999999999998
+      },
+      "volume_m3": 141.17647058823528
+    },
+    {
+      "cycle_start": 42371.96178343901,
+      "cycles": {
+        "count": 14,
+        "max_s": 3329.4267515923166,
+        "min_s": 2009.9999999999973,
+        "total_s": 42227.96178343901
+      },
+      "edge_progress": 0,
+      "has_cycle": true,
+      "id": "truck-07",
+      "load_started": 42462.07643312055,
+      "loading": {
+        "count": 15,
+        "max_s": 300.00000000000364,
+        "min_s": 299.9999999999927,
+        "total_s": 4499.999999999991
+      },
+      "node_id": "C2",
+      "payload_t": 240,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M2",
+        "nodes": [
+          "E2",
+          "J1",
+          "J3",
+          "C2"
+        ]
+      },
+      "queue_wait_s": 25937.999999999534,
+      "route_revision": 1,
+      "state": "queued_unloading",
+      "timer_s": 0,
+      "travel_index": 0,
+      "travel_path": null,
+      "trips_total": 14,
+      "unload_started": 41999.96178343901,
+      "unloading": {
+        "count": 14,
+        "max_s": 120.00000000000364,
+        "min_s": 119.99999999999977,
+        "total_s": 1680.0000000000034
+      },
+      "volume_m3": 141.17647058823528
+    },
+    {
+      "cycle_start": 42887.88535031798,
+      "cycles": {
+        "count": 14,
+        "max_s": 3353.5031847133396,
+        "min_s": 2501.8471337579485,
+        "total_s": 42743.88535031798
+      },
+      "edge_progress": 0,
+      "has_cycle": true,
+      "id": "truck-08",
+      "load_started": 42947.88535031798,
+      "loading": {
+        "count": 14,
+        "max_s": 300.0000000000109,
+        "min_s": 299.99999999998545,
+        "total_s": 4199.999999999993
+      },
+      "node_id": "E2",
+      "payload_t": 221.85000000000002,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M2",
+        "nodes": [
+          "E2",
+          "J1",
+          "J3",
+          "C2"
+        ]
+      },
+      "queue_wait_s": 26363.885350317996,
+      "route_revision": 1,
+      "state": "loading",
+      "timer_s": 47.88535031846348,
+      "travel_index": 0,
+      "travel_path": null,
+      "trips_total": 14,
+      "unload_started": 42515.885350317985,
+      "unloading": {
+        "count": 14,
+        "max_s": 120.00000000000182,
+        "min_s": 120,
+        "total_s": 1680.0000000000018
+      },
+      "volume_m3": 130.5
+    },
+    {
+      "cycle_start": 40308.2675159231,
+      "cycles": {
+        "count": 13,
+        "max_s": 3353.5031847133396,
+        "min_s": 2837.57961783433,
+        "total_s": 40164.2675159231
+      },
+      "edge_progress": 0.6693205944800331,
+      "has_cycle": true,
+      "id": "truck-09",
+      "load_started": 40368.26751592311,
+      "loading": {
+        "count": 14,
+        "max_s": 300.00000000000364,
+        "min_s": 299.99999999999955,
+        "total_s": 4200.000000000006
+      },
+      "node_id": "C2",
+      "payload_t": 0,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M2",
+        "nodes": [
+          "E2",
+          "J1",
+          "J3",
+          "C2"
+        ]
+      },
+      "queue_wait_s": 26879.80891719698,
+      "route_revision": 1,
+      "state": "returning",
+      "timer_s": 0,
+      "travel_index": 0,
+      "travel_path": [
+        "C2",
+        "J3",
+        "J1",
+        "E2"
+      ],
+      "trips_total": 14,
+      "unload_started": 43031.80891719695,
+      "unloading": {
+        "count": 14,
+        "max_s": 120.00000000000364,
+        "min_s": 119.99999999999272,
+        "total_s": 1679.9999999999905
+      },
+      "volume_m3": 0
+    },
+    {
+      "cycle_start": 40824.19108280208,
+      "cycles": {
+        "count": 13,
+        "max_s": 3791.6560509553856,
+        "min_s": 2837.579617834366,
+        "total_s": 40680.19108280208
+      },
+      "edge_progress": 0,
+      "has_cycle": true,
+      "id": "truck-10",
+      "load_started": 40884.19108280208,
+      "loading": {
+        "count": 14,
+        "max_s": 300.00000000000364,
+        "min_s": 300,
+        "total_s": 4200.000000000009
+      },
+      "node_id": "C2",
+      "payload_t": 240,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M2",
+        "nodes": [
+          "E2",
+          "J1",
+          "J3",
+          "C2"
+        ]
+      },
+      "queue_wait_s": 27107.99999999954,
+      "route_revision": 1,
+      "state": "queued_unloading",
+      "timer_s": 0,
+      "travel_index": 0,
+      "travel_path": null,
+      "trips_total": 13,
+      "unload_started": 40452.19108280208,
+      "unloading": {
+        "count": 13,
+        "max_s": 120.00000000000045,
+        "min_s": 120,
+        "total_s": 1560.0000000000005
+      },
+      "volume_m3": 141.17647058823528
+    },
+    {
+      "cycle_start": 41106.152866241566,
+      "cycles": {
+        "count": 14,
+        "max_s": 3095.5414012738584,
+        "min_s": 1229.9999999999982,
+        "total_s": 40878.152866241566
+      },
+      "edge_progress": 0,
+      "has_cycle": true,
+      "id": "truck-11",
+      "load_started": 41166.152866241566,
+      "loading": {
+        "count": 15,
+        "max_s": 300.0000000000009,
+        "min_s": 299.9999999999991,
+        "total_s": 4500
+      },
+      "node_id": "C2",
+      "payload_t": 240,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M3",
+        "nodes": [
+          "E3",
+          "J2",
+          "J4",
+          "C2"
+        ]
+      },
+      "queue_wait_s": 24977.99999999952,
+      "route_revision": 1,
+      "state": "queued_unloading",
+      "timer_s": 0,
+      "travel_index": 0,
+      "travel_path": null,
+      "trips_total": 14,
+      "unload_started": 40710.152866241566,
+      "unloading": {
+        "count": 14,
+        "max_s": 120.00000000000182,
+        "min_s": 119.99999999999955,
+        "total_s": 1680.0000000000018
+      },
+      "volume_m3": 141.17647058823528
+    },
+    {
+      "cycle_start": 41364.114649681054,
+      "cycles": {
+        "count": 14,
+        "max_s": 3095.5414012738584,
+        "min_s": 1769.999999999997,
+        "total_s": 41136.114649681054
+      },
+      "edge_progress": 0,
+      "has_cycle": true,
+      "id": "truck-12",
+      "load_started": 41526.152866241566,
+      "loading": {
+        "count": 15,
+        "max_s": 300.0000000000073,
+        "min_s": 299.99999999998545,
+        "total_s": 4500.000000000015
+      },
+      "node_id": "C2",
+      "payload_t": 240,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M3",
+        "nodes": [
+          "E3",
+          "J2",
+          "J4",
+          "C2"
+        ]
+      },
+      "queue_wait_s": 24977.999999999516,
+      "route_revision": 1,
+      "state": "queued_unloading",
+      "timer_s": 0,
+      "travel_index": 0,
+      "travel_path": null,
+      "trips_total": 14,
+      "unload_started": 40968.114649681054,
+      "unloading": {
+        "count": 14,
+        "max_s": 120.00000000000728,
+        "min_s": 119.99999999999977,
+        "total_s": 1680.000000000008
+      },
+      "volume_m3": 141.17647058823528
+    },
+    {
+      "cycle_start": 42137.99999999952,
+      "cycles": {
+        "count": 14,
+        "max_s": 3095.5414012738584,
+        "min_s": 2183.885350318462,
+        "total_s": 41909.99999999952
+      },
+      "edge_progress": 0,
+      "has_cycle": true,
+      "id": "truck-13",
+      "load_started": 42197.99999999952,
+      "loading": {
+        "count": 15,
+        "max_s": 300.00000000000364,
+        "min_s": 299.9999999999993,
+        "total_s": 4500.0000000000055
+      },
+      "node_id": "C2",
+      "payload_t": 240,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M3",
+        "nodes": [
+          "E3",
+          "J2",
+          "J4",
+          "C2"
+        ]
+      },
+      "queue_wait_s": 24977.999999999513,
+      "route_revision": 1,
+      "state": "queued_unloading",
+      "timer_s": 7.105427357601002E-14,
+      "travel_index": 0,
+      "travel_path": null,
+      "trips_total": 14,
+      "unload_started": 41741.99999999952,
+      "unloading": {
+        "count": 14,
+        "max_s": 120.00000000000364,
+        "min_s": 119.99999999999272,
+        "total_s": 1680.0000000000023
+      },
+      "volume_m3": 141.17647058823528
+    },
+    {
+      "cycle_start": 42653.9235668785,
+      "cycles": {
+        "count": 14,
+        "max_s": 3095.5414012738565,
+        "min_s": 2699.808917197436,
+        "total_s": 42425.9235668785
+      },
+      "edge_progress": 0.3337579617834626,
+      "has_cycle": true,
+      "id": "truck-14",
+      "load_started": 42713.92356687849,
+      "loading": {
+        "count": 15,
+        "max_s": 300,
+        "min_s": 299.9999999999991,
+        "total_s": 4499.999999999998
+      },
+      "node_id": "J2",
+      "payload_t": 240,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M3",
+        "nodes": [
+          "E3",
+          "J2",
+          "J4",
+          "C2"
+        ]
+      },
+      "queue_wait_s": 25205.923566878486,
+      "route_revision": 1,
+      "state": "hauling",
+      "timer_s": 0,
+      "travel_index": 1,
+      "travel_path": [
+        "E3",
+        "J2",
+        "J4",
+        "C2"
+      ],
+      "trips_total": 14,
+      "unload_started": 42257.9235668785,
+      "unloading": {
+        "count": 14,
+        "max_s": 120.00000000000364,
+        "min_s": 119.99999999999955,
+        "total_s": 1680.000000000004
+      },
+      "volume_m3": 141.17647058823528
+    },
+    {
+      "cycle_start": 43169.84713375747,
+      "cycles": {
+        "count": 14,
+        "max_s": 3473.6942675158984,
+        "min_s": 2837.5796178343444,
+        "total_s": 42941.84713375747
+      },
+      "edge_progress": 0,
+      "has_cycle": true,
+      "id": "truck-15",
+      "load_started": 40134.30573248362,
+      "loading": {
+        "count": 14,
+        "max_s": 300.00000000000364,
+        "min_s": 299.99999999999955,
+        "total_s": 4200.000000000004
+      },
+      "node_id": "E3",
+      "payload_t": 0,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M3",
+        "nodes": [
+          "E3",
+          "J2",
+          "J4",
+          "C2"
+        ]
+      },
+      "queue_wait_s": 25721.84713375746,
+      "route_revision": 1,
+      "state": "positioning_loading",
+      "timer_s": 29.847133757950978,
+      "travel_index": 0,
+      "travel_path": null,
+      "trips_total": 14,
+      "unload_started": 42773.84713375746,
+      "unloading": {
+        "count": 14,
+        "max_s": 120.00000000000728,
+        "min_s": 120,
+        "total_s": 1680.000000000021
+      },
+      "volume_m3": 0
+    },
+    {
+      "cycle_start": 41789.99999999952,
+      "cycles": {
+        "count": 29,
+        "max_s": 1440.0000000000073,
+        "min_s": 1229.999999999998,
+        "total_s": 41549.99999999952
+      },
+      "edge_progress": 0.6874999999999987,
+      "has_cycle": true,
+      "id": "truck-16",
+      "load_started": 42059.99999999952,
+      "loading": {
+        "count": 30,
+        "max_s": 300.0000000000073,
+        "min_s": 299.9999999999927,
+        "total_s": 9000.000000000004
+      },
+      "node_id": "J2",
+      "payload_t": 0,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M4",
+        "nodes": [
+          "E4",
+          "J2",
+          "J4",
+          "C3"
+        ]
+      },
+      "queue_wait_s": 6089.999999999991,
+      "route_revision": 1,
+      "state": "returning",
+      "timer_s": 4.263256414560601E-13,
+      "travel_index": 2,
+      "travel_path": [
+        "C3",
+        "J4",
+        "J2",
+        "E4"
+      ],
+      "trips_total": 30,
+      "unload_started": 42833.99999999951,
+      "unloading": {
+        "count": 30,
+        "max_s": 120.00000000000182,
+        "min_s": 119.99999999999272,
+        "total_s": 3599.999999999986
+      },
+      "volume_m3": 0
+    },
+    {
+      "cycle_start": 42149.99999999952,
+      "cycles": {
+        "count": 29,
+        "max_s": 1589.9999999999973,
+        "min_s": 1439.9999999995634,
+        "total_s": 41909.99999999952
+      },
+      "edge_progress": 0,
+      "has_cycle": true,
+      "id": "truck-17",
+      "load_started": 42419.99999999952,
+      "loading": {
+        "count": 30,
+        "max_s": 300.0000000000073,
+        "min_s": 299.9999999999927,
+        "total_s": 9000.000000000007
+      },
+      "node_id": "C3",
+      "payload_t": 240,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M4",
+        "nodes": [
+          "E4",
+          "J2",
+          "J4",
+          "C3"
+        ]
+      },
+      "queue_wait_s": 6449.999999999997,
+      "route_revision": 1,
+      "state": "unloading",
+      "timer_s": 114,
+      "travel_index": 0,
+      "travel_path": null,
+      "trips_total": 29,
+      "unload_started": 43193.99999999951,
+      "unloading": {
+        "count": 29,
+        "max_s": 120,
+        "min_s": 119.99999999999272,
+        "total_s": 3479.9999999999836
+      },
+      "volume_m3": 141.17647058823528
+    },
+    {
+      "cycle_start": 42509.99999999952,
+      "cycles": {
+        "count": 29,
+        "max_s": 1949.9999999999973,
+        "min_s": 1439.9999999995634,
+        "total_s": 42269.99999999952
+      },
+      "edge_progress": 0.8333333333333308,
+      "has_cycle": true,
+      "id": "truck-18",
+      "load_started": 42779.99999999951,
+      "loading": {
+        "count": 30,
+        "max_s": 300.00000000000364,
+        "min_s": 299.99999999998545,
+        "total_s": 8999.999999999967
+      },
+      "node_id": "E4",
+      "payload_t": 240,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M4",
+        "nodes": [
+          "E4",
+          "J2",
+          "J4",
+          "C3"
+        ]
+      },
+      "queue_wait_s": 6809.999999999998,
+      "route_revision": 1,
+      "state": "hauling",
+      "timer_s": 0,
+      "travel_index": 0,
+      "travel_path": [
+        "E4",
+        "J2",
+        "J4",
+        "C3"
+      ],
+      "trips_total": 29,
+      "unload_started": 42113.99999999952,
+      "unloading": {
+        "count": 29,
+        "max_s": 120.00000000000364,
+        "min_s": 119.99999999999818,
+        "total_s": 3480.0000000000036
+      },
+      "volume_m3": 141.17647058823528
+    },
+    {
+      "cycle_start": 42869.99999999951,
+      "cycles": {
+        "count": 29,
+        "max_s": 2309.999999999997,
+        "min_s": 1439.9999999995562,
+        "total_s": 42629.99999999951
+      },
+      "edge_progress": 0,
+      "has_cycle": true,
+      "id": "truck-19",
+      "load_started": 43139.99999999951,
+      "loading": {
+        "count": 29,
+        "max_s": 300.00000000000364,
+        "min_s": 299.9999999999927,
+        "total_s": 8699.999999999987
+      },
+      "node_id": "E4",
+      "payload_t": 44.370000000000005,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "M4",
+        "nodes": [
+          "E4",
+          "J2",
+          "J4",
+          "C3"
+        ]
+      },
+      "queue_wait_s": 7169.999999999999,
+      "route_revision": 1,
+      "state": "loading",
+      "timer_s": 40.000000000000085,
+      "travel_index": 0,
+      "travel_path": null,
+      "trips_total": 29,
+      "unload_started": 42473.99999999952,
+      "unloading": {
+        "count": 29,
+        "max_s": 120.00000000000091,
+        "min_s": 120,
+        "total_s": 3480.000000000001
+      },
+      "volume_m3": 26.1
+    },
+    {
+      "cycle_start": 40554.22929936259,
+      "cycles": {
+        "count": 12,
+        "max_s": 3611.4649681528244,
+        "min_s": 3017.770700636923,
+        "total_s": 40422.22929936259
+      },
+      "edge_progress": 0,
+      "has_cycle": true,
+      "id": "truck-20",
+      "load_started": 41231.999999999956,
+      "loading": {
+        "count": 13,
+        "max_s": 300.0000000000018,
+        "min_s": 299.9999999999927,
+        "total_s": 3899.999999999994
+      },
+      "node_id": "C2",
+      "payload_t": 240,
+      "pending": null,
+      "pending_command": "",
+      "pending_run": "",
+      "plan": {
+        "id": "custom",
+        "nodes": [
+          "E1",
+          "J1",
+          "J3",
+          "C2"
+        ]
+      },
+      "queue_wait_s": 28667.99999999998,
+      "route_revision": 1,
+      "state": "queued_unloading",
+      "timer_s": 0,
+      "travel_index": 0,
+      "travel_path": null,
+      "trips_total": 12,
+      "unload_started": 40194.22929936259,
+      "unloading": {
+        "count": 12,
+        "max_s": 120.00000000000182,
+        "min_s": 120,
+        "total_s": 1440.0000000000018
+      },
+      "volume_m3": 141.17647058823528
+    }
+  ]
+}
