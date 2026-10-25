@@ -396,6 +396,7 @@ function renderMaintenance(){
  $<HTMLButtonElement>('preventive-service').disabled=!started||!!failure||maintenance;
  $<HTMLButtonElement>('prioritize-repair').disabled=!started||state!=='queued_repair';
  $('route-editor').hidden=role!=='dispatcher';
+ $<HTMLSelectElement>('speed').disabled=role!=='dispatcher'||ended;
  const mapTime=$<HTMLButtonElement>('map-time');mapTime.textContent=mode==='running'?'Пауза смены':mode==='ready'?'Начать смену':'Продолжить смену';mapTime.disabled=role!=='dispatcher'||ended;
  $<HTMLButtonElement>('distribute').disabled=role!=='dispatcher'||ended;
  if(role!=='dispatcher')for(const id of ['start','pause','repeat','speed'])($<HTMLButtonElement|HTMLSelectElement>(id)).disabled=true;
@@ -484,7 +485,7 @@ function renderFuel(){
  $('truck-fuel').textContent=tank?`${fmt(fuel)} / ${fmt(tank)} л`:'—';
  $('fuel-meter').style.width=`${tank?fuel/tank*100:0}%`;$('fuel-meter').classList.toggle('low-fuel',tank>0&&fuel/tank<.25);
  $('truck-fuel-used').textContent=`${fmt(n(f,'fuel_consumed_l'),1)} л`;
- if(Boolean(get(f,'fuel_requested',false)))$('maintenance-detail').textContent='Заправка назначена на ближайшей безопасной точке';
+ if(!str(f,'failure_severity')&&!Boolean(get(f,'maintenance',false))&&Boolean(get(f,'fuel_requested',false)))$('maintenance-detail').textContent='Заправка назначена на ближайшей безопасной точке';
 }
 function renderStatistics(){
  if(!frame)return;const mine=frame.entities['mine-01'],load=parse<Record<string,number>>(get(mine,'loading_summary_json'),{}),fuel=parse<Record<string,number>>(get(mine,'fuel_summary_json'),{});
