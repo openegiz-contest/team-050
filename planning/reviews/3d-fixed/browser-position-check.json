@@ -1,0 +1,192 @@
+{
+  "vehicles": 23,
+  "unchanged": true,
+  "before": [
+    {
+      "id": "service-01",
+      "transform": "translate(352.75 520.95) rotate(0)"
+    },
+    {
+      "id": "service-02",
+      "transform": "translate(559 644.7) rotate(0)"
+    },
+    {
+      "id": "tow-01",
+      "transform": "translate(352.75 520.95) rotate(0)"
+    },
+    {
+      "id": "truck-01",
+      "transform": "translate(853.8611111111111 485.31) rotate(17.148731190811887)"
+    },
+    {
+      "id": "truck-02",
+      "transform": "translate(864.25 603.45) rotate(0)"
+    },
+    {
+      "id": "truck-03",
+      "transform": "translate(509.5 242.10000000000002) rotate(0)"
+    },
+    {
+      "id": "truck-04",
+      "transform": "translate(689.8796296296305 403.1277777777783) rotate(-149.03624346792648)"
+    },
+    {
+      "id": "truck-05",
+      "transform": "translate(509.5 242.10000000000002) rotate(0)"
+    },
+    {
+      "id": "truck-06",
+      "transform": "translate(864.25 603.45) rotate(0)"
+    },
+    {
+      "id": "truck-07",
+      "transform": "translate(864.25 603.45) rotate(0)"
+    },
+    {
+      "id": "truck-08",
+      "transform": "translate(797.7733938825586 467.86403632953517) rotate(30.963756532073532)"
+    },
+    {
+      "id": "truck-09",
+      "transform": "translate(438 285) rotate(0)"
+    },
+    {
+      "id": "truck-10",
+      "transform": "translate(864.25 603.45) rotate(0)"
+    },
+    {
+      "id": "truck-11",
+      "transform": "translate(864.25 603.45) rotate(0)"
+    },
+    {
+      "id": "truck-12",
+      "transform": "translate(864.25 603.45) rotate(0)"
+    },
+    {
+      "id": "truck-13",
+      "transform": "translate(864.25 603.45) rotate(0)"
+    },
+    {
+      "id": "truck-14",
+      "transform": "translate(336.25 346.05) rotate(0)"
+    },
+    {
+      "id": "truck-15",
+      "transform": "translate(864.25 603.45) rotate(0)"
+    },
+    {
+      "id": "truck-16",
+      "transform": "translate(524.1055555555548 501.66333333333296) rotate(30.963756532073543)"
+    },
+    {
+      "id": "truck-17",
+      "transform": "translate(264.75 388.95) rotate(0)"
+    },
+    {
+      "id": "truck-18",
+      "transform": "translate(264.75 388.95) rotate(0)"
+    },
+    {
+      "id": "truck-19",
+      "transform": "translate(737.75 679.35) rotate(0)"
+    },
+    {
+      "id": "truck-20",
+      "transform": "translate(729.0763741442966 426.64582448657796) rotate(-149.03624346792648)"
+    }
+  ],
+  "after": [
+    {
+      "id": "service-01",
+      "transform": "translate(352.75 520.95) rotate(0)"
+    },
+    {
+      "id": "service-02",
+      "transform": "translate(559 644.7) rotate(0)"
+    },
+    {
+      "id": "tow-01",
+      "transform": "translate(352.75 520.95) rotate(0)"
+    },
+    {
+      "id": "truck-01",
+      "transform": "translate(853.8611111111111 485.31) rotate(17.148731190811887)"
+    },
+    {
+      "id": "truck-02",
+      "transform": "translate(864.25 603.45) rotate(0)"
+    },
+    {
+      "id": "truck-03",
+      "transform": "translate(509.5 242.10000000000002) rotate(0)"
+    },
+    {
+      "id": "truck-04",
+      "transform": "translate(689.8796296296305 403.1277777777783) rotate(-149.03624346792648)"
+    },
+    {
+      "id": "truck-05",
+      "transform": "translate(509.5 242.10000000000002) rotate(0)"
+    },
+    {
+      "id": "truck-06",
+      "transform": "translate(864.25 603.45) rotate(0)"
+    },
+    {
+      "id": "truck-07",
+      "transform": "translate(864.25 603.45) rotate(0)"
+    },
+    {
+      "id": "truck-08",
+      "transform": "translate(797.7733938825586 467.86403632953517) rotate(30.963756532073532)"
+    },
+    {
+      "id": "truck-09",
+      "transform": "translate(438 285) rotate(0)"
+    },
+    {
+      "id": "truck-10",
+      "transform": "translate(864.25 603.45) rotate(0)"
+    },
+    {
+      "id": "truck-11",
+      "transform": "translate(864.25 603.45) rotate(0)"
+    },
+    {
+      "id": "truck-12",
+      "transform": "translate(864.25 603.45) rotate(0)"
+    },
+    {
+      "id": "truck-13",
+      "transform": "translate(864.25 603.45) rotate(0)"
+    },
+    {
+      "id": "truck-14",
+      "transform": "translate(336.25 346.05) rotate(0)"
+    },
+    {
+      "id": "truck-15",
+      "transform": "translate(864.25 603.45) rotate(0)"
+    },
+    {
+      "id": "truck-16",
+      "transform": "translate(524.1055555555548 501.66333333333296) rotate(30.963756532073543)"
+    },
+    {
+      "id": "truck-17",
+      "transform": "translate(264.75 388.95) rotate(0)"
+    },
+    {
+      "id": "truck-18",
+      "transform": "translate(264.75 388.95) rotate(0)"
+    },
+    {
+      "id": "truck-19",
+      "transform": "translate(737.75 679.35) rotate(0)"
+    },
+    {
+      "id": "truck-20",
+      "transform": "translate(729.0763741442966 426.64582448657796) rotate(-149.03624346792648)"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-25",
+  "commit": "7713e51",
+  "command": "go test ./... -v",
+  "status": "passed",
+  "scenarios": [
+    "full 12-hour shift: loads, fuel, random faults and repairs",
+    "field service, prevention and heavy towing cycle; shared coordinates",
+    "restore and repeat preserve seed, fuel and scheduled events",
+    "fuel FIFO independent from occupied repair crew",
+    "empty tank recovery; engine off and job exclusive during towing"
+  ],
+  "full_shift": {
+    "completed_loads": 407,
+    "min_load_t": 230,
+    "max_load_t": 250,
+    "mean_load_t": 240.16216216216216,
+    "fuel_consumed_l": 17466.431103965806,
+    "fuel_added_l": 22485.23914489686,
+    "actual_failures": 14
+  },
+  "checks": "cargo and fuel balances; nonnegative tank; upper tank limit; returned service/tow units"
+}

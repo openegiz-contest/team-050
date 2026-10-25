@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-25",
+  "checks": [
+    {
+      "scale": 0.3,
+      "vehicles": 7,
+      "groups": 1,
+      "physical_position": "unchanged",
+      "tow_and_truck": "same_anchor"
+    },
+    {
+      "scale": 0.6,
+      "vehicles": 7,
+      "groups": 1,
+      "physical_position": "unchanged",
+      "tow_and_truck": "same_anchor"
+    },
+    {
+      "scale": 1,
+      "vehicles": 7,
+      "groups": 3,
+      "physical_position": "unchanged",
+      "tow_and_truck": "same_anchor"
+    },
+    {
+      "scale": 4,
+      "vehicles": 7,
+      "groups": 4,
+      "physical_position": "unchanged",
+      "tow_and_truck": "same_anchor"
+    }
+  ]
+}

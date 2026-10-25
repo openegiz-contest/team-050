@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-25",
+  "commands": [
+    {
+      "type": "inject_failure",
+      "target": "truck-01",
+      "role": "dispatcher",
+      "result": {
+        "command_id": "80714757-82e0-4d6a-9f5f-9af4d7b2e5cf",
+        "run_id": "4fac7fa48703f99279794234",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 1736.9999999999975,
+        "snapshot_seq": 71
+      }
+    },
+    {
+      "type": "inject_failure",
+      "target": "truck-02",
+      "role": "dispatcher",
+      "result": {
+        "command_id": "3c524095-0421-4727-8e39-7b0300614b10",
+        "run_id": "4fac7fa48703f99279794234",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 1736.9999999999975,
+        "snapshot_seq": 72
+      }
+    },
+    {
+      "type": "dispatch_service",
+      "target": "truck-01",
+      "role": "mechanic",
+      "result": {
+        "command_id": "3746a3ca-a037-4e16-9b3f-51d4ce14b771",
+        "run_id": "4fac7fa48703f99279794234",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 1736.9999999999975,
+        "snapshot_seq": 72
+      }
+    },
+    {
+      "type": "preventive_service",
+      "target": "truck-03",
+      "role": "mechanic",
+      "result": {
+        "command_id": "00c3f213-62fb-49f3-a830-443357414192",
+        "run_id": "4fac7fa48703f99279794234",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 1736.9999999999975,
+        "snapshot_seq": 72
+      }
+    },
+    {
+      "type": "dispatch_tow",
+      "target": "truck-02",
+      "role": "mechanic",
+      "result": {
+        "command_id": "75edb75b-524b-4a07-b42b-2f6d7cc22edf",
+        "run_id": "4fac7fa48703f99279794234",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 1736.9999999999975,
+        "snapshot_seq": 72
+      }
+    },
+    {
+      "type": "set_speed",
+      "target": "control-01",
+      "role": "dispatcher",
+      "result": {
+        "command_id": "26f7b011-3930-4573-8cad-7ee0f570d04a",
+        "run_id": "4fac7fa48703f99279794234",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 1736.9999999999975,
+        "snapshot_seq": 72
+      }
+    },
+    {
+      "type": "resume_shift",
+      "target": "control-01",
+      "role": "dispatcher",
+      "result": {
+        "command_id": "77379c34-e166-4f14-9acb-9f6e76287379",
+        "run_id": "4fac7fa48703f99279794234",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 1736.9999999999975,
+        "snapshot_seq": 72
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "time": 1736.9999999999975,
+      "states": {
+        "truck-01": "queued_loading",
+        "truck-02": "queued_loading",
+        "truck-03": "queued_loading",
+        "service-01": "idle",
+        "service-02": "idle",
+        "tow-01": "idle"
+      },
+      "balance_error_t": 3.637978807091713e-12
+    }
+  ],
+  "run_id": "4fac7fa48703f99279794234",
+  "started_sim_time_s": 1736.9999999999975,
+  "baseline_payload_t": {
+    "truck-01": 0,
+    "truck-02": 0,
+    "truck-03": 0
+  },
+  "status": "paused_before_completion",
+  "technical_pauses": 0,
+  "max_balance_error_t": 3.637978807091713e-12,
+  "final_sim_time_s": 1736.9999999999975
+}

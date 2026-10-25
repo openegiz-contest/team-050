@@ -7,3 +7,9 @@
 **/*.log
 .venv
 venv
+
+outputs/
+localization/
+planning/
+**/__pycache__
+**/*.pyc

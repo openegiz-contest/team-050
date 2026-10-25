@@ -5,7 +5,11 @@ import cp from 'node:child_process';
 import ts from '../team/mine/ui/node_modules/typescript/lib/typescript.js';
 
 // Export current Russian product strings. No runtime files are modified.
-const roots = process.argv.slice(2).length ? process.argv.slice(2) : ['.'];
+const args=process.argv.slice(2);
+const outputIndex=args.indexOf('--output');
+const outputPath=outputIndex>=0?args.splice(outputIndex,2)[1]:'localization/TEAM050_ru-en.xlf';
+if(!outputPath)throw new Error('--output requires a file path');
+const roots=args.length?args:['.'];
 const units = new Map();
 const ru = /[А-Яа-яЁё]/;
 const escape = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -14,8 +18,10 @@ const excluded = new Set(['node_modules','dist','.git','public']);
 function files(dir) { if(!fs.existsSync(dir))return []; return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>excluded.has(e.name)?[]:e.isDirectory()?files(path.join(dir,e.name)):[path.join(dir,e.name)]); }
 function add(text,location,context,holders=[]) {
  text=normalize(text); if(!ru.test(text))return;
- const key=JSON.stringify([text,holders.map(h=>h.token)]);
- if(!units.has(key))units.set(key,{text,holders,locations:new Set(),contexts:new Set()});
+ // Single-letter severity badges must not share an ID with service initials.
+ const semantic=text.length===1&&['light','medium','heavy'].includes(context)?'failure-badge-'+context:'';
+ const key=JSON.stringify([text,holders.map(h=>h.token),semantic]);
+ if(!units.has(key))units.set(key,{text,holders,semantic,locations:new Set(),contexts:new Set()});
  const u=units.get(key);u.locations.add(location);u.contexts.add(context);
 }
 function html(text,location,context,holders=[]) {
@@ -93,12 +99,12 @@ const notes=[
 let xml=`<?xml version="1.0" encoding="UTF-8"?>\n<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="ru" trgLang="en">\n <file id="team050" original="team/mine">\n  <notes>\n${notes.map((n,i)=>`   <note id="brief-${i+1}" category="instructions">${escape(n)}</note>`).join('\n')}\n  </notes>\n`;
 const records=[...units.values()].sort((a,b)=>a.text.localeCompare(b.text,'ru'));
 for(const u of records) {
- const id='s_'+crypto.createHash('sha256').update(u.text).digest('hex').slice(0,16);
+ const id='s_'+crypto.createHash('sha256').update(u.text+(u.semantic?'\0'+u.semantic:'')).digest('hex').slice(0,16);
  const locations=[...u.locations].join('\n');
- const context=[...u.contexts].join('; ');
+ const context=[...u.contexts].join('; ')+(u.semantic?'; '+u.semantic:'');
  const expressions=u.holders.map(h=>`${h.token} = ${h.expression}`).join('\n');
  xml+=`  <unit id="${id}">\n   <notes>\n    <note category="location">${escape(locations)}</note>\n    <note category="description">${escape(context)}</note>\n${expressions?`    <note category="variables">${escape(expressions)}</note>\n`:''}   </notes>\n   <segment state="initial">\n    <source xml:space="preserve">${inline(u.text)}</source>\n    <target xml:space="preserve"></target>\n   </segment>\n  </unit>\n`;
 }
 xml+=' </file>\n</xliff>\n';
-const output=path.resolve('localization/TEAM050_ru-en.xlf');fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,xml,'utf8');
+const output=path.resolve(outputPath);fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,xml,'utf8');
 console.log(JSON.stringify({output,units:records.length,locations:records.reduce((n,u)=>n+u.locations.size,0),revisions},null,2));

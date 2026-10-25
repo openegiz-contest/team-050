@@ -37,3 +37,5 @@ build/WebGL Build.wasm
 
 # Local delivery copies and rendered localization previews
 /outputs/team050-localization/
+
+/outputs/team050-localization-v2/
