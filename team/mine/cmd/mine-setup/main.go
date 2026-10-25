@@ -79,8 +79,10 @@ func main() {
 // generic target performs redundant extraFields lookups and can saturate a
 // small local stand. Keep it available through an explicit opt-in for shared use.
 func configureTeamStand(ctx context.Context, admin *transport.Platform) {
-	if _, _, err := admin.Request(ctx, "PUT", "/devops/logging", map[string]string{"logger": "org.eclipse.ditto", "level": "warn"}); err != nil {
-		log.Printf("configure stand logging: %v", err)
+	for _, logger := range []string{"ROOT", "org.eclipse.ditto"} {
+		if _, _, err := admin.Request(ctx, "PUT", "/devops/logging", map[string]string{"logger": logger, "level": "warn"}); err != nil {
+			log.Printf("configure stand logging %s: %v", logger, err)
+		}
 	}
 	raw, status, err := admin.Request(ctx, "GET", "/api/2/connections/mosquitto-target-connection", nil)
 	if status == 404 {

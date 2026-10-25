@@ -24,6 +24,10 @@ if [[ "${TEAM_LOW_MEMORY:-0}" == 1 || "$docker_memory" -lt 6442450944 ]]; then
   for service in connectivity things-search gateway; do
     "${compose[@]}" up -d --wait --wait-timeout 600 "$service"
   done
+  # A stopped/restarted cluster can receive different Docker IPs. Nginx
+  # resolves the gateway upstream at startup; recreate it after the gateway
+  # is healthy so setup and dispatch never target the old address.
+  "${compose[@]}" up -d --no-deps --force-recreate ditto-nginx
 else
   "${compose[@]}" build
 fi

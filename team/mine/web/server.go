@@ -195,12 +195,32 @@ func (s *Server) Hydrate(ctx context.Context) {
 	}
 	wg.Wait()
 }
+
+// Keep topology recovery independent from full-frame hydration. An absent map
+// must not trigger 35 REST reads while the MQTT stream is already progressing.
+func (s *Server) repairMirror(ctx context.Context, started time.Time) {
+	s.mu.Lock()
+	needMap := s.Topology == nil
+	s.mu.Unlock()
+	if needMap {
+		if thing, err := s.Platform.Get(ctx, "roads-01"); err == nil {
+			s.Accept(thing, true)
+		}
+	}
+	s.mu.Lock()
+	needState := time.Since(started) > 10*time.Second && (s.Current == nil || time.Since(s.Current.Received) > 10*time.Second) && time.Since(s.LastEvent) > 10*time.Second
+	s.mu.Unlock()
+	if needState {
+		s.Hydrate(ctx)
+	}
+}
 func (s *Server) Run(ctx context.Context) error {
 	client, e := transport.Connect("team050-web", s.Subscribe)
 	if e != nil {
 		return e
 	}
 	s.MQTT = client
+	started := time.Now()
 	go func() {
 		ticker := time.NewTicker(3 * time.Second)
 		defer ticker.Stop()
@@ -209,15 +229,7 @@ func (s *Server) Run(ctx context.Context) error {
 			case <-ctx.Done():
 				return
 			case <-ticker.C:
-				s.mu.Lock()
-				// A slow but progressing frame is not a disconnected stream.
-				// Avoid competing with Ditto's event pipeline through repeated
-				// full REST reads while those events are still arriving.
-				need := s.Topology == nil || ((s.Current == nil || time.Since(s.Current.Received) > 10*time.Second) && time.Since(s.LastEvent) > 10*time.Second)
-				s.mu.Unlock()
-				if need {
-					s.Hydrate(ctx)
-				}
+				s.repairMirror(ctx, started)
 			}
 		}
 	}()
