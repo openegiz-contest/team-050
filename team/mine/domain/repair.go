@@ -6,26 +6,29 @@ import (
 	"sort"
 )
 
-// Initial modelling assumptions, in model seconds and km/h. No random failures
-// are enabled: failures are injected explicitly and recorded for repeat.
+// Initial modelling assumptions, in model seconds and km/h.
 const RepairDiagnosisSeconds = 300.0
 const RepairWorkSeconds = 3000.0
 const RepairTravelSpeed = 10.0
 
 type FailureEvent struct {
+	Random   bool    `json:"random,omitempty"`
 	Time     float64 `json:"sim_time_s"`
 	TruckID  string  `json:"truck_id"`
 	Severity string  `json:"severity,omitempty"`
 }
 
 type RepairSite struct {
-	ID        string   `json:"id"`
-	Node      string   `json:"node_id"`
-	Current   string   `json:"current_truck_id"`
-	Queue     []string `json:"queue"`
-	Busy      float64  `json:"busy_s"`
-	Idle      float64  `json:"idle_s"`
-	Completed int      `json:"repairs_completed"`
+	FuelCurrent   string   `json:"fuel_current_truck_id"`
+	FuelQueue     []string `json:"fuel_queue"`
+	FuelCompleted int      `json:"refuels_completed"`
+	ID            string   `json:"id"`
+	Node          string   `json:"node_id"`
+	Current       string   `json:"current_truck_id"`
+	Queue         []string `json:"queue"`
+	Busy          float64  `json:"busy_s"`
+	Idle          float64  `json:"idle_s"`
+	Completed     int      `json:"repairs_completed"`
 }
 
 func (s *State) EnsureRepairs() {
@@ -144,7 +147,7 @@ func (s *State) handleRepairCommand(c Config, cmd Command) ([]Result, bool) {
 	s.replayFailures()
 	switch cmd.Type {
 	case "inject_failure":
-		if t.Failure != "" || t.Maintenance {
+		if t.Failure != "" || t.Maintenance || fuelState(t) {
 			return reply("rejected", "ALREADY_FAILED", "Машина уже неисправна")
 		}
 		severity := cmd.Parameters.Severity

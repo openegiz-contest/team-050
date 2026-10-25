@@ -37,40 +37,53 @@ type Plan struct {
 	Nodes []string `json:"nodes"`
 }
 type Truck struct {
-	Maintenance         bool     `json:"maintenance"`
-	PreventiveCompleted int      `json:"preventive_completed"`
-	MaintenanceDowntime float64  `json:"maintenance_downtime_s"`
-	ResumeState         string   `json:"resume_state"`
-	ID                  string   `json:"id"`
-	State               string   `json:"state"`
-	Node                string   `json:"node_id"`
-	Payload             float64  `json:"payload_t"`
-	Volume              float64  `json:"volume_m3"`
-	Timer               float64  `json:"timer_s"`
-	Plan                *Plan    `json:"plan"`
-	Pending             *Plan    `json:"pending"`
-	PendingCommand      string   `json:"pending_command"`
-	PendingRun          string   `json:"pending_run"`
-	Revision            int      `json:"route_revision"`
-	Path                []string `json:"travel_path"`
-	Index               int      `json:"travel_index"`
-	Progress            float64  `json:"edge_progress"`
-	Trips               int      `json:"trips_total"`
-	QueueWait           float64  `json:"queue_wait_s"`
-	LoadStarted         float64  `json:"load_started"`
-	UnloadStarted       float64  `json:"unload_started"`
-	CycleStart          float64  `json:"cycle_start"`
-	HasCycle            bool     `json:"has_cycle"`
-	Loading             Metric   `json:"loading"`
-	Unloading           Metric   `json:"unloading"`
-	Cycles              Metric   `json:"cycles"`
-	Failure             string   `json:"failure_severity"`
-	FailureAt           float64  `json:"failure_at_s"`
-	RepairNode          string   `json:"repair_node"`
-	Failures            int      `json:"failures_total"`
-	RepairsCompleted    int      `json:"repairs_completed"`
-	Downtime            float64  `json:"failure_downtime_s"`
-	RepairWait          float64  `json:"repair_wait_s"`
+	LoadMass            LoadStats `json:"load_mass"`
+	LoadTarget          float64   `json:"load_target_t"`
+	FuelInitialized     bool      `json:"fuel_initialized"`
+	Fuel                float64   `json:"fuel_l"`
+	InitialFuel         float64   `json:"initial_fuel_l"`
+	FuelConsumed        float64   `json:"fuel_consumed_l"`
+	FuelAdded           float64   `json:"fuel_added_l"`
+	FuelWait            float64   `json:"fuel_wait_s"`
+	FuelDowntime        float64   `json:"fuel_downtime_s"`
+	FuelRequested       bool      `json:"fuel_requested"`
+	FuelNode            string    `json:"fuel_node"`
+	Refuels             int       `json:"refuels_total"`
+	ProtectedUntil      float64   `json:"protected_until_s"`
+	Maintenance         bool      `json:"maintenance"`
+	PreventiveCompleted int       `json:"preventive_completed"`
+	MaintenanceDowntime float64   `json:"maintenance_downtime_s"`
+	ResumeState         string    `json:"resume_state"`
+	ID                  string    `json:"id"`
+	State               string    `json:"state"`
+	Node                string    `json:"node_id"`
+	Payload             float64   `json:"payload_t"`
+	Volume              float64   `json:"volume_m3"`
+	Timer               float64   `json:"timer_s"`
+	Plan                *Plan     `json:"plan"`
+	Pending             *Plan     `json:"pending"`
+	PendingCommand      string    `json:"pending_command"`
+	PendingRun          string    `json:"pending_run"`
+	Revision            int       `json:"route_revision"`
+	Path                []string  `json:"travel_path"`
+	Index               int       `json:"travel_index"`
+	Progress            float64   `json:"edge_progress"`
+	Trips               int       `json:"trips_total"`
+	QueueWait           float64   `json:"queue_wait_s"`
+	LoadStarted         float64   `json:"load_started"`
+	UnloadStarted       float64   `json:"unload_started"`
+	CycleStart          float64   `json:"cycle_start"`
+	HasCycle            bool      `json:"has_cycle"`
+	Loading             Metric    `json:"loading"`
+	Unloading           Metric    `json:"unloading"`
+	Cycles              Metric    `json:"cycles"`
+	Failure             string    `json:"failure_severity"`
+	FailureAt           float64   `json:"failure_at_s"`
+	RepairNode          string    `json:"repair_node"`
+	Failures            int       `json:"failures_total"`
+	RepairsCompleted    int       `json:"repairs_completed"`
+	Downtime            float64   `json:"failure_downtime_s"`
+	RepairWait          float64   `json:"repair_wait_s"`
 }
 type Loader struct {
 	ID      string   `json:"id"`
@@ -95,27 +108,31 @@ type Crusher struct {
 	Starved   float64  `json:"starved_s"`
 }
 type State struct {
-	RunID           string            `json:"run_id"`
-	ConfigHash      string            `json:"config_hash"`
-	Time            float64           `json:"sim_time_s"`
-	Seq             uint64            `json:"snapshot_seq"`
-	Mode            string            `json:"state"`
-	Speed           int               `json:"speedup"`
-	PlanTonnes      float64           `json:"plan_t"`
-	Trucks          []*Truck          `json:"trucks"`
-	Loaders         []*Loader         `json:"loaders"`
-	Crushers        []*Crusher        `json:"crushers"`
-	Vehicles        []*ServiceVehicle `json:"service_vehicles"`
-	Repairs         []*RepairSite     `json:"repair_sites"`
-	FailureScenario []FailureEvent    `json:"failure_scenario"`
-	ReplayFailures  bool              `json:"replay_failures"`
-	FailureCursor   int               `json:"failure_cursor"`
-	Events          []Event           `json:"events"`
-	EventSeq        int               `json:"event_seq"`
-	LastCommand     string            `json:"last_command_id"`
-	LastStatus      string            `json:"last_command_status"`
-	InitialPlans    map[string]*Plan  `json:"initial_plans"`
-	Report          json.RawMessage   `json:"report"`
+	RandomSeed        string            `json:"random_seed"`
+	OperationsVersion int               `json:"operations_version"`
+	RandomFailures    []FailureEvent    `json:"random_failures"`
+	RandomCursor      int               `json:"random_cursor"`
+	RunID             string            `json:"run_id"`
+	ConfigHash        string            `json:"config_hash"`
+	Time              float64           `json:"sim_time_s"`
+	Seq               uint64            `json:"snapshot_seq"`
+	Mode              string            `json:"state"`
+	Speed             int               `json:"speedup"`
+	PlanTonnes        float64           `json:"plan_t"`
+	Trucks            []*Truck          `json:"trucks"`
+	Loaders           []*Loader         `json:"loaders"`
+	Crushers          []*Crusher        `json:"crushers"`
+	Vehicles          []*ServiceVehicle `json:"service_vehicles"`
+	Repairs           []*RepairSite     `json:"repair_sites"`
+	FailureScenario   []FailureEvent    `json:"failure_scenario"`
+	ReplayFailures    bool              `json:"replay_failures"`
+	FailureCursor     int               `json:"failure_cursor"`
+	Events            []Event           `json:"events"`
+	EventSeq          int               `json:"event_seq"`
+	LastCommand       string            `json:"last_command_id"`
+	LastStatus        string            `json:"last_command_status"`
+	InitialPlans      map[string]*Plan  `json:"initial_plans"`
+	Report            json.RawMessage   `json:"report"`
 }
 type Command struct {
 	Schema           int    `json:"schema_version"`
@@ -162,6 +179,7 @@ func NewState(c Config) *State {
 	}
 	s.Log("Смена подготовлена. Назначьте маршруты машинам в гараже.")
 	s.EnsureRepairs()
+	s.EnsureOperations(c)
 	return s
 }
 func (s *State) Truck(id string) *Truck {
@@ -213,7 +231,7 @@ func (s *State) ReportBytes(c Config) []byte {
 			return p / s.PlanTonnes * 100
 		}
 		return 0
-	}(), "loaded_t": l, "delivered_t": d, "processed_t": p, "payload_remaining_t": t, "buffer_remaining_t": b, "initial_plans": s.InitialPlans, "trucks": s.Trucks, "loaders": s.Loaders, "crushers": s.Crushers, "repair_sites": s.Repairs, "service_vehicles": s.Vehicles, "failure_scenario": s.FailureScenario, "replay_failures": s.ReplayFailures, "repair_assumptions": map[string]float64{"diagnosis_s": RepairDiagnosisSeconds, "repair_s": RepairWorkSeconds, "travel_speed_kmh": RepairTravelSpeed, "light_repair_s": FieldWorkSeconds, "prevention_s": FieldWorkSeconds, "heavy_repair_s": HeavyWorkSeconds, "service_speed_kmh": ServiceSpeed, "tow_empty_speed_kmh": TowSpeed, "tow_loaded_speed_kmh": RepairTravelSpeed, "hitch_s": HitchSeconds}}
+	}(), "loaded_t": l, "delivered_t": d, "processed_t": p, "payload_remaining_t": t, "buffer_remaining_t": b, "initial_plans": s.InitialPlans, "trucks": s.Trucks, "loaders": s.Loaders, "crushers": s.Crushers, "repair_sites": s.Repairs, "service_vehicles": s.Vehicles, "failure_scenario": s.FailureScenario, "replay_failures": s.ReplayFailures, "loading_summary": s.LoadingSummary(), "fuel_summary": s.FuelSummary(), "operations_version": s.OperationsVersion, "random_seed": s.RandomSeed, "random_failures": s.RandomFailures, "repair_assumptions": map[string]float64{"diagnosis_s": RepairDiagnosisSeconds, "repair_s": RepairWorkSeconds, "travel_speed_kmh": RepairTravelSpeed, "light_repair_s": FieldWorkSeconds, "prevention_s": FieldWorkSeconds, "heavy_repair_s": HeavyWorkSeconds, "service_speed_kmh": ServiceSpeed, "tow_empty_speed_kmh": TowSpeed, "tow_loaded_speed_kmh": RepairTravelSpeed, "hitch_s": HitchSeconds}}
 	data, _ := json.Marshal(out)
 	return data
 }
@@ -253,11 +271,14 @@ func (s *State) Handle(c Config, cmd Command) ([]Result, error) {
 		role = "dispatcher"
 	}
 	required := "dispatcher"
-	if cmd.Type == "send_to_repair" || cmd.Type == "prioritize_repair" || cmd.Type == "dispatch_service" || cmd.Type == "dispatch_tow" || cmd.Type == "preventive_service" {
+	if cmd.Type == "send_to_refuel" || cmd.Type == "send_to_repair" || cmd.Type == "prioritize_repair" || cmd.Type == "dispatch_service" || cmd.Type == "dispatch_tow" || cmd.Type == "preventive_service" {
 		required = "mechanic"
 	}
 	if role != required {
 		return reject("WRONG_ROLE", "Команда доступна роли: "+required)
+	}
+	if rs, handled := s.handleFuel(c, cmd); handled {
+		return rs, nil
 	}
 	if rs, handled := s.handleRepairCommand(c, cmd); handled {
 		return rs, nil
@@ -273,7 +294,19 @@ func (s *State) Handle(c Config, cmd Command) ([]Result, error) {
 			}
 		}
 		n := NewState(c)
-		n.FailureScenario = append([]FailureEvent{}, s.FailureScenario...)
+		n.RandomSeed = s.RandomSeed
+		n.RandomFailures = append([]FailureEvent{}, s.RandomFailures...)
+		n.OperationsVersion = s.OperationsVersion
+		n.FailureScenario = nil
+		for _, event := range s.FailureScenario {
+			if !event.Random {
+				n.FailureScenario = append(n.FailureScenario, event)
+			}
+		}
+		for _, t := range n.Trucks {
+			t.FuelInitialized = false
+		}
+		n.EnsureOperations(c)
 		n.ReplayFailures = len(n.FailureScenario) > 0
 		// A repeat compares dispatching decisions under the same shift target.
 		if s.PlanTonnes > 0 {
@@ -318,7 +351,7 @@ func (s *State) Handle(c Config, cmd Command) ([]Result, error) {
 		if t == nil {
 			return reject("UNKNOWN_TRUCK", "Самосвал не найден")
 		}
-		if t.Failure != "" || t.Maintenance {
+		if t.Failure != "" || t.Maintenance || fuelState(t) {
 			return reject("TRUCK_UNAVAILABLE", "Машина неисправна. Измените маршрут после ремонта.")
 		}
 		if cmd.Topology != c.TopologyVersion {
@@ -361,10 +394,10 @@ func (s *State) Handle(c Config, cmd Command) ([]Result, error) {
 	return append(extra, result(s, cmd, "applied", "", "Команда выполнена")), nil
 }
 func moving(t *Truck) bool {
-	return (t.State == "hauling" || t.State == "returning" || t.State == "to_repair") && onEdge(t)
+	return (t.State == "hauling" || t.State == "returning" || t.State == "to_repair" || t.State == "to_refuel") && onEdge(t)
 }
 func operating(t *Truck) bool {
-	return t.State == "positioning_loading" || t.State == "loading" || t.State == "positioning_unloading" || t.State == "unloading" || t.State == "diagnosing" || t.State == "repairing"
+	return t.State == "refueling" || t.State == "positioning_loading" || t.State == "loading" || t.State == "positioning_unloading" || t.State == "unloading" || t.State == "diagnosing" || t.State == "repairing"
 }
 func (s *State) RemoveFromQueues(id string) {
 	for _, e := range s.Loaders {
@@ -384,6 +417,9 @@ func remove(q []string, id string) []string {
 	return out
 }
 func (s *State) Travel(c Config, t *Truck, loaded bool) {
+	if (t.FuelRequested || t.Fuel < c.Operations.Tank*c.Operations.FuelThreshold) && !fuelState(t) && s.beginRefuel(c, t, t.FuelNode) {
+		return
+	}
 	if t.Plan == nil {
 		t.State = "idle"
 		return
@@ -458,11 +494,18 @@ func (s *State) applyPending(c Config, t *Truck) []Result {
 }
 func (s *State) StartQueues(c Config) {
 	s.startRepairs()
+	s.startFuel(c)
+	for _, t := range s.Trucks {
+		if !moving(t) && !operating(t) && !fuelState(t) && t.Failure == "" && !t.Maintenance && (t.FuelRequested || t.Fuel < c.Operations.Tank*c.Operations.FuelThreshold) {
+			s.beginRefuel(c, t, t.FuelNode)
+		}
+	}
 	for _, e := range s.Loaders {
 		if e.Current == "" && len(e.Queue) > 0 {
 			t := s.Truck(e.Queue[0])
 			e.Queue = e.Queue[1:]
 			e.Current = t.ID
+			t.LoadTarget = math.Max(t.Payload, s.loadTarget(c, t))
 			t.State = "positioning_loading"
 			t.Timer = c.PositionLoading
 		}
@@ -487,20 +530,28 @@ func (s *State) Step(c Config, dt float64) []Result {
 	if s.Mode != "running" {
 		return nil
 	}
+	s.EnsureOperations(c)
 	dt = math.Min(dt, c.ShiftSeconds-s.Time)
 	var results []Result
 	for left := dt; left > 1e-8; {
 		s.replayFailures()
+		s.randomFailures(c)
 		s.StartQueues(c)
 		h := left
 		if s.ReplayFailures && s.FailureCursor < len(s.FailureScenario) {
 			h = math.Min(h, s.FailureScenario[s.FailureCursor].Time-s.Time)
+		}
+		if s.RandomCursor < len(s.RandomFailures) {
+			h = math.Min(h, s.RandomFailures[s.RandomCursor].Time-s.Time)
 		}
 		phase := c.CrusherSwitch - math.Mod(s.Time, c.CrusherSwitch)
 		if phase > 1e-8 {
 			h = math.Min(h, phase)
 		}
 		for _, t := range s.Trucks {
+			if rate := fuelRate(c, t); rate > 0 && t.Fuel > 0 {
+				h = math.Min(h, t.Fuel*3600/rate)
+			}
 			if operating(t) {
 				h = math.Min(h, t.Timer)
 			} else if moving(t) {
@@ -545,6 +596,20 @@ func (s *State) Step(c Config, dt float64) []Result {
 			}
 		}
 		for _, t := range s.Trucks {
+			if fuelState(t) {
+				t.FuelDowntime += h
+			}
+			if t.State == "queued_refuel" {
+				t.FuelWait += h
+			}
+			used := math.Min(t.Fuel, fuelRate(c, t)*h/3600)
+			t.Fuel -= used
+			t.FuelConsumed += used
+			if t.State == "refueling" {
+				added := math.Min(c.Operations.Tank-t.Fuel, c.Operations.PumpRate*h/60)
+				t.Fuel += added
+				t.FuelAdded += added
+			}
 			if t.Failure != "" {
 				t.Downtime += h
 			}
@@ -569,14 +634,25 @@ func (s *State) Step(c Config, dt float64) []Result {
 		left -= h
 		s.finishVehicleEvents(c)
 		for _, t := range s.Trucks {
+			if t.Fuel <= 1e-8 && fuelRate(c, t) > 0 {
+				t.ResumeState = t.State
+				s.releaseProduction(t)
+				t.State = "out_of_fuel"
+				s.Log(t.ID + ": топливо закончилось — требуется эвакуация на заправку")
+			}
 			if moving(t) && t.Progress >= 1-1e-8 {
 				t.Index++
 				t.Node = t.Path[t.Index]
 				t.Progress = 0
-				if t.State == "to_repair" {
+				if t.State == "to_refuel" {
+					if t.Index >= len(t.Path)-1 {
+						s.arriveFuel(t)
+					}
+				} else if t.State == "to_repair" {
 					if t.Index >= len(t.Path)-1 {
 						s.arriveRepair(t)
 					}
+				} else if (t.FuelRequested || t.Fuel < c.Operations.Tank*c.Operations.FuelThreshold) && s.beginRefuel(c, t, t.FuelNode) {
 				} else if t.Pending != nil {
 					results = append(results, s.applyPending(c, t)...)
 				} else if t.Index >= len(t.Path)-1 {
@@ -587,6 +663,8 @@ func (s *State) Step(c Config, dt float64) []Result {
 				continue
 			}
 			switch t.State {
+			case "refueling":
+				results = append(results, s.finishFuel(c, t)...)
 			case "diagnosing":
 				t.State = "repairing"
 				t.Timer = RepairWorkSeconds
@@ -601,7 +679,7 @@ func (s *State) Step(c Config, dt float64) []Result {
 				t.Timer = c.PassSeconds
 				t.LoadStarted = s.Time
 			case "loading":
-				v := math.Min(c.Bucket*c.Fill, math.Min(c.Body-t.Volume, (c.Capacity-t.Payload)/c.Density))
+				v := math.Min(c.Bucket*c.Fill, math.Min(c.Body-t.Volume, (t.LoadTarget-t.Payload)/c.Density))
 				mass := math.Max(0, v*c.Density)
 				t.Volume += v
 				t.Payload += mass
@@ -609,13 +687,14 @@ func (s *State) Step(c Config, dt float64) []Result {
 					if e.Current == t.ID {
 						e.Loaded += mass
 						e.Passes++
-						if t.Payload >= c.Capacity-1e-8 || t.Volume >= c.Body-1e-8 {
+						if t.Payload >= t.LoadTarget-1e-8 || t.Volume >= c.Body-1e-8 {
 							e.Current = ""
 						}
 					}
 				}
-				if t.Payload >= c.Capacity-1e-8 || t.Volume >= c.Body-1e-8 {
+				if t.Payload >= t.LoadTarget-1e-8 || t.Volume >= c.Body-1e-8 {
 					t.Loading.Add(s.Time - t.LoadStarted)
+					t.LoadMass.Add(t.Payload)
 					s.Log(t.ID + ": погружено " + fmt.Sprintf("%.0f т", t.Payload))
 					if t.Pending != nil {
 						results = append(results, s.applyPending(c, t)...)

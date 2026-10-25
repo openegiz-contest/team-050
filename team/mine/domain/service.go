@@ -96,7 +96,7 @@ func (s *State) dispatchVehicle(c Config, cmd Command, t *Truck) (string, string
 	switch cmd.Type {
 	case "dispatch_tow":
 		kind = "tow"
-		if t.State != "failed" || t.Failure != "heavy" {
+		if (t.State != "failed" || t.Failure != "heavy") && t.State != "out_of_fuel" {
 			return "NOT_HEAVY_FAILURE", "Эвакуатор нужен для тяжёлой поломки"
 		}
 	case "dispatch_service":
@@ -104,7 +104,7 @@ func (s *State) dispatchVehicle(c Config, cmd Command, t *Truck) (string, string
 			return "NOT_LIGHT_FAILURE", "Выездной ремонт доступен при лёгкой поломке"
 		}
 	case "preventive_service":
-		if t.Failure != "" || t.Maintenance {
+		if t.Failure != "" || t.Maintenance || fuelState(t) {
 			return "TRUCK_UNAVAILABLE", "Машина уже на обслуживании или неисправна"
 		}
 	}
@@ -227,6 +227,7 @@ func (s *State) returnVehicle(c Config, v *ServiceVehicle) {
 func (s *State) resumeFieldTruck(c Config, t *Truck) {
 	if t.Maintenance {
 		t.PreventiveCompleted++
+		t.ProtectedUntil = s.Time + c.Operations.Protection
 	} else {
 		t.RepairsCompleted++
 	}
@@ -341,7 +342,12 @@ func (s *State) finishVehicleEvents(c Config) {
 		case "unhitching":
 			if t != nil {
 				t.Node = v.Node
-				s.arriveRepair(t)
+				if t.Failure == "" {
+					t.FuelNode = v.Node
+					s.arriveFuel(t)
+				} else {
+					s.arriveRepair(t)
+				}
 			}
 			v.Completed++
 			s.returnVehicle(c, v)

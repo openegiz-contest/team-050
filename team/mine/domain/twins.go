@@ -41,6 +41,8 @@ func Snapshot(c Config, s *State) []Thing {
 	for k, v := range map[string]float64{"loaded_t": loaded, "delivered_t": delivered, "processed_t": processed, "truck_payload_total_t": payload, "buffer_total_t": buffer, "plan_t": s.PlanTonnes} {
 		f.Set(k, v, "t")
 	}
+	f.Set("loading_summary_json", JSON(s.LoadingSummary()), "")
+	f.Set("fuel_summary_json", JSON(s.FuelSummary()), "")
 	f.Set("plan_defined", s.PlanTonnes > 0, "")
 	completion := 0.0
 	if s.PlanTonnes > 0 {
@@ -51,7 +53,7 @@ func Snapshot(c Config, s *State) []Thing {
 	unavailable := 0
 	downtime := 0.0
 	for _, t := range s.Trucks {
-		if t.Failure != "" || t.Maintenance {
+		if t.Failure != "" || t.Maintenance || fuelState(t) {
 			unavailable++
 		}
 		downtime += t.Downtime
@@ -97,7 +99,7 @@ func Snapshot(c Config, s *State) []Thing {
 	f.Set("last_command_id", s.LastCommand, "")
 	f.Set("last_command_status", s.LastStatus, "")
 	f.Set("roles_json", JSON([]string{"dispatcher", "mechanic"}), "")
-	f.Set("model_version", "3-field-service-heavy-failure", "")
+	f.Set("model_version", "4-fuel-random-load", "")
 	add("control-01", "control", nil, f)
 	f = Features{}
 	f.Set("topology_version", c.TopologyVersion, "")
@@ -109,6 +111,18 @@ func Snapshot(c Config, s *State) []Thing {
 		f.Set("node_id", t.Node, "")
 		f.Set("payload_t", t.Payload, "t")
 		f.Set("volume_m3", t.Volume, "m3")
+		f.Set("load_target_t", t.LoadTarget, "t")
+		f.Set("load_stats_json", JSON(t.LoadMass), "")
+		f.Set("fuel_l", t.Fuel, "l")
+		f.Set("fuel_capacity_l", c.Operations.Tank, "l")
+		f.Set("fuel_consumed_l", t.FuelConsumed, "l")
+		f.Set("fuel_added_l", t.FuelAdded, "l")
+		f.Set("fuel_wait_s", t.FuelWait, "s")
+		f.Set("fuel_downtime_s", t.FuelDowntime, "s")
+		f.Set("refuels_total", t.Refuels, "")
+		f.Set("fuel_requested", t.FuelRequested, "")
+		f.Set("fuel_node", t.FuelNode, "")
+		f.Set("protected_until_s", t.ProtectedUntil, "s")
 		edge := ""
 		speed := 0.0
 		if onEdge(t) {
@@ -212,6 +226,10 @@ func Snapshot(c Config, s *State) []Thing {
 		f.Set("busy_s", r.Busy, "s")
 		f.Set("idle_s", r.Idle, "s")
 		f.Set("repairs_completed", r.Completed, "")
+		f.Set("fuel_current_truck_id", r.FuelCurrent, "")
+		f.Set("fuel_queue_json", JSON(r.FuelQueue), "")
+		f.Set("fuel_queue_length", len(r.FuelQueue), "")
+		f.Set("refuels_completed", r.FuelCompleted, "")
 		add(r.ID, "repair-site", map[string]any{"node_id": r.Node, "crews": 1, "diagnosis_s": RepairDiagnosisSeconds, "repair_s": RepairWorkSeconds, "travel_speed_kmh": RepairTravelSpeed}, f)
 	}
 	for _, v := range s.Vehicles {

@@ -29,29 +29,30 @@ type Route struct {
 	Nodes []string `json:"nodes"`
 }
 type Config struct {
-	Version           string  `json:"version"`
-	TopologyVersion   string  `json:"topology_version"`
-	LayoutVersion     string  `json:"layout_version"`
-	ShiftSeconds      float64 `json:"shift_seconds"`
-	TruckCount        int     `json:"truck_count"`
-	Capacity          float64 `json:"capacity_t"`
-	Body              float64 `json:"body_m3"`
-	Bucket            float64 `json:"bucket_m3"`
-	Fill              float64 `json:"bucket_fill"`
-	Density           float64 `json:"density_t_m3"`
-	PassSeconds       float64 `json:"pass_seconds"`
-	PositionLoading   float64 `json:"position_loading_seconds"`
-	PositionUnloading float64 `json:"position_unloading_seconds"`
-	Unloading         float64 `json:"unloading_seconds"`
-	SpeedLoaded       float64 `json:"speed_loaded_kmh"`
-	SpeedEmpty        float64 `json:"speed_empty_kmh"`
-	BufferCapacity    float64 `json:"buffer_capacity_t"`
-	CrusherBase       float64 `json:"crusher_base_tph"`
-	CrusherSwitch     float64 `json:"crusher_switch_seconds"`
-	Nodes             []Node  `json:"nodes"`
-	Edges             []Edge  `json:"edges"`
-	Routes            []Route `json:"routes"`
-	Hash              string  `json:"-"`
+	Operations        OperationsConfig `json:"operations"`
+	Version           string           `json:"version"`
+	TopologyVersion   string           `json:"topology_version"`
+	LayoutVersion     string           `json:"layout_version"`
+	ShiftSeconds      float64          `json:"shift_seconds"`
+	TruckCount        int              `json:"truck_count"`
+	Capacity          float64          `json:"capacity_t"`
+	Body              float64          `json:"body_m3"`
+	Bucket            float64          `json:"bucket_m3"`
+	Fill              float64          `json:"bucket_fill"`
+	Density           float64          `json:"density_t_m3"`
+	PassSeconds       float64          `json:"pass_seconds"`
+	PositionLoading   float64          `json:"position_loading_seconds"`
+	PositionUnloading float64          `json:"position_unloading_seconds"`
+	Unloading         float64          `json:"unloading_seconds"`
+	SpeedLoaded       float64          `json:"speed_loaded_kmh"`
+	SpeedEmpty        float64          `json:"speed_empty_kmh"`
+	BufferCapacity    float64          `json:"buffer_capacity_t"`
+	CrusherBase       float64          `json:"crusher_base_tph"`
+	CrusherSwitch     float64          `json:"crusher_switch_seconds"`
+	Nodes             []Node           `json:"nodes"`
+	Edges             []Edge           `json:"edges"`
+	Routes            []Route          `json:"routes"`
+	Hash              string           `json:"-"`
 }
 
 func LoadConfig(path string) (Config, error) {
@@ -59,7 +60,7 @@ func LoadConfig(path string) (Config, error) {
 	if e != nil {
 		return Config{}, e
 	}
-	var c Config
+	c := Config{Operations: defaultOperations()}
 	if e = json.Unmarshal(b, &c); e != nil {
 		return c, e
 	}
@@ -67,6 +68,10 @@ func LoadConfig(path string) (Config, error) {
 	c.Hash = hex.EncodeToString(h[:])
 	if c.TruckCount != 20 || c.ShiftSeconds <= 0 || c.PassSeconds <= 0 || c.Density <= 0 || c.Fill <= 0 || c.Fill > 1 || c.CrusherSwitch <= 0 || c.SpeedEmpty <= 0 || c.SpeedLoaded <= 0 || c.BufferCapacity < c.Capacity || c.Capacity <= 0 || c.Body <= 0 || c.Bucket <= 0 || c.CrusherBase <= 0 || c.PositionLoading <= 0 || c.PositionUnloading <= 0 || c.Unloading <= 0 {
 		return c, fmt.Errorf("invalid equipment or timing configuration")
+	}
+	o := c.Operations
+	if o.LoadSpread < 0 || o.LoadSpread > c.Capacity || o.Tank <= 0 || o.PumpRate <= 0 || o.LoadedRate <= 0 || o.EmptyRate <= 0 || o.WorkRate <= 0 || o.IdleRate < 0 || o.FuelThreshold <= 0 || o.FuelThreshold >= 1 || o.FailureMean <= 0 || o.Protection < 0 {
+		return c, fmt.Errorf("invalid operations configuration")
 	}
 	seen := map[string]bool{}
 	for _, n := range c.Nodes {
