@@ -1,0 +1,178 @@
+{
+  "date": "2026-10-25",
+  "commands": [
+    {
+      "type": "set_speed",
+      "target": "control-01",
+      "role": "dispatcher",
+      "result": {
+        "command_id": "43b90e08-d8cb-4475-976e-721321550799",
+        "run_id": "4fac7fa48703f99279794234",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 26749.999999999996,
+        "snapshot_seq": 551
+      }
+    },
+    {
+      "type": "resume_shift",
+      "target": "control-01",
+      "role": "dispatcher",
+      "result": {
+        "command_id": "76b18279-3482-45ff-9e5c-a5e9472c7ee4",
+        "run_id": "4fac7fa48703f99279794234",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 26749.999999999996,
+        "snapshot_seq": 552
+      }
+    },
+    {
+      "type": "pause_shift",
+      "target": "control-01",
+      "role": "dispatcher",
+      "result": {
+        "command_id": "f126c1ad-0208-4a4d-bb8a-0520154bb0b9",
+        "run_id": "4fac7fa48703f99279794234",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 29040.99999999998,
+        "snapshot_seq": 560
+      }
+    },
+    {
+      "type": "set_speed",
+      "target": "control-01",
+      "role": "dispatcher",
+      "result": {
+        "command_id": "96806ff5-d669-4174-8720-43c2895267da",
+        "run_id": "4fac7fa48703f99279794234",
+        "status": "applied",
+        "reason_code": "",
+        "message": "Команда выполнена",
+        "sim_time_s": 29040.99999999998,
+        "snapshot_seq": 561
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "time": 26749.999999999996,
+      "mode": "paused",
+      "truck04": "returning",
+      "refuels04": 0,
+      "truck05": "waiting_service",
+      "repairs05": 0,
+      "service01": "outbound",
+      "service_edge": "R1>J2",
+      "service_progress": 0
+    },
+    {
+      "time": 27154.999999999993,
+      "mode": "running",
+      "truck04": "refueling",
+      "refuels04": 0,
+      "truck05": "field_diagnosis",
+      "repairs05": 0,
+      "service01": "field_diagnosis",
+      "service_edge": "",
+      "service_progress": 0
+    },
+    {
+      "time": 27472.99999999999,
+      "mode": "running",
+      "truck04": "queued_loading",
+      "refuels04": 1,
+      "truck05": "field_work",
+      "repairs05": 0,
+      "service01": "field_work",
+      "service_edge": "",
+      "service_progress": 0
+    },
+    {
+      "time": 27818.99999999998,
+      "mode": "running",
+      "truck04": "loading",
+      "refuels04": 1,
+      "truck05": "field_work",
+      "repairs05": 0,
+      "service01": "field_work",
+      "service_edge": "",
+      "service_progress": 0
+    },
+    {
+      "time": 27955.99999999998,
+      "mode": "running",
+      "truck04": "loading",
+      "refuels04": 1,
+      "truck05": "field_work",
+      "repairs05": 0,
+      "service01": "field_work",
+      "service_edge": "",
+      "service_progress": 0
+    },
+    {
+      "time": 28468.99999999998,
+      "mode": "running",
+      "truck04": "unloading",
+      "refuels04": 1,
+      "truck05": "loading",
+      "repairs05": 1,
+      "service01": "idle",
+      "service_edge": "",
+      "service_progress": 0
+    }
+  ],
+  "run_id": "4fac7fa48703f99279794234",
+  "status": "completed",
+  "started_sim_time_s": 26749.999999999996,
+  "final_sim_time_s": 29040.99999999998,
+  "final_state": "paused",
+  "final_speed": 30,
+  "fuel": {
+    "added_l": 597.3192841545776,
+    "consumed_l": 847.4158553814243,
+    "downtime_s": 358.9277136618309,
+    "initial_l": 23537.512299822338,
+    "remaining_l": 23287.415728595075,
+    "wait_s": 0
+  },
+  "loading": {
+    "count": 20,
+    "max_t": 250,
+    "mean_t": 239.8,
+    "min_t": 230,
+    "total_t": 4796
+  },
+  "refuels04": 1,
+  "repairs05": 1,
+  "random_failures_observed": [
+    {
+      "random": true,
+      "sim_time_s": 28000.74036059957,
+      "truck_id": "truck-01",
+      "severity": "light"
+    },
+    {
+      "random": true,
+      "sim_time_s": 28201.659958068336,
+      "truck_id": "truck-19",
+      "severity": "light"
+    },
+    {
+      "random": true,
+      "sim_time_s": 28705.1953647335,
+      "truck_id": "truck-02",
+      "severity": "light"
+    }
+  ],
+  "balance_errors": {
+    "cargo_t": 2.4510882212780416e-10,
+    "crusher_t": 5.2209543355274945e-09,
+    "fuel_l": 4.18367562815547e-10
+  },
+  "installed_app_commit": "8a5c2ae"
+}
