@@ -11,6 +11,7 @@ services:
       DITTO_URL: http://ditto-nginx:80
       DITTO_PASSWORD: ${DITTO_PASSWORD}
       DITTO_DEVOPS_PASSWORD: ${DITTO_DEVOPS_PASSWORD}
+      TEAM_KEEP_LEGACY_TARGET: ${TEAM_KEEP_LEGACY_TARGET:-0}
     depends_on:
       init:
         condition: service_completed_successfully

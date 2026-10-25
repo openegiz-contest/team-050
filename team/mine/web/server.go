@@ -520,6 +520,16 @@ func (s *Server) Handler(uiPath string) http.Handler {
 	mux.HandleFunc("GET /", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("X-Content-Type-Options", "nosniff")
 		w.Header().Set("Referrer-Policy", "same-origin")
+		switch {
+		case strings.HasPrefix(r.URL.Path, "/assets/"):
+			// Vite asset names include their content hash.
+			w.Header().Set("Cache-Control", "public, max-age=31536000, immutable")
+		case strings.HasPrefix(r.URL.Path, "/models/"):
+			// Model names are stable; validate Last-Modified before reusing them.
+			w.Header().Set("Cache-Control", "public, max-age=0, must-revalidate")
+		default:
+			w.Header().Set("Cache-Control", "no-cache")
+		}
 		if strings.HasPrefix(r.URL.Path, "/api/") {
 			http.NotFound(w, r)
 			return

@@ -44,6 +44,7 @@ func main() {
 		}
 		time.Sleep(2 * time.Second)
 	}
+	configureTeamStand(ctx, admin)
 	things := domain.Snapshot(c, domain.NewState(c))
 	for _, t := range things {
 		for attempt := 0; ; attempt++ {
@@ -72,4 +73,39 @@ func main() {
 		}
 	}
 	log.Printf("%d twins ready", len(things))
+}
+
+// The team's own target carries the complete state and live commands. The
+// generic target performs redundant extraFields lookups and can saturate a
+// small local stand. Keep it available through an explicit opt-in for shared use.
+func configureTeamStand(ctx context.Context, admin *transport.Platform) {
+	if _, _, err := admin.Request(ctx, "PUT", "/devops/logging", map[string]string{"logger": "org.eclipse.ditto", "level": "warn"}); err != nil {
+		log.Printf("configure stand logging: %v", err)
+	}
+	raw, status, err := admin.Request(ctx, "GET", "/api/2/connections/mosquitto-target-connection", nil)
+	if status == 404 {
+		return
+	}
+	if err != nil {
+		log.Printf("read legacy MQTT target: %v", err)
+		return
+	}
+	var config map[string]any
+	if err := json.Unmarshal(raw, &config); err != nil {
+		log.Printf("decode legacy MQTT target: %v", err)
+		return
+	}
+	desired := "closed"
+	if transport.Env("TEAM_KEEP_LEGACY_TARGET", "0") == "1" {
+		desired = "open"
+	}
+	if config["connectionStatus"] == desired {
+		return
+	}
+	config["connectionStatus"] = desired
+	if _, _, err := admin.Request(ctx, "PUT", "/api/2/connections/mosquitto-target-connection", config); err != nil {
+		log.Printf("configure legacy MQTT target: %v", err)
+	} else {
+		log.Printf("legacy MQTT target: %s (team050-target remains open)", desired)
+	}
 }
