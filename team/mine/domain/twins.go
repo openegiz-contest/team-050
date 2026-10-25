@@ -53,7 +53,7 @@ func Snapshot(c Config, s *State) []Thing {
 	unavailable := 0
 	downtime := 0.0
 	for _, t := range s.Trucks {
-		if t.Failure != "" || t.Maintenance || fuelState(t) {
+		if t.Failure != "" || t.Maintenance || fuelState(t) || recoveryState(t) {
 			unavailable++
 		}
 		downtime += t.Downtime

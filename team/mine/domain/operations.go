@@ -83,7 +83,7 @@ func (s *State) randomFailures(c Config) {
 		e := s.RandomFailures[s.RandomCursor]
 		s.RandomCursor++
 		t := s.Truck(e.TruckID)
-		if t == nil || t.Failure != "" || t.Maintenance || fuelState(t) || t.State == "idle" {
+		if t == nil || t.Failure != "" || t.Maintenance || fuelState(t) || recoveryState(t) || t.State == "idle" {
 			continue
 		}
 		if t.ProtectedUntil > s.Time {
@@ -103,7 +103,17 @@ func fuelState(t *Truck) bool {
 	return t.State == "to_refuel" || t.State == "queued_refuel" || t.State == "refueling" || t.State == "out_of_fuel"
 }
 
+func recoveryState(t *Truck) bool {
+	switch t.State {
+	case "waiting_tow", "hitching", "being_towed", "unhitching":
+		return true
+	}
+	return false
+}
 func fuelRate(c Config, t *Truck) float64 {
+	if recoveryState(t) {
+		return 0
+	}
 	if (t.Failure != "" && t.State != "to_repair") || t.Maintenance || fuelState(t) && t.State != "to_refuel" || t.State == "idle" {
 		return 0
 	}
@@ -120,7 +130,7 @@ func fuelRate(c Config, t *Truck) float64 {
 }
 
 func (s *State) beginRefuel(c Config, t *Truck, site string) bool {
-	if t.Failure != "" || t.Maintenance || fuelState(t) {
+	if t.Failure != "" || t.Maintenance || fuelState(t) || recoveryState(t) {
 		return false
 	}
 	var best *RepairSite
@@ -211,7 +221,7 @@ func (s *State) handleFuel(c Config, cmd Command) ([]Result, bool) {
 	if t == nil || s.Mode == "ready" || s.Mode == "finished" {
 		return reject("Выберите самосвал в начатой смене")
 	}
-	if t.Failure != "" || t.Maintenance || fuelState(t) {
+	if t.Failure != "" || t.Maintenance || fuelState(t) || recoveryState(t) {
 		return reject("Машина уже недоступна или заправляется")
 	}
 	if cmd.Parameters.RepairNode != "" && s.repairAt(cmd.Parameters.RepairNode) == nil {

@@ -351,7 +351,7 @@ func (s *State) Handle(c Config, cmd Command) ([]Result, error) {
 		if t == nil {
 			return reject("UNKNOWN_TRUCK", "Самосвал не найден")
 		}
-		if t.Failure != "" || t.Maintenance || fuelState(t) {
+		if t.Failure != "" || t.Maintenance || fuelState(t) || recoveryState(t) {
 			return reject("TRUCK_UNAVAILABLE", "Машина неисправна. Измените маршрут после ремонта.")
 		}
 		if cmd.Topology != c.TopologyVersion {
@@ -417,7 +417,7 @@ func remove(q []string, id string) []string {
 	return out
 }
 func (s *State) Travel(c Config, t *Truck, loaded bool) {
-	if (t.FuelRequested || t.Fuel < c.Operations.Tank*c.Operations.FuelThreshold) && !fuelState(t) && s.beginRefuel(c, t, t.FuelNode) {
+	if (t.FuelRequested || t.Fuel < c.Operations.Tank*c.Operations.FuelThreshold) && !fuelState(t) && !recoveryState(t) && s.beginRefuel(c, t, t.FuelNode) {
 		return
 	}
 	if t.Plan == nil {
@@ -496,7 +496,7 @@ func (s *State) StartQueues(c Config) {
 	s.startRepairs()
 	s.startFuel(c)
 	for _, t := range s.Trucks {
-		if !moving(t) && !operating(t) && !fuelState(t) && t.Failure == "" && !t.Maintenance && (t.FuelRequested || t.Fuel < c.Operations.Tank*c.Operations.FuelThreshold) {
+		if !moving(t) && !operating(t) && !fuelState(t) && !recoveryState(t) && t.Failure == "" && !t.Maintenance && (t.FuelRequested || t.Fuel < c.Operations.Tank*c.Operations.FuelThreshold) {
 			s.beginRefuel(c, t, t.FuelNode)
 		}
 	}
@@ -596,7 +596,7 @@ func (s *State) Step(c Config, dt float64) []Result {
 			}
 		}
 		for _, t := range s.Trucks {
-			if fuelState(t) {
+			if fuelState(t) || (t.Failure == "" && recoveryState(t)) {
 				t.FuelDowntime += h
 			}
 			if t.State == "queued_refuel" {

@@ -205,8 +205,18 @@ func TestEmptyTankCanBeTowedToFuel(t *testing.T) {
 	if rs[0].Status != "applied" {
 		t.Fatal(rs)
 	}
+	seenTow := false
 	for i := 0; i < 5000 && truck.Refuels == 0; i++ {
 		s.Step(c, 1)
+		if s.Vehicles[2].State == "towing" {
+			seenTow = true
+			if truck.State != "being_towed" || fuelRate(c, truck) != 0 {
+				t.Fatalf("engine running during tow: truck=%s rate=%f time=%f", truck.State, fuelRate(c, truck), s.Time)
+			}
+		}
+	}
+	if !seenTow {
+		t.Fatal("empty tank tow not observed")
 	}
 	if truck.Refuels != 1 {
 		t.Fatalf("not recovered: %s", truck.State)

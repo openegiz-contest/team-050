@@ -147,7 +147,7 @@ func (s *State) handleRepairCommand(c Config, cmd Command) ([]Result, bool) {
 	s.replayFailures()
 	switch cmd.Type {
 	case "inject_failure":
-		if t.Failure != "" || t.Maintenance || fuelState(t) {
+		if t.Failure != "" || t.Maintenance || fuelState(t) || recoveryState(t) {
 			return reply("rejected", "ALREADY_FAILED", "Машина уже неисправна")
 		}
 		severity := cmd.Parameters.Severity

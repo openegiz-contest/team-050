@@ -104,7 +104,7 @@ func (s *State) dispatchVehicle(c Config, cmd Command, t *Truck) (string, string
 			return "NOT_LIGHT_FAILURE", "Выездной ремонт доступен при лёгкой поломке"
 		}
 	case "preventive_service":
-		if t.Failure != "" || t.Maintenance || fuelState(t) {
+		if t.Failure != "" || t.Maintenance || fuelState(t) || recoveryState(t) {
 			return "TRUCK_UNAVAILABLE", "Машина уже на обслуживании или неисправна"
 		}
 	}
