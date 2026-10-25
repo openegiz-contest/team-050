@@ -253,6 +253,55 @@ func (s *Server) persistRequest(r *RequestRecord) error {
 	}
 	return os.Rename(tmp, path)
 }
+
+// Bound each retry pass so a backlog cannot block newly queued commands for
+// minutes. Never replay requests from an earlier run into the current shift.
+func (s *Server) dueCommands(now time.Time) []RequestRecord {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if s.Current == nil {
+		return nil
+	}
+	pending := []RequestRecord{}
+	for _, r := range s.Requests {
+		if r.Result.Status != "received" && r.Result.Status != "scheduled" {
+			continue
+		}
+		if r.Command.RunID != s.Current.RunID {
+			r.Result = domain.Result{ID: r.Command.ID, RunID: r.Command.RunID, Status: "cancelled", Reason: "STALE_RUN", Message: "Смена уже изменилась. Обновите страницу.", Time: s.Current.Time, Seq: s.Current.Seq}
+			if err := s.persistRequest(r); err != nil {
+				log.Printf("cancel stale request: %v", err)
+			}
+			s.BroadcastLocked("command", r)
+			continue
+		}
+		delay := time.Duration(2<<min(r.Attempts, 4)) * time.Second
+		if r.Result.Status == "scheduled" {
+			delay = 30 * time.Second
+		}
+		if (r.Sent.IsZero() || now.Sub(r.Sent) > delay) && now.Sub(r.Created) < 24*time.Hour {
+			pending = append(pending, *r)
+		}
+	}
+	sort.Slice(pending, func(i, j int) bool {
+		if pending[i].Sent.IsZero() != pending[j].Sent.IsZero() {
+			return pending[i].Sent.IsZero()
+		}
+		if pending[i].Created.Equal(pending[j].Created) {
+			return pending[i].Command.ID < pending[j].Command.ID
+		}
+		return pending[i].Created.Before(pending[j].Created)
+	})
+	if len(pending) > 4 {
+		pending = pending[:4]
+	}
+	for _, r := range pending {
+		record := s.Requests[r.Command.ID]
+		record.Sent = now
+		record.Attempts++
+	}
+	return pending
+}
 func (s *Server) retryCommands(ctx context.Context) {
 	dir := filepath.Join(s.Store.Dir, "outbox")
 	entries, _ := os.ReadDir(dir)
@@ -279,29 +328,7 @@ func (s *Server) retryCommands(ctx context.Context) {
 		case <-ticker.C:
 		case <-s.WakeCommands:
 		}
-		s.mu.Lock()
-		pending := []RequestRecord{}
-		for _, r := range s.Requests {
-			delay := time.Duration(2<<min(r.Attempts, 4)) * time.Second
-			if r.Result.Status == "scheduled" {
-				delay = 30 * time.Second
-			}
-			if (r.Result.Status == "received" || r.Result.Status == "scheduled") && (r.Sent.IsZero() || time.Since(r.Sent) > delay) && time.Since(r.Created) < 24*time.Hour {
-				pending = append(pending, *r)
-				r.Sent = time.Now()
-				r.Attempts++
-			}
-		}
-		s.mu.Unlock()
-		sort.Slice(pending, func(i, j int) bool {
-			if pending[i].Sent.IsZero() != pending[j].Sent.IsZero() {
-				return pending[i].Sent.IsZero()
-			}
-			if pending[i].Created.Equal(pending[j].Created) {
-				return pending[i].Command.ID < pending[j].Command.ID
-			}
-			return pending[i].Created.Before(pending[j].Created)
-		})
+		pending := s.dueCommands(time.Now())
 		for _, record := range pending {
 			cmd := record.Command
 			requestContext, cancel := context.WithTimeout(ctx, 5*time.Second)
