@@ -1,9 +1,0 @@
-{
-  "date": "2026-10-25",
-  "commands": [],
-  "transitions": [],
-  "run_id": "4fac7fa48703f99279794234",
-  "started_sim_time_s": 26749.999999999996,
-  "status": "error",
-  "error": "No result: inject_failure"
-}

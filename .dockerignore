@@ -13,3 +13,7 @@ localization/
 planning/
 **/__pycache__
 **/*.pyc
+
+ДЛЯ_УДАЛЕНИЯ/
+.localization-build-*/
+.go-vendor-cache-*/

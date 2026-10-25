@@ -35,7 +35,8 @@ build/WebGL Build.framework.js
 build/WebGL Build.data
 build/WebGL Build.wasm
 
-# Local delivery copies and rendered localization previews
-/outputs/team050-localization/
-
-/outputs/team050-localization-v2/
+# Local exports, cleanup collections and one-off build caches
+/outputs/
+/ДЛЯ_УДАЛЕНИЯ/
+/.localization-build-*/
+/.go-vendor-cache-*/
