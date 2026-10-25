@@ -213,7 +213,7 @@ func (s *Server) Run(ctx context.Context) error {
 				// A slow but progressing frame is not a disconnected stream.
 				// Avoid competing with Ditto's event pipeline through repeated
 				// full REST reads while those events are still arriving.
-				need := s.Topology == nil || ((s.Current == nil || time.Since(s.Current.Received) > 5*time.Second) && time.Since(s.LastEvent) > 10*time.Second)
+				need := s.Topology == nil || ((s.Current == nil || time.Since(s.Current.Received) > 10*time.Second) && time.Since(s.LastEvent) > 10*time.Second)
 				s.mu.Unlock()
 				if need {
 					s.Hydrate(ctx)
@@ -358,7 +358,7 @@ func (s *Server) Handler(uiPath string) http.Handler {
 		s.mu.Lock()
 		f := s.Current
 		s.mu.Unlock()
-		jsonResponse(w, 200, map[string]any{"frame": f, "stale": f == nil || time.Since(f.Received) > 5*time.Second})
+		jsonResponse(w, 200, map[string]any{"frame": f, "stale": f == nil || time.Since(f.Received) > 10*time.Second})
 	})
 	mux.HandleFunc("GET /api/stream", func(w http.ResponseWriter, r *http.Request) {
 		flusher, ok := w.(http.Flusher)
@@ -508,7 +508,7 @@ func (s *Server) Handler(uiPath string) http.Handler {
 	})
 	mux.HandleFunc("GET /readyz", func(w http.ResponseWriter, r *http.Request) {
 		s.mu.Lock()
-		ready := s.Topology != nil && s.Current != nil && time.Since(s.Current.Received) < 10*time.Second
+		ready := s.Topology != nil && s.Current != nil && time.Since(s.Current.Received) < 15*time.Second
 		s.mu.Unlock()
 		if !ready {
 			jsonResponse(w, 503, map[string]string{"status": "waiting-for-platform"})

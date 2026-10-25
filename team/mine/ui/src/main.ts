@@ -139,13 +139,14 @@ function vehicleTracks():VehicleTrack[]{
  return Object.keys(frame.entities).filter(isVehicle).sort().map(id=>{
   const f=frame!.entities[id],old=previous?.run_id===frame!.run_id?previous.entities[id]:undefined;
   let progress=n(f,'edge_progress');
-  if(!reducedMotion&&running&&age<900&&old&&n(f,'speed_kmh')>0&&str(old,'state')===str(f,'state')&&str(f,'edge_id')&&str(old,'edge_id')===str(f,'edge_id')){
-   progress=n(old,'edge_progress')+(progress-n(old,'edge_progress'))*Math.min(1,age/900);
+  if(!reducedMotion&&running&&age<interpolationMs&&old&&n(f,'speed_kmh')>0&&str(old,'state')===str(f,'state')&&str(f,'edge_id')&&str(old,'edge_id')===str(f,'edge_id')){
+   progress=n(old,'edge_progress')+(progress-n(old,'edge_progress'))*Math.min(1,age/interpolationMs);
   }
   return{id,edgeId:str(f,'edge_id'),nodeId:str(f,'node_id')||'P',progress};
  });
 }
 function isVehicle(id:string){return /^(truck|service|tow)-/.test(id);}
+const interpolationMs=1800;
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let visualDirty=true,lastVisualKey='';
 let currentPlacements=new Map<string,VehiclePlacement>();
@@ -335,11 +336,11 @@ async function initializeGLBModels(){
 function animate(now:number){
  requestAnimationFrame(animate);
  if(now-lastAnimation<1000/30||!frame||!topology)return;lastAnimation=now;
- const age=performance.now()-frameAt,live=age<5000;
+ const age=performance.now()-frameAt,live=age<10000;
  const connected=$('connection');connected.textContent=live?'● Участок на связи':`● Данные задерживаются · ${Math.floor(age/1000)} с`;connected.classList.toggle('offline',!live);
  const running=str(frame.entities['control-01'],'state')==='running';
  const key=`${frame.run_id}:${frame.snapshot_seq}:${selected}:${mapView}`;
- if(!visualDirty&&lastVisualKey===key&&(!running||age>=900||reducedMotion))return;
+ if(!visualDirty&&lastVisualKey===key&&(!running||age>=interpolationMs||reducedMotion))return;
  lastVisualKey=key;visualDirty=false;
  const tracks=vehicleTracks(),flat=placeVehicles(tracks,topology.nodes,(x,y)=>({x,y}));
  currentPlacements=placeVehicles(tracks,topology.nodes,(x,y)=>project3D(x,y,ROAD_Z));
@@ -453,7 +454,7 @@ async function refreshPendingCommands(){
 }
 setInterval(()=>{void refreshPendingCommands()},3000);
 function receive(next:Frame){if(frame&&frame.run_id===next.run_id&&frame.snapshot_seq>=next.snapshot_seq)return;if(lastRun!==next.run_id){previous=null;draft=[];preview=null;pendingCommands.clear();lastRun=next.run_id;($('apply') as HTMLButtonElement).disabled=true;}else previous=frame;frame=next;frameAt=performance.now();if(topology)render();}
-async function boot(){token=(await api<{token:string}>('/api/session')).token;const es=new EventSource('/api/stream');es.onmessage=e=>{try{const v=JSON.parse(e.data);if(v.type==='state')receive(v.data);if(v.type==='command')logCommand(v.data.result);}catch(err){console.error(err)}};es.onerror=()=>{$('connection').textContent='● Восстановление связи';};const load=async()=>{try{if(!topology){topology=await api<Topology>('/api/topology');drawTopology();draw3DTopology();}const v=await api<{frame:Frame|null;stale:boolean}>('/api/state');if(v.frame)receive(v.frame);if(frame&&topology)render();}catch{ /* the platform may still be starting */ }};await load();setInterval(()=>{if(!topology||!frame||performance.now()-frameAt>5000)void load();},3000);requestAnimationFrame(animate);}
+async function boot(){token=(await api<{token:string}>('/api/session')).token;const es=new EventSource('/api/stream');es.onmessage=e=>{try{const v=JSON.parse(e.data);if(v.type==='state')receive(v.data);if(v.type==='command')logCommand(v.data.result);}catch(err){console.error(err)}};es.onerror=()=>{$('connection').textContent='● Восстановление связи';};const load=async()=>{try{if(!topology){topology=await api<Topology>('/api/topology');drawTopology();draw3DTopology();}const v=await api<{frame:Frame|null;stale:boolean}>('/api/state');if(v.frame)receive(v.frame);if(frame&&topology)render();}catch{ /* the platform may still be starting */ }};await load();setInterval(()=>{if(!topology||!frame||performance.now()-frameAt>10000)void load();},3000);requestAnimationFrame(animate);}
 new ResizeObserver(()=>{visualDirty=true}).observe(document.querySelector('.map-wrap')!);
 window.addEventListener('resize',()=>{visualDirty=true});
 try{if(localStorage.getItem('team050-map-view')==='3d')setMapView('3d')}catch{}

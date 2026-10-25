@@ -228,6 +228,15 @@ func main() {
 	defer tick.Stop()
 	last := time.Now()
 	lastPublish := last
+	// A full 35-Thing heartbeat is expensive even when nothing is moving.
+	// Calculation still advances in one-second model steps; this only changes
+	// network/snapshot cadence and leaves command results immediate.
+	frameInterval := func() time.Duration {
+		if s.Mode == "running" {
+			return 2 * time.Second
+		}
+		return 5 * time.Second
+	}
 	budget := 0.0
 	advance := func(now time.Time) {
 		delta := now.Sub(last).Seconds()
@@ -276,7 +285,9 @@ func main() {
 				f := flight[0].Features
 				if r.run == f["idSimulationRun"].Properties.Value && r.seq == f["snapshot_seq"].Properties.Value.(uint64) {
 					delete(pending, r.name)
-					lastAck = time.Now()
+					if len(pending) == 0 {
+						lastAck = time.Now()
+					}
 				}
 			}
 		case <-lookupDone:
@@ -319,7 +330,7 @@ func main() {
 			}
 		case <-tick.C:
 			advance(time.Now())
-			if time.Since(lastPublish) >= time.Second {
+			if time.Since(lastPublish) >= frameInterval() {
 				publish()
 				lastPublish = time.Now()
 			}
